@@ -8,8 +8,8 @@ Doggy Done is a "smart to-do app" for dog owners, that organizes user tasks, and
 [MVP Feature List](##linkshere) |
 [Database Schema](##linkshere) |
 [API Documentation](##linkshere) |
-[Frontend Routes](https://github.com/strewm/Gotta-Latte-Do/wiki/Frontend-Routes) |
-[User Stories](https://github.com/strewm/Gotta-Latte-Do/wiki/User-Stories) |
+[Frontend Routes](##linkshere) |
+[User Stories](##linkshere) |
 
 # Technologies Used
 
