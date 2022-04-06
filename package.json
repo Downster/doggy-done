@@ -2,7 +2,7 @@
   "name": "doggy-done",
   "version": "1.0.0",
   "description": "The ToDoList for busy dog owners",
-  "main": "app.js",
+  "main": "./bin/www",
   "dependencies": {
     "body-parser": "^1.20.0",
     "cookie-parser": "^1.4.6",
@@ -17,7 +17,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "test"
+    "start": "nodemon -r dotenv/config ./bin/www"
   },
   "repository": {
     "type": "git",
