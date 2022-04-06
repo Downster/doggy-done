@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   List.init({
-    id: DataTypes.INTEGER,
     name: DataTypes.STRING,
     completed: DataTypes.BOOLEAN,
     due_date: DataTypes.DATE

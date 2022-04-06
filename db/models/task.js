@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Task.init({
-    id: DataTypes.INTEGER,
     owner_id: DataTypes.INTEGER,
     dog_id: DataTypes.INTEGER,
     detail: DataTypes.STRING,
