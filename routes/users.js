@@ -43,15 +43,13 @@ const userValidators = [
     .isEmail()
     .withMessage("Email Address is not a valid email")
     .custom((value) => {
-      return db.User.findOne({ where: { emailAddress: value } }).then(
-        (user) => {
-          if (user) {
-            return Promise.reject(
-              "The provided Email Address is already in use by another account"
-            );
-          }
+      return db.User.findOne({ where: { email: value } }).then((user) => {
+        if (user) {
+          return Promise.reject(
+            "The provided Email Address is already in use by another account"
+          );
         }
-      );
+      });
     })
     .matches(emailReg)
     .withMessage("Please provide a valid email"),
@@ -77,14 +75,14 @@ const userValidators = [
     )
     .matches(eightCharacters)
     .withMessage("Please input a password at least eight characters long"),
-  check("confirmPassword")
-    .matches("password")
-    .withMessage("Passwords do not match"),
+  // check("confirmPassword")
+  //   .matches("password")
+  //   .withMessage("Passwords do not match"),
 ];
 
 //Login Validators
 const loginValidators = [
-  check("emailAddress")
+  check("email")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for Email Address"),
   check("password")
@@ -112,21 +110,24 @@ router.post(
   userValidators,
   asyncHandler(async (req, res) => {
     const { firstName, lastName, displayName, email, password } = req.body;
+
+    const photo = "http://defaultphotoaddress";
     // console.log(firstName, lastName, displayName, email, password);
 
     const user = await db.User.build({
       firstName,
       lastName,
-      displayName,
+      display_name: displayName,
       email,
       password,
+      photo,
     });
     const validatorErrors = validationResult(req);
     console.log(validatorErrors);
 
     if (validatorErrors.isEmpty()) {
-      const hashed = await bcrypt.hash(hashedPassword, 10);
-      user.hashedPassword = hashed;
+      const hashed = await bcrypt.hash(password, 10);
+      user.password = hashed;
       await user.save();
       loginUser(req, res, user);
       res.redirect("/");
@@ -159,10 +160,10 @@ router.post(
   loginValidators,
   asyncHandler(async (req, res) => {
     const { email, password } = req.body;
-    console.log(email, password);
 
     let errors = [];
     const validatorErrors = validationResult(req);
+    console.log(validatorErrors);
 
     if (validatorErrors.isEmpty()) {
       const user = await db.User.findOne({ where: { email } });
@@ -171,9 +172,10 @@ router.post(
         // to the provided password.
         const passwordMatch = await bcrypt.compare(
           password,
-          user.hashedPassword.toString()
+          user.password.toString()
         );
         if (passwordMatch) {
+          console.log("matched!");
           // If the password hashes match, then login the user
           // and redirect them to the default route.
           // TODO Login the user.
