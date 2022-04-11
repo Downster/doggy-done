@@ -126,7 +126,7 @@ router.post(
       user.hashedPassword = hashed;
       await user.save();
       loginUser(req, res, user);
-      res.redirect("/");
+      res.redirect("/app");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render("signup", {
@@ -174,7 +174,7 @@ router.post(
           // and redirect them to the default route.
           // TODO Login the user.
           loginUser(req, res, user);
-          return res.redirect("/");
+          return res.redirect("/app");
         }
       }
       errors.push("Login failed for the provided email address and password");
