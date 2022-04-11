@@ -1,0 +1,52 @@
+
+
+.userflow-container {
+    display: flex;
+    height: 100%;
+}
+
+body, html {
+    height: 100%
+}
+
+.userflow-left {
+    background-color: #ffa500;
+    height: 100%;
+    width: 40%;
+}
+
+.userflow-right {
+    position: relative;
+    background-color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1em;
+    margin: auto
+}
+
+.user-form-field {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+.flufferton {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#userflow-friends {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    align-items: center;
+}
+
+
