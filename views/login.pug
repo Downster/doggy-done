@@ -4,7 +4,7 @@ block left-flavor
   p hello left bar this is flavor stuff
 block right-form
   p hello right bar this is login stuff
-  +errorSummary();
+  +errorSummary()
   form.login-form(method="POST" action="/users/login")
     +csrfField()
     +userFormField("E-mail", "email", '', "email")
