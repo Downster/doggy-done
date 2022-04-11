@@ -8,6 +8,6 @@ block right-form
     +csrfField()
     +userFormField("E-mail", "email", '', "email")
     +userFormField("Password", "password", '', "password")
-    button.user-form-button#login(type="submit") Log In
+    +loginButton()
   div.signup-redirect
     a(href="/users/register") Need to create an account? Sign up today!
