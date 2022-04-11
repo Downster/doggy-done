@@ -26,5 +26,22 @@ mixin logoutButton()
   div.logout-button-container
   button.user-form-button#main-logout-button(type="submit") Logout
 
+
+mixin unauth-nav()
+  nav(class='unauth-nav') 
+    a(class='home' href='/') Doggy Done
+    a(class='login' href="/users/login") Log in
+    a(class='sign-up' href="/users/register") Sign up for free
 mixin loginRedirectButton()
   a.userflow-login-button(href="/users/login") Log In
+mixin loginRedirectButton()
+  a.userflow-login-button(href="/users/login") Log In
+mixin unauth-nav()
+  nav(class='unauth-nav') 
+    a(class='home' href='/') Doggy Done
+    a(class='login' href="/users/login") Log in
+    a(class='sign-up' href="/users/register") Sign up for free
+
+mixin loginRedirectButton()
+  a.userflow-login-button(href="/users/login") Log In
+

@@ -1,4 +1,12 @@
 @import url(./userflow.css);
+*{
+  box-sizing: border-box;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: aqua;
+}
 
 h1 {
     color: #555555;
