@@ -11,7 +11,7 @@ module.exports = {
       owner_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {model: 'User'}
+        references: {model: 'Users'}
       },
       name: {
         type: Sequelize.STRING(35),
@@ -20,7 +20,7 @@ module.exports = {
       breed_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {model: 'Breed'}
+        references: {model: 'Breeds'}
       },
       photo: {
         type: Sequelize.STRING
