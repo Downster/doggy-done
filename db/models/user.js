@@ -13,11 +13,19 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
 
-  const columnMap = {
+  const columnMapUser = {
     through: "Contact",
-    otherKey: "user_id2",
-    foreignKey: "user_id1",
+    otherKey: "contact_id",
+    foreignKey: "user_id",
+    as: "userContact"
   };
+
+  const columnMapContact = {
+    through: "Contact",
+    otherKey: "user_id",
+    foreignKey: "contact_id",
+    as: "contactUser"
+  }
 
   User.associate = function (models) {
     // associations can be defined here
@@ -25,7 +33,8 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.List, { foreignKey: "owner_id" }),
       User.hasMany(models.Note, { foreignKey: "owner_id" }),
       User.hasMany(models.Task, { foreignKey: "owner_id" });
-    // User.belongsToMany(models.Contact, columnMap);
+      User.belongsToMany(models.User, columnMapUser);
+      User.belongsToMany(models.User, columnMapContact);
   };
   return User;
 };
