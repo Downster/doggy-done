@@ -109,7 +109,8 @@ router.post(
   csrfProtection,
   userValidators,
   asyncHandler(async (req, res) => {
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, displayName, email, password } = req.body;
+    // console.log(firstName, lastName, displayName, email, password);
 
     const user = await db.User.build({
       firstName,
@@ -126,7 +127,7 @@ router.post(
       user.hashedPassword = hashed;
       await user.save();
       loginUser(req, res, user);
-      res.redirect("/app");
+      res.redirect("/");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render("signup", {
@@ -156,6 +157,7 @@ router.post(
   loginValidators,
   asyncHandler(async (req, res) => {
     const { email, password } = req.body;
+    console.log(email, password);
 
     let errors = [];
     const validatorErrors = validationResult(req);
@@ -184,7 +186,7 @@ router.post(
 
     res.render("login", {
       title: "Login",
-      emailAddress,
+      email,
       errors,
       csrfToken: req.csrfToken(),
     });
