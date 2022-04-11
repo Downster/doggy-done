@@ -14,7 +14,7 @@ const { loginUser, logoutUser } = require("../auth.js");
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const { redirect } = require("express/lib/response");
-const db = require('../db/models');
+const db = require("../db/models");
 
 const router = express.Router();
 
@@ -30,6 +30,11 @@ const userValidators = [
     .withMessage("Please Provide a last name")
     .isLength({ max: 50 })
     .withMessage("last name must be less than 50 characters"),
+  check("displayName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a username")
+    .isLength({ max: 50 })
+    .withMessage("Username can only be 50 characters max"),
   check("emailAddress")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for Email Address")
@@ -49,7 +54,7 @@ const userValidators = [
       );
     }),
 
-  check("hashedPassword")
+  check("password")
     .exists({ checkFalsy: true })
     .withMessage("Please Provide a password")
     .isLength({ max: 50 })
@@ -70,9 +75,9 @@ const userValidators = [
     )
     .matches(eightCharacters)
     .withMessage("Please input a password at least eight characters long"),
-  //   check("confirmPassword")
-  //     .matches("hashedPassword")
-  //     .withMessage("Learn to type jabroni"),
+  check("confirmPassword")
+    .matches("password")
+    .withMessage("Passwords do not match"),
 ];
 
 //Login Validators
@@ -80,7 +85,7 @@ const loginValidators = [
   check("emailAddress")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for Email Address"),
-  check("hashedPassword")
+  check("password")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for Password"),
 ];
@@ -90,7 +95,7 @@ router.get(
   csrfProtection,
   asyncHandler(async (req, res) => {
     // const user = await db.User.build();
-    const  user = {};
+    const user = {};
     res.render("signup", {
       tile: "Register",
       user,
@@ -104,13 +109,14 @@ router.post(
   csrfProtection,
   userValidators,
   asyncHandler(async (req, res) => {
-    const { firstName, lastName, emailAddress, hashedPassword } = req.body;
+    const { firstName, lastName, email, password } = req.body;
 
     const user = await db.User.build({
       firstName,
       lastName,
-      emailAddress,
-      hashedPassword,
+      displayName,
+      email,
+      password,
     });
     const validatorErrors = validationResult(req);
     console.log(validatorErrors);
@@ -149,18 +155,18 @@ router.post(
   csrfProtection,
   loginValidators,
   asyncHandler(async (req, res) => {
-    const { emailAddress, hashedPassword } = req.body;
+    const { email, password } = req.body;
 
     let errors = [];
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
-      const user = await db.User.findOne({ where: { emailAddress } });
+      const user = await db.User.findOne({ where: { email } });
       if (user !== null) {
         // If the user exists then compare their password
         // to the provided password.
         const passwordMatch = await bcrypt.compare(
-          hashedPassword,
+          password,
           user.hashedPassword.toString()
         );
         if (passwordMatch) {
@@ -186,7 +192,7 @@ router.post(
 );
 
 router.post(
-  "/user/logout",
+  "/logout",
   asyncHandler(async (req, res) => {
     logoutUser(req, res);
     res.redirect("/");
