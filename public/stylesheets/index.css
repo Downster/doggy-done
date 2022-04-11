@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 *{
   box-sizing: border-box;
 }
@@ -7,9 +8,23 @@ nav{
     justify-content: space-between;
     background-color: aqua;
 =======
+=======
+>>>>>>> 023a344 (Added css files, logout page, navbar)
 @import url(./userflow.css);
 
 h1 {
     color: #555555;
+<<<<<<< HEAD
 >>>>>>> 95e75ae (first run of signup styling)
+=======
+=======
+*{
+  box-sizing: border-box;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: aqua;
+>>>>>>> 181fd02 (Added css files, logout page, navbar)
+>>>>>>> 023a344 (Added css files, logout page, navbar)
 }
