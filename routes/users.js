@@ -75,9 +75,14 @@ const userValidators = [
     )
     .matches(eightCharacters)
     .withMessage("Please input a password at least eight characters long"),
-  // check("confirmPassword")
-  //   .matches("password")
-  //   .withMessage("Passwords do not match"),
+  check("confirmPassword").custom((value, { req, loc, path }) => {
+    if (value !== req.body.password) {
+      // trow error if passwords do not match
+      throw new Error("Passwords don't match");
+    } else {
+      return value;
+    }
+  }),
 ];
 
 //Login Validators
