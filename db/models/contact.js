@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
 
+<<<<<<< HEAD
   const columnMap = {
     through: "Contact",
     otherKey: "user_id1",
@@ -18,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
   Contact.associate = function (models) {
     // associations can be defined here
     // Contact.belongsToMany(models.Contact, columnMap)
+=======
+  Contact.associate = function(models) {
+    // associations can be defined here
+>>>>>>> 8b3887d (update user self-association for contacts)
   };
   return Contact;
 };
