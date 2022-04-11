@@ -4,7 +4,7 @@ block left-flavor
   p hello left bar this is flavor stuff
 block right-form
   p hello right bar this is user registration stuff
-  form.sign-up-form(method="POST" action="/register")
+  form.sign-up-form(method="POST" action="/users/register")
     +csrfField()
     +userFormField("First Name", "firstName", user.firstName, "text")
     +userFormField("Last Name", "lastName", user.lastName, "text")
