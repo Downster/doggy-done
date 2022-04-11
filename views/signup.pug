@@ -1,5 +1,17 @@
 extends user-flow-layout.pug
-  block left
-    p hello left bar
-  block right
-    p hello right bar
+include form-utils.pug
+block left-flavor
+  p hello left bar this is flavor stuff
+block right-form
+  p hello right bar this is user registration stuff
+  form.sign-up-form(method="POST" action="/register")
+    +csrfField()
+    +userFormField("First Name", "firstName", user.firstName, "text")
+    +userFormField("Last Name", "lastName", user.lastName, "text")
+    +userFormField("Display Name", "displayName", user.displayName, "text")
+    +userFormField("E-mail", "email", user.email, "email")
+    +userFormField("Password", "password", '', "password")
+    +userFormField("Confirm Password", "confirmPassword", '', "password")
+    button.user-form-button#signup(type="submit") Submit
+  div.login-redirect
+    a(href="/users/login") Already have an account? Log in.
