@@ -12,6 +12,6 @@ block right-form
     +userFormField("E-mail", "email", user.email, "email")
     +userFormField("Password", "password", '', "password")
     +userFormField("Confirm Password", "confirmPassword", '', "password")
-    button.user-form-button#signup(type="submit") Submit
+    +signUpButton()
   div.login-redirect
     a(href="/users/login") Already have an account? Log in.

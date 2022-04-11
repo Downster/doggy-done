@@ -13,3 +13,15 @@ mixin userFormField(labelText, fieldName, fieldValue, fieldType, placeHolder = n
 
 mixin csrfField()
   input(type="hidden" name="_csrf", value=csrfToken)
+
+mixin signUpButton()
+  div.user-form-submit
+    button.user-form-button#signup-button(type="submit") Sign Up
+
+mixin loginButton()
+  div.user-form-submit
+  button.user-form-button#login-button(type="submit") Log In
+
+mixin logoutButton()
+  div.logout-button-container
+  button.user-form-button#main-logout-button(type="submit") Logout
