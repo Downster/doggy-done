@@ -2,9 +2,10 @@ extends layout.pug
 
 block content
     .nav
-        a(href="") Log in
-        a(href="") Sign up for free
+        a(href="/users/login") Log in
+        a(href="/users/register") Sign up for free
     .header
         h1 The smart to-do app for busy people.
-        button Sign Up Free
+        a(href='/users/register') Sign Up Free
+            //- a(href='/register')
     .container#might-be-slide-show
