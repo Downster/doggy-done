@@ -89,7 +89,7 @@ router.get(
   csrfProtection,
   asyncHandler(async (req, res) => {
     const user = await db.User.build();
-    res.render("register", {
+    res.render("signup", {
       tile: "Register",
       user,
       csrfToken: req.csrfToken(),
@@ -121,7 +121,7 @@ router.post(
       res.redirect("/");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
-      res.render("register", {
+      res.render("signup", {
         title: "Register",
         user,
         errors,
