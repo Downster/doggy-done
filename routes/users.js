@@ -102,7 +102,7 @@ router.get(
     // const user = await db.User.build();
     const user = {};
     res.render("signup", {
-      tile: "Register",
+      title: "Register",
       user,
       csrfToken: req.csrfToken(),
     });
@@ -153,7 +153,7 @@ router.get(
   csrfProtection,
   asyncHandler(async (req, res) => {
     res.render("login", {
-      tile: "Login",
+      title: "Login",
       csrfToken: req.csrfToken(),
     });
   })
@@ -202,11 +202,20 @@ router.post(
   })
 );
 
+router.get(
+  "/logout",
+  asyncHandler(async (req, res) => {
+    res.render("logout", {
+      title: "logout",
+    });
+  })
+);
+
 router.post(
   "/logout",
   asyncHandler(async (req, res) => {
     logoutUser(req, res);
-    res.redirect("/");
+    res.redirect("/logout");
   })
 );
 
