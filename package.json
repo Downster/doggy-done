@@ -1,34 +1,29 @@
 {
-  "name": "doggy-done",
-  "version": "1.0.0",
-  "description": "The ToDoList for busy dog owners",
-  "main": "./bin/www",
-  "dependencies": {
-    "body-parser": "^1.20.0",
-    "cookie-parser": "^1.4.6",
-    "csurf": "^1.11.0",
-    "dotenv": "^16.0.0",
-    "express": "^4.17.3",
-    "express-session": "^1.17.2",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.15",
-    "pg": "^8.7.3",
-    "pug": "^3.0.2",
-    "sequelize": "^6.18.0",
-    "sequelize-cli": "^6.4.1"
-  },
-  "devDependencies": {},
+  "name": "express-project-starter",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "nodemon -r dotenv/config ./bin/www"
+    "start": "per-env",
+    "start:development": "nodemon -r dotenv/config ./bin/www",
+    "start:production": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Downster/doggy-done.git"
+  "dependencies": {
+    "connect-session-sequelize": "^7.0.4",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-session": "^1.17.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "per-env": "^1.0.2",
+    "pg": "^8.6.0",
+    "pug": "2.0.4",
+    "sequelize": "^5.22.3",
+    "sequelize-cli": "^5.5.1"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Downster/doggy-done/issues"
-  },
-  "homepage": "https://github.com/Downster/doggy-done#readme"
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "dotenv-cli": "^4.0.0",
+    "nodemon": "^2.0.6"
+  }
 }
