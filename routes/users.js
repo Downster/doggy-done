@@ -14,7 +14,7 @@ const { loginUser, logoutUser } = require("../auth.js");
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const { redirect } = require("express/lib/response");
-const db = require('../db/models');
+const db = require("../db/models");
 
 const router = express.Router();
 
@@ -30,7 +30,12 @@ const userValidators = [
     .withMessage("Please Provide a last name")
     .isLength({ max: 50 })
     .withMessage("last name must be less than 50 characters"),
-  check("emailAddress")
+  check("displayName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a username")
+    .isLength({ max: 50 })
+    .withMessage("Username can only be 50 characters max"),
+  check("email")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for Email Address")
     .isLength({ max: 255 })
@@ -47,9 +52,11 @@ const userValidators = [
           }
         }
       );
-    }),
+    })
+    .matches(emailReg)
+    .withMessage("Please provide a valid email"),
 
-  check("hashedPassword")
+  check("password")
     .exists({ checkFalsy: true })
     .withMessage("Please Provide a password")
     .isLength({ max: 50 })
@@ -70,9 +77,9 @@ const userValidators = [
     )
     .matches(eightCharacters)
     .withMessage("Please input a password at least eight characters long"),
-  //   check("confirmPassword")
-  //     .matches("hashedPassword")
-  //     .withMessage("Learn to type jabroni"),
+  check("confirmPassword")
+    .matches("password")
+    .withMessage("Passwords do not match"),
 ];
 
 //Login Validators
@@ -80,7 +87,7 @@ const loginValidators = [
   check("emailAddress")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for Email Address"),
-  check("hashedPassword")
+  check("password")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for Password"),
 ];
@@ -90,7 +97,7 @@ router.get(
   csrfProtection,
   asyncHandler(async (req, res) => {
     // const user = await db.User.build();
-    const  user = {};
+    const user = {};
     res.render("signup", {
       tile: "Register",
       user,
@@ -104,13 +111,15 @@ router.post(
   csrfProtection,
   userValidators,
   asyncHandler(async (req, res) => {
-    const { firstName, lastName, emailAddress, hashedPassword } = req.body;
+    const { firstName, lastName, displayName, email, password } = req.body;
+    // console.log(firstName, lastName, displayName, email, password);
 
     const user = await db.User.build({
       firstName,
       lastName,
-      emailAddress,
-      hashedPassword,
+      displayName,
+      email,
+      password,
     });
     const validatorErrors = validationResult(req);
     console.log(validatorErrors);
@@ -149,18 +158,19 @@ router.post(
   csrfProtection,
   loginValidators,
   asyncHandler(async (req, res) => {
-    const { emailAddress, hashedPassword } = req.body;
+    const { email, password } = req.body;
+    console.log(email, password);
 
     let errors = [];
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
-      const user = await db.User.findOne({ where: { emailAddress } });
+      const user = await db.User.findOne({ where: { email } });
       if (user !== null) {
         // If the user exists then compare their password
         // to the provided password.
         const passwordMatch = await bcrypt.compare(
-          hashedPassword,
+          password,
           user.hashedPassword.toString()
         );
         if (passwordMatch) {
@@ -168,7 +178,7 @@ router.post(
           // and redirect them to the default route.
           // TODO Login the user.
           loginUser(req, res, user);
-          return res.redirect("/");
+          return res.redirect("/app");
         }
       }
       errors.push("Login failed for the provided email address and password");
@@ -178,7 +188,7 @@ router.post(
 
     res.render("login", {
       title: "Login",
-      emailAddress,
+      email,
       errors,
       csrfToken: req.csrfToken(),
     });
@@ -186,7 +196,7 @@ router.post(
 );
 
 router.post(
-  "/user/logout",
+  "/logout",
   asyncHandler(async (req, res) => {
     logoutUser(req, res);
     res.redirect("/");
