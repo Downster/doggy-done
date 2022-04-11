@@ -22,8 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.List, {foreignKey:'owner_id'}),
     User.hasMany(models.Note, {foreignKey: 'owner_id'}),
     User.hasMany(models.Task, {foreignKey: 'owner_id'}),
-    User.belongsToMany(models.Contact, columnMap);
-
+    User.belongsToMany(models.Contact, columnMap)
   };
   return User;
 };

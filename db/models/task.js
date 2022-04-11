@@ -8,9 +8,17 @@ module.exports = (sequelize, DataTypes) => {
     priority: DataTypes.INTEGER,
     completed: DataTypes.BOOLEAN
   }, {});
+
+  const columnMap = {
+    through:'TaskList',
+    otherKey: 'task_id',
+    foreignKey: 'list_id'
+  }
+
   Task.associate = function(models) {
     // associations can be defined here
-    Task.hasOne(models.Priority, {foreignKey: 'priority'})
+    Task.belongsTo(models.Priority, {foreignKey: 'priority'});
+    Task.belongsToMany(models.List, columnMap);
   };
   return Task;
 };

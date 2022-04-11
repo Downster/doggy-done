@@ -4,8 +4,16 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     owner_id: DataTypes.INTEGER
   }, {});
+
+  const columnMap = {
+    through:'TaskList',
+    otherKey: 'list_id',
+    foreignKey: 'task_id'
+  }
   List.associate = function(models) {
     // associations can be defined here
+    List.belongsToMany(models.Task, columnMap),
+    List.belongsTo(models.User, {foreignKey: 'owner_id'})
   };
   return List;
 };
