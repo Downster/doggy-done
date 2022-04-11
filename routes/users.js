@@ -85,7 +85,7 @@ const loginValidators = [
 ];
 
 router.get(
-  "/user/register",
+  "/register",
   csrfProtection,
   asyncHandler(async (req, res) => {
     const user = await db.User.build();
@@ -98,7 +98,7 @@ router.get(
 );
 
 router.post(
-  "/user/register",
+  "/register",
   csrfProtection,
   userValidators,
   asyncHandler(async (req, res) => {
@@ -132,7 +132,7 @@ router.post(
 );
 
 router.get(
-  "/user/login",
+  "/login",
   csrfProtection,
   asyncHandler(async (req, res) => {
     res.render("login", {
@@ -143,7 +143,7 @@ router.get(
 );
 
 router.post(
-  "/user/login",
+  "/login",
   csrfProtection,
   loginValidators,
   asyncHandler(async (req, res) => {
@@ -184,7 +184,7 @@ router.post(
 );
 
 router.post(
-  "/user/logout",
+  "/logout",
   asyncHandler(async (req, res) => {
     logoutUser(req, res);
     res.redirect("/");
