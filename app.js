@@ -9,28 +9,33 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 
+//db models and global variables
+const { environment, db, port, sessionSecret } = require("./config");
+const { restoreUser } = require("./auth");
+
 const app = express();
 
 // view engine setup
 app.set("view engine", "pug");
 
-app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
-
-// set up session middleware
-const store = new SequelizeStore({ db: sequelize });
-
+//implement middleware
 app.use(
   session({
-    secret: "superSecret",
+    secret: sessionSecret,
     store,
     saveUninitialized: false,
     resave: false,
   })
 );
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
+app.use(restoreUser);
+
+// set up session middleware
+const store = new SequelizeStore({ db: sequelize });
 
 // create Session table if it doesn't already exist
 store.sync();
@@ -39,9 +44,11 @@ store.sync();
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
+// Catch unhandled requests and forward to error handler.
+app.use((req, res, next) => {
+  const err = new Error("The requested page couldn't be found.");
+  err.status = 404;
+  next(err);
 });
 
 // error handler
