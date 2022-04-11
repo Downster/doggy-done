@@ -10,26 +10,6 @@ module.exports = (sequelize, DataTypes) => {
   );
   Contact.associate = function(models) {
     // associations can be defined here
-
-=======
-  Contact.associate = function(models) {
-    // associations can be defined here
-=======
-  const columnMap = {
-    through: "Contact",
-    otherKey: "user_id1",
-    foreignKey: "user_id2",
-  };
-
-  Contact.associate = function (models) {
-    // associations can be defined here
-    // Contact.belongsToMany(models.Contact, columnMap)
-=======
-  Contact.associate = function (models) {
-    // associations can be defined here
-=======
-  Contact.associate = function(models) {
-    // associations can be defined here
   };
   return Contact;
 };
