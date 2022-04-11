@@ -2,9 +2,19 @@ extends user-flow-layout.pug
 include form-utils.pug
 block left-flavor
   p hello left bar this is flavor stuff
+  div.userflow-logo#userflow-logo
+    p there will be a logo here
+  div.userflow-friends#userflow-friends
+    p there will
+    p be three
+    p images here
+  div.userflow-tagline#userflow-tagline
+    p Join bajillions of dog owners in getting productive!
 block right-form
   p hello right bar this is user registration stuff
+  +errorSummary(errors)
   form.sign-up-form(method="POST" action="/users/register")
+    h2 Sign up for free!
     +csrfField()
     +userFormField("First Name", "firstName", user.firstName, "text")
     +userFormField("Last Name", "lastName", user.lastName, "text")
@@ -13,5 +23,4 @@ block right-form
     +userFormField("Password", "password", '', "password")
     +userFormField("Confirm Password", "confirmPassword", '', "password")
     +signUpButton()
-  div.login-redirect
-    a(href="/users/login") Already have an account? Log in.
+  +loginRedirectButton()(id="signup-login-redirect")
