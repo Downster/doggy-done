@@ -1,0 +1,15 @@
+mixin errorSummary(errors)
+  if errors
+    div(class='errorAlert')
+      p Woof! The following error(s) occured:
+      ul
+        each error in errors
+          li= error
+
+mixin userFormField(labelText, fieldName, fieldValue, fieldType, placeHolder = null);
+  div(class="user-form-field")
+    label(for=fieldName)= labelText
+    input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder class='form-control')
+
+mixin csrfField()
+  input(type="hidden" name="_csrf", value=csrfToken)
