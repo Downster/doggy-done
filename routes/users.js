@@ -14,6 +14,7 @@ const { loginUser, logoutUser } = require("../auth.js");
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const { redirect } = require("express/lib/response");
+const db = require('../db/models');
 
 const router = express.Router();
 
@@ -85,11 +86,12 @@ const loginValidators = [
 ];
 
 router.get(
-  "/user/register",
+  "/register",
   csrfProtection,
   asyncHandler(async (req, res) => {
-    const user = await db.User.build();
-    res.render("register", {
+    // const user = await db.User.build();
+    const  user = {};
+    res.render("signup", {
       tile: "Register",
       user,
       csrfToken: req.csrfToken(),
@@ -98,7 +100,7 @@ router.get(
 );
 
 router.post(
-  "/user/register",
+  "/register",
   csrfProtection,
   userValidators,
   asyncHandler(async (req, res) => {
@@ -121,7 +123,7 @@ router.post(
       res.redirect("/");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
-      res.render("register", {
+      res.render("signup", {
         title: "Register",
         user,
         errors,
@@ -132,7 +134,7 @@ router.post(
 );
 
 router.get(
-  "/user/login",
+  "/login",
   csrfProtection,
   asyncHandler(async (req, res) => {
     res.render("login", {
@@ -143,7 +145,7 @@ router.get(
 );
 
 router.post(
-  "/user/login",
+  "/login",
   csrfProtection,
   loginValidators,
   asyncHandler(async (req, res) => {
