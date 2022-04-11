@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Contact.associate = function(models) {
     // associations can be defined here
-    Contact.belongsToMany(models.Contact, columnMap)
+    // Contact.belongsToMany(models.Contact, columnMap)
 
   };
   return Contact;
