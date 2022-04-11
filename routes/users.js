@@ -35,7 +35,7 @@ const userValidators = [
     .withMessage("Please provide a username")
     .isLength({ max: 50 })
     .withMessage("Username can only be 50 characters max"),
-  check("emailAddress")
+  check("email")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for Email Address")
     .isLength({ max: 255 })
@@ -52,7 +52,9 @@ const userValidators = [
           }
         }
       );
-    }),
+    })
+    .matches(emailReg)
+    .withMessage("Please provide a valid email"),
 
   check("password")
     .exists({ checkFalsy: true })
