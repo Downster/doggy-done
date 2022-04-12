@@ -9,16 +9,18 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-      await queryInterface.changeColumn("Lists", "name", {
-        type: Sequelize.STRING(35),
-        allowNull: false,
-      });
-      return queryInterface.addConstraint('Lists', {
-        fields: ['owner_id', 'name'],
-        type: 'unique',
-        name: 'lists_unique_name_by_owner',
-      });
-      
+      return Promise.all([
+        queryInterface.changeColumn("Lists", "name", {
+          type: Sequelize.STRING(35),
+          allowNull: false,
+        }),
+        queryInterface.addConstraint('Lists', {
+          fields: ['owner_id', 'name'],
+          type: 'unique',
+          name: 'lists_unique_name_by_owner',
+        }),
+      ])
+
   },
 
   down: (queryInterface, Sequelize) => {
@@ -29,5 +31,13 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
+      return Promise.all([
+        queryInterface.changeColumn("Lists", "name", {
+          type: Sequelize.STRING(35),
+          allowNull: false,
+          unique: true,
+        }),
+        queryInterface.removeConstraint('Lists', 'lists_unique_name_by_owner'),
+    ]);
   }
 };
