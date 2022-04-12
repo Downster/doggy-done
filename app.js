@@ -9,7 +9,9 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const listsRouter = require("./routes/lists");
-const {requireAuth, restoreUser} = require('./auth');
+const dogsRouter = require("./routes/dogs");
+const notesRouter = require("./routes/notes");
+const { requireAuth, restoreUser } = require("./auth");
 const app = express();
 
 // view engine setup
@@ -37,7 +39,7 @@ app.use(
 store.sync();
 
 //routes go here
-app.use(restoreUser)
+app.use(restoreUser);
 app.use(requireAuth);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
