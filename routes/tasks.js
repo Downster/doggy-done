@@ -26,12 +26,12 @@ router.get(
 );
 
 const taskValidators = [
-  check("detail")
-    .exists({ checkFalsy: true })
-    .withMessage("Task details are required"),
-  check("priority")
-    .exists({ checkFalsy: true })
-    .withMessage("Must set task to complete or incomplete"),
+    check('detail')
+        .exists({checkFalsy: true})
+        .withMessage('Task details are required'),
+    check('completed')
+        .exists({checkFalsy: true})
+        .withMessage('Must set task to complete or incomplete')
 ];
 
 router.post(
