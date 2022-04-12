@@ -7,3 +7,12 @@ block content
     +csrfField()
     +userFormField("List Name", "listName", '', 'text')
     button(type="submit") Submit
+  br
+  br
+  br
+  br
+  form.test-form(method="POST" action="/dogs")
+    +csrfField()
+    +userFormField("Dog Name", "dogName", '', 'text')
+    +breedSelect()
+    button(type="submit") Submit

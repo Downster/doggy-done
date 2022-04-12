@@ -23,9 +23,10 @@ router.get(
 
 
 //this is just a test route that I will use for stuff - kai
-router.get('/limsa-lominsa', function(req, res, next)  {
-  res.render('limsa-lominsa', {title: 'Limsa Lominsa'})
-})
+router.get('/limsa-lominsa', asyncHandler(async (req, res, next) => {
+  const breeds = await db.Breed.findAll();
+  res.render('limsa-lominsa', {title: 'Limsa Lominsa', breeds})
+}));
 
 
 module.exports = router;
