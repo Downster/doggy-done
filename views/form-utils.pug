@@ -26,7 +26,6 @@ mixin logoutButton()
   div.logout-button-container
   button.user-form-button#main-logout-button(type="submit") Logout
 
-
 mixin unauth-nav()
   nav(class='unauth-nav') 
     a(class='home' href='/') Doggy Done
@@ -34,14 +33,17 @@ mixin unauth-nav()
     a(class='sign-up' href="/users/register") Sign up for free
 mixin loginRedirectButton()
   a.userflow-login-button(href="/users/login") Log In
-mixin loginRedirectButton()
-  a.userflow-login-button(href="/users/login") Log In
-mixin unauth-nav()
-  nav(class='unauth-nav') 
-    a(class='home' href='/') Doggy Done
-    a(class='login' href="/users/login") Log in
-    a(class='sign-up' href="/users/register") Sign up for free
 
-mixin loginRedirectButton()
-  a.userflow-login-button(href="/users/login") Log In
-
+mixin auth-nav()
+  header.header-nav 
+    input(type="checkbox" id='hamburger')
+    #nav-links 
+      label(for="hamburger" id="sub-nav-toggle")
+        span 
+    h3(id='menu-title') Doggy-Done!
+    input(type="text" id='search')
+  .nav-menu
+    a(href="") Link1
+    a(href="") Link2
+    a(href="") Link3
+    a(href="") Link4    
