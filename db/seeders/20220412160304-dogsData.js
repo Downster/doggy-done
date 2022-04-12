@@ -8,7 +8,7 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkInsert('People', [
+   return queryInterface.bulkInsert('Dogs', [
      { owner_id: 1, name: 'Hachiko', breed_id: 1}
     ], {});
   },
@@ -20,6 +20,6 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkDelete('People', null, {});
+   return queryInterface.bulkDelete('Dogs', null, {});
   }
 };
