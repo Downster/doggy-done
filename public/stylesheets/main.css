@@ -6,11 +6,67 @@ justify-content: center;
 padding: 0;
 background-color:  #f7bf50;
 margin-inline: auto;
+overflow-x: hidden;
 }
 header{
     display: flex;
 }
 
+ul{
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+label{
+display: block;
+cursor: pointer;
+padding: 10px;
+border-bottom: none;
+}
+
+label:hover{
+background: #26C281;
+}
+
+ul ul li{
+padding: 10px;
+background: #59ABE3;
+}
+
+
+input[type="checkbox"]{
+position: absolute;
+left: -9999px;
+}
+
+input[type="checkbox"] ~ ul{
+height: 0;
+transform: scaleY(0);
+}
+
+input[type="checkbox"]:checked ~ ul{
+height: 100%;
+transform-origin: top;
+transition: transform .2s ease-out;
+transform: scaleY(1); 
+}
+
+input[type="checkbox"]:checked + label{
+background: #26C281;
+border-bottom: 1px solid #fff;
+}
+
+.add-contact{
+    position: absolute;
+    transform: translate(170px, -28px);
+}
+
+.add-list{
+    position: absolute;
+    transform: translate(170px, -28px);
+}
+  
 .nav-div{
     display: flex;
     width: 100%;
@@ -44,11 +100,15 @@ header{
 }
 
 .app-inner-body-right{
+    visibility: hidden;
     display: flex;
     width: min(50%);
     height: min(100% - 4rem);
     margin-inline: auto;
     background-color: rgb(255, 0, 191);
+}
+.app-inner-body-right.active{
+    visibility: visible;
 }
 
 .nav-menu-container{
@@ -89,16 +149,40 @@ z-index: 2;
     height: 100%;
     width: 100%;
 }
+
+.task-details{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    visibility: hidden;
+    right: -100%;
+    top: 6%;
+    transition-property: right,width;
+    transition-duration: .7s;
+    transition-timing-function: ease-in-out;
+    z-index: 3;
+}
+
+.task-details.active{
+    visibility: visible;
+    right: -3%;
+    background-color: #003334;
+    top: 6%;
+    width: 50%;
+    height: min(100% -4rem);
+    transform: translate(-300px 300px);
+}
 .app-body.active{
     display: flex;
     position: absolute;
-    transform: translateY(60px);
+    transform: translate(30px 60px);
     left: 200px;
     opacity: 1;
     z-index: 2;
-    width: 100%;
+    width: 88%;
     height: 100%;
 }
+
 #menu-title{
     /* add transition here */
     opacity: 0;
