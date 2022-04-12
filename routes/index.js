@@ -18,6 +18,7 @@ router.get('/', function(req, res, next) {
 >>>>>>> eddaf7a (removed comments)
 });
 
+<<<<<<< HEAD
 router.get(
   "/shapoopi",
   asyncHandler(async (req, res) => {
@@ -26,5 +27,12 @@ router.get(
     });
   })
 );
+=======
+
+//this is just a test route that I will use for stuff - kai
+router.get('/limsa-lominsa', function(req, res, next)  {
+  res.render('limsa-lominsa', {title: 'Limsa Lominsa'})
+})
+>>>>>>> 6ecb380 (add base routes for lists/dogs/notes and force email to lowercase)
 
 module.exports = router;

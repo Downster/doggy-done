@@ -123,7 +123,7 @@ router.post(
       firstName,
       lastName,
       display_name: displayName,
-      email,
+      email: email.toLowerCase(),
       password,
       photo,
     });
@@ -165,13 +165,14 @@ router.post(
   loginValidators,
   asyncHandler(async (req, res) => {
     const { email, password } = req.body;
+    console.log("logging in", email, password);
 
     let errors = [];
     const validatorErrors = validationResult(req);
     console.log(validatorErrors);
 
     if (validatorErrors.isEmpty()) {
-      const user = await db.User.findOne({ where: { email } });
+      const user = await db.User.findOne({ where: { email: email.toLowerCase() } });
       if (user !== null) {
         // If the user exists then compare their password
         // to the provided password.
