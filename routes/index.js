@@ -8,9 +8,6 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
 
   res.render('splash-page', { title: 'Doggy Done!' });
-  // if () {
-  //   res.redirect('/register')
-  // }
 });
 
 module.exports = router;
