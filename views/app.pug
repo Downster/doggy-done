@@ -5,6 +5,7 @@ block append head
   //- add page specific js
   script(src="/javascripts/navbar.js" type="module" defer)
   script(src="/javascripts/taskToggle.js" type="module" defer)
+  script(src="/javascripts/displayTask.js" type="module" defer)
 block content
     +auth-nav()
     .nav-menu-container
@@ -48,11 +49,15 @@ block content
     .app-body
         .app-inner-body
             input(id='task-input' type="text")
-            a.click-me(href='') stuff 
-            p stuff 
+            .task-submit 
+                button Submit
+            .task-items
+                a.click-me(href='') stuff
+                p stuff 
         .app-inner-body-right.active
             p all tasks
-        .task-details 
+        .task-details
+            a.close-detail(href='') close X 
             p name 
             p due date 
             p list 
