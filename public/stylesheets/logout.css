@@ -1,7 +1,6 @@
 .logout-header{
     border: 2px solid red;
 }
-<<<<<<< HEAD
 
 body{ background-color: bisque;}
 
@@ -34,5 +33,3 @@ a#login-again-button{
 #login-again-button:hover{
   transform: translate(3px, -3px);
 }
-=======
->>>>>>> 023a344 (Added css files, logout page, navbar)
