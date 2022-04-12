@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Priority.associate = function(models) {
     // associations can be defined here
-    Priority.belongsTo(models.Task, {foreignKey:'priority'})
+    Priority.belongsTo(models.Task, {foreignKey:'priority_id'})
   };
   return Priority;
 };
