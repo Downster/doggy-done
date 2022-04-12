@@ -9,9 +9,7 @@ module.exports = {
       Example:
       */
    return queryInterface.bulkInsert('Priorities', [
-     { name: 'Low priority', createdAt: new Date(), updatedAt: new Date()},
-     { name: 'Medium priority', createdAt: new Date(), updatedAt: new Date()},
-     { name: 'High priority', createdAt: new Date(), updatedAt: new Date()},
+     { name: 'priority', createdAt: new Date(), updatedAt: new Date()},
   ], {});
   },
 
