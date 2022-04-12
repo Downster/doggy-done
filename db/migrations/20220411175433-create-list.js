@@ -10,7 +10,6 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING(35),
-        unique: true,
         allowNull: false
       },
       owner_id: {
@@ -26,7 +25,13 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    }).then(
+      () => queryInterface.addConstraint('Lists', {
+        fields: ['name', 'owner_id'],
+        type: 'unique',
+        name: 'lists_unique_name_by_owner',
+      }),
+    )
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Lists');
