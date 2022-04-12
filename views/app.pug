@@ -4,7 +4,7 @@ block append head
   link(rel="stylesheet" href="/stylesheets/main.css")
   //- add page specific js
   script(src="/javascripts/navbar.js" type="module" defer)
-  script(src="/javascripts/navbarActive.js" type="module" defer)
+  script(src="/javascripts/taskToggle.js" type="module" defer)
 block content
     +auth-nav()
     .nav-menu-container
@@ -48,8 +48,13 @@ block content
     .app-body
         .app-inner-body
             input(id='task-input' type="text")
-            p stuff 
+            a.click-me(href='') stuff 
             p stuff 
         .app-inner-body-right 
-            p tasks due 
+            p all tasks
+    .task-details 
+        p name 
+        p due date 
+        p list 
+            
 

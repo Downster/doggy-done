@@ -6,6 +6,7 @@ justify-content: center;
 padding: 0;
 background-color:  #f7bf50;
 margin-inline: auto;
+overflow-x: hidden;
 }
 header{
     display: flex;
@@ -141,19 +142,27 @@ z-index: 2;
     position: relative;
     z-index: 2;
     top: 6%;
+    left: 30px;
     height: 100%;
     width: 100%;
+}
+
+.task-details{
+    position: relative;
+    visibility: hidden;
+    right: -100%
 }
 .app-body.active{
     display: flex;
     position: absolute;
-    transform: translateY(60px);
+    transform: translate(30px 60px);
     left: 200px;
     opacity: 1;
     z-index: 2;
-    width: 100%;
+    width: 88%;
     height: 100%;
 }
+
 #menu-title{
     /* add transition here */
     opacity: 0;
