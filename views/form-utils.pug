@@ -27,7 +27,7 @@ mixin logoutButton()
   button.user-form-button#main-logout-button(type="submit") Logout
 
 mixin unauth-nav()
-  nav(class='unauth-nav') 
+  nav(class='unauth-nav')
     a(class='home' href='/') Doggy Done
     a(class='login' href="/users/login") Log in
     a(class='sign-up' href="/users/register") Sign up for free
@@ -35,10 +35,16 @@ mixin loginRedirectButton()
   a.userflow-login-button(href="/users/login") Log In
 
 mixin auth-nav()
-  header.header-nav 
+  header.header-nav
     input(type="checkbox" id='hamburger')
-    #nav-links 
+    #nav-links
       label(for="hamburger" id="sub-nav-toggle")
-        span 
+        span
     h3(id='menu-title' class='active') All tasks
-    input(type="text" id='search') 
+    input(type="text" id='search')
+
+mixin breedSelect
+  select.breed-select(name="breedId")
+    if breeds
+        each breed in breeds
+            option(value=breed.id)=breed.name
