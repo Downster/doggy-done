@@ -9,9 +9,8 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const listsRouter = require("./routes/lists");
-const dogsRouter = require("./routes/dogs");
-const notesRouter = require("./routes/notes");
-const { requireAuth, restoreUser } = require("./auth");
+const tasksRouter = require('./routes/tasks');
+const {requireAuth, restoreUser} = require('./auth');
 const app = express();
 
 // view engine setup
@@ -46,6 +45,7 @@ app.use(requireAuth);
 app.use("/lists", listsRouter);
 app.use("/dogs", dogsRouter);
 app.use("/notes", notesRouter);
+app.use('/tasks', tasksRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
