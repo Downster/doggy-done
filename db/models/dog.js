@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   Dog.associate = function (models) {
     // associations can be defined here
     Dog.belongsTo(models.Breed, { foreignKey: "breed_id" }),
-      Dog.belongsTo(models.User, { foreignKey: "owner_id" });
+    Dog.belongsTo(models.User, { foreignKey: "owner_id" });
   };
   return Dog;
 };
