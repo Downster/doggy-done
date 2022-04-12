@@ -39,10 +39,10 @@ app.use(
 store.sync();
 
 //routes go here
-app.use(restoreUser);
-app.use(requireAuth);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use(restoreUser);
+app.use(requireAuth);
 app.use("/lists", listsRouter);
 app.use("/dogs", dogsRouter);
 app.use("/notes", notesRouter);
