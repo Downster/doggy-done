@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', asyncHandler(async(req,res) => {
     const tasks = await db.Task.findAll();
-    res.render('all-tasks', {title: 'Tasks 🐶', tasks})
+    // res.render('all-tasks', {title: 'Tasks 🐶', tasks})
 
 }));
 
@@ -14,7 +14,7 @@ const taskValidators = [
     check('detail')
         .exists({checkFalsy: true})
         .withMessage('Task details are required'),
-    check('priority')
+    check('completed')
         .exists({checkFalsy: true})
         .withMessage('Must set task to complete or incomplete')
 ];
