@@ -4,19 +4,48 @@ block append head
   link(rel="stylesheet" href="/stylesheets/main.css")
   //- add page specific js
   script(src="/javascripts/navbar.js" type="module" defer)
+  script(src="/javascripts/navbarActive.js" type="module" defer)
 block content
     +auth-nav()
     .nav-menu-container
         .nav-menu
             .menu-logo
                 img(id='menu-logo' src="/images/logo.png", alt="dogpic")
-            a(href="") Link1
-            a(href="") Link2
-            a(href="") Link3
-            a(href="") Link4   
+            nav.all-tasks
+                ul
+                    li
+                        input(type="checkbox" id='list-item-1')
+                        label(for='list-item-1' class='first') All tasks
+                        ul
+                            li
+                                a(href="") Link2
+                            li
+                                a(href="") Link3
+                            li
+                                a(href="") Link4
+                    li
+                        input(type="checkbox" id='list-item-2')
+                        label(for='list-item-2' ) Lists
+                        ul
+                            li
+                                a(href="") Link2
+                            li
+                                a(href="") Link3
+                            li
+                                a(href="") Link4   
+                    li
+                        input(type="checkbox" id='list-item-3')
+                        label(for='list-item-3' class='last') Contacts
+                        ul
+                            li
+                                a(href="") Link2
+                            li
+                                a(href="") Link3
+                            li
+                                a(href="") Link4   
     .app-body
         .app-inner-body
-            input(id='task-input'type="text")
+            input(id='task-input' type="text")
             p stuff 
             p stuff 
         .app-inner-body-right 
