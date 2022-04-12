@@ -1,12 +1,12 @@
 extends user-flow-layout.pug 
 include form-utils.pug 
 block append head 
-  link(rel="stylesheet" href="/stylesheets/auth-navbar.css")
+  link(rel="stylesheet" href="/stylesheets/logout.css")
   //- add page specific js
-  script(src="/javascripts/navbar.js" type="module" defer)
+  script(src="scripthere" type="module" defer)
 block content
     .nav-div
-        +auth-nav()  
+        +unauth-nav()  
     .logout-body 
         img(id='logout-image' src="/images/dog.jpg", alt="cute dog image")
         h3(class='logout-header') See you next time 
