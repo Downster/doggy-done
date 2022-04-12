@@ -11,7 +11,7 @@ block content
     .nav-menu-container
         .nav-menu
             .menu-logo
-                img(id='menu-logo' src="/images/logo.png", alt="dogpic")
+                img(id='menu-logo' src="/images/logo.png" alt="dogpic")
             nav.all-tasks
                 ul
                     li
@@ -52,8 +52,9 @@ block content
             .task-submit 
                 button Submit
             .task-items
-                a.click-me(href='') stuff
-                p stuff 
+                each task in tasks
+                    div(id=`task-container-${task.id}`).single-task
+                        a(href='' class=`task-click` id=`${task.id}`)= task.detail 
         .app-inner-body-right.active
             p all tasks
         .task-details
