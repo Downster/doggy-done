@@ -100,11 +100,15 @@ border-bottom: 1px solid #fff;
 }
 
 .app-inner-body-right{
+    visibility: hidden;
     display: flex;
     width: min(50%);
     height: min(100% - 4rem);
     margin-inline: auto;
     background-color: rgb(255, 0, 191);
+}
+.app-inner-body-right.active{
+    visibility: visible;
 }
 
 .nav-menu-container{
@@ -148,9 +152,26 @@ z-index: 2;
 }
 
 .task-details{
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
     visibility: hidden;
-    right: -100%
+    right: -100%;
+    top: 6%;
+    transition-property: right,width;
+    transition-duration: .7s;
+    transition-timing-function: ease-in-out;
+    z-index: 3;
+}
+
+.task-details.active{
+    visibility: visible;
+    right: -3%;
+    background-color: #003334;
+    top: 6%;
+    width: 50%;
+    height: min(100% -4rem);
+    transform: translate(-300px 300px);
 }
 .app-body.active{
     display: flex;
