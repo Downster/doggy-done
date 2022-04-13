@@ -16,6 +16,8 @@ taskList.forEach((task) => {
     const data = await res.json();
     const detailInput = taskDetails.getElementsByTagName("input");
     const dueDate = taskDetails.getElementsByClassName("detail-date");
+    const taskId = document.getElementById('task-id');
+    taskId.innerText = id;
     detailInput[0].value = data.task.detail;
     dueDate[0].value = data.task.due_date.split("T")[0];
   });

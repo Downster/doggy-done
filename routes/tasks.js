@@ -54,6 +54,28 @@ router.post(
   })
 );
 
+router.patch(
+  "/:id",
+  asyncHandler(async (req, res, next) => {
+    const taskId = req.params.id;
+    const { detail, due_date } = req.body;
+    const task = await db.Task.findByPk(taskId);
+    if (!task) {
+        const err = new Error("Task not found");
+        next(err);
+    } else {
+        const permCheck = validateOwner(req, task);
+        if(!permCheck) {
+            return res.status(401).end();
+        }
+        task.detail = detail;
+        task.due_date = due_date
+        await task.save();
+        res.json({ message: "Task updated! Woof!" });
+    }
+  })
+);
+
 router.put(
   "/:id/completed",
   asyncHandler(async (req, res, next) => {
@@ -74,6 +96,8 @@ router.put(
     }
   })
 );
+
+
 
 router.delete('/tasks/:taskId(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
     const taskId = req.params.id;
