@@ -3,7 +3,6 @@ if(deleteTask){
     deleteTask.forEach(button => {
         button.addEventListener('click', async(event) => {
             const id = event.target.id.split('-')[2];
-            const taskToBeDeleted = document.querySelector('task/:taskId');
             const res = await fetch(`/tasks/${id}`, {
                 method: 'DELETE'
             });
