@@ -1,22 +1,24 @@
 const taskList = document.querySelectorAll(".task-click");
-console.log(taskList);
 
-task.addEventListener("click", async (e) => {
-  e.preventDefault();
-  const appRight = document.querySelector(".app-inner-body-right");
-  const taskDetails = document.querySelector(".task-details");
-  appRight.classList.toggle("active");
-  taskDetails.classList.toggle("active");
-  const parent = task.parentElement.id.split("-");
-  const id = parent[2];
-  console.log(parent);
+taskList.forEach((task) => {
+  task.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const id = e.target.id;
+    const appRight = document.querySelector(".app-inner-body-right");
+    const taskDetails = document.querySelector(".task-details");
+    appRight.classList.toggle("active");
+    taskDetails.classList.toggle("active");
 
-  const res = await fetch(`/tasks/${id}`, {
-    method: "GET",
+    const res = await fetch(`/tasks/${id}`, {
+      method: "GET",
+    });
+
+    const data = await res.json();
+    const detailInput = taskDetails.getElementsByTagName("input");
+    const dueDate = taskDetails.getElementsByClassName("detail-date");
+    detailInput[0].value = data.task.detail;
+    dueDate[0].value = data.task.due_date.split("T")[0];
   });
-
-  const data = await res.json();
-  console.log(data);
 });
 
 const closeButton = document.querySelector(".close-detail");

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -8,9 +8,15 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkInsert('Priorities', [
-     { name: 'priority', createdAt: new Date(), updatedAt: new Date()},
-  ], {});
+    return queryInterface.bulkInsert(
+      "Priorities",
+      [
+        { name: "High", createdAt: new Date(), updatedAt: new Date() },
+        { name: "Medium", createdAt: new Date(), updatedAt: new Date() },
+        { name: "Low", createdAt: new Date(), updatedAt: new Date() },
+      ],
+      {}
+    );
   },
 
   down: (queryInterface, Sequelize) => {
@@ -20,6 +26,6 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkDelete('Priorities', null, {});
-  }
+    return queryInterface.bulkDelete("Priorities", null, {});
+  },
 };
