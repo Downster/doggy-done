@@ -39,6 +39,7 @@ router.post(
   taskValidators,
   asyncHandler(async (req, res, next) => {
     const { detail, due_date, priority, completed } = req.body;
+    req.body;
     const owner_id = req.session.auth.userId;
     const task = db.Task.create({
       owner_id,
@@ -101,6 +102,7 @@ router.put(
 
 router.delete('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
     const taskId = req.params.id;
+    console.log(taskId);
     const task = await db.Task.findByPk(taskId);
     if (!task) {
         const err = new Error("Task not found");
