@@ -7,8 +7,10 @@ const router = express.Router();
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const tasks = await db.Task.findAll();
-    res.render("all-tasks", { title: "Tasks 🐶", tasks });
+    const {userId} = req.session.auth;
+    const tasks = await db.Task.findAll({where:{owner_id: userId}});
+    // res.render("all-tasks", { title: "Tasks 🐶", tasks });
+    res.json({tasks});
   })
 );
 
@@ -26,12 +28,12 @@ router.get(
 );
 
 const taskValidators = [
-  check("detail")
-    .exists({ checkFalsy: true })
-    .withMessage("Task details are required"),
-  check("priority")
-    .exists({ checkFalsy: true })
-    .withMessage("Must set task to complete or incomplete"),
+    check('detail')
+        .exists({checkFalsy: true})
+        .withMessage('Task details are required'),
+    check('completed')
+        .exists({checkFalsy: true})
+        .withMessage('Must set task to complete or incomplete')
 ];
 
 router.post(
