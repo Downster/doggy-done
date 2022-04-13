@@ -5,6 +5,7 @@ const { csrfProtection, asyncHandler } = require("./utils");
 
 router.get(
   "/",
+  csrfProtection,
   asyncHandler(async (req, res, next) => {
     const userId = req.session.auth.userId;
     const tasks = await db.Task.findAll({
@@ -19,7 +20,13 @@ router.get(
       },
     });
     console.log(priorities);
-    res.render("app", { title: "Doggy Done 🐶", tasks, priorities, lists });
+    res.render("app", {
+      title: "Doggy Done 🐶",
+      tasks,
+      priorities,
+      lists,
+      csrfToken: req.csrfToken(),
+    });
   })
 );
 

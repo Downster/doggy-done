@@ -1,6 +1,7 @@
 const addListButton = document.querySelector(".add-list");
 
 addListButton.addEventListener("click", async (e) => {
+  e.stopPropagation();
   const addListForm = document.querySelector(".add-list-form");
   const appBody = document.querySelector(".app-body");
   const header = document.querySelector(".header-nav");
