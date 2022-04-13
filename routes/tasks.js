@@ -35,25 +35,34 @@ const taskValidators = [
 ];
 
 router.post(
-  "/add",
-  csrfProtection,
+  "/",
   taskValidators,
   asyncHandler(async (req, res) => {
     const { detail, due_date, priority, completed } = req.body;
-
-    const task = db.Task.build({
+    const owner_id = req.session.auth.userId;
+    const task = db.Task.create({
+      owner_id,
       detail,
       due_date,
       priority,
       completed,
     });
 
-    res.render("all-tasks", {
-      title: "Add Tasks 🐶",
-      tasks,
-      errors,
-      csrfToken: req.csrfToken(),
+    res.json({
+      message: "Task Created",
     });
+  })
+);
+
+router.put(
+  "/:id/completed",
+  asyncHandler(async (req, res) => {
+    const taskId = req.params.id;
+    const { completed } = req.body;
+    const task = await db.Task.findByPk(taskId);
+    task.completed = completed;
+    await task.save();
+    res.json({ message: "Task completion toggled" });
   })
 );
 

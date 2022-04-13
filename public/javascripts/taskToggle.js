@@ -1,5 +1,4 @@
 const taskList = document.querySelectorAll(".task-click");
-console.log(taskList);
 
 taskList.forEach((task) => {
   task.addEventListener("click", async (e) => {
@@ -15,9 +14,10 @@ taskList.forEach((task) => {
     });
 
     const data = await res.json();
-    console.log(data);
     const detailInput = taskDetails.getElementsByTagName("input");
-    const dueDate = (detailInput[0].value = data.task.detail);
+    const dueDate = taskDetails.getElementsByClassName("detail-date");
+    detailInput[0].value = data.task.detail;
+    dueDate[0].value = data.task.due_date.split("T")[0];
   });
 });
 

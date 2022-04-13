@@ -6,6 +6,8 @@ block append head
   script(src="/javascripts/navbar.js" type="module" defer)
   script(src="/javascripts/taskToggle.js" type="module" defer)
   script(src="/javascripts/displayTask.js" type="module" defer)
+  script(src="/javascripts/completeTask.js" type="module" defer)
+  script(src="/javascripts/addTask.js" type="module" defer)
 block content
     +auth-nav()
     .nav-menu-container
@@ -15,52 +17,64 @@ block content
             nav.all-tasks
                 ul
                     li
-                        input(type="checkbox" id='list-item-1')
-                        label(for='list-item-1' class='first') All tasks
+                        input(type="checkbox" class='menu-checkbox' id='list-item-1')
+                        label(for='list-item-1' class= 'menu-label') All tasks
                         ul
-                            li
-                                a(href="") Link2
-                            li
-                                a(href="") Link3
-                            li
-                                a(href="") Link4
+                            li.menu-list
+                                a(href="" id='all-tasks-link') All Tasks
+                            li.menu-list
+                                a(href="" id='todays-tasks-link') Today
+                            li.menu-list
+                                a(href="" id='tomorrows-tasks-link') Tomorrow
                     li
-                        input(type="checkbox" id='list-item-2')
-                        label(for='list-item-2' ) Lists
+                        input(type="checkbox" class='menu-checkbox' id='list-item-2')
+                        label(for='list-item-2' class='menu-label') Lists
                         button.add-list +
                         ul
-                            li
+                            li.menu-list
                                 a(href="") Link2
-                            li
+                            li.menu-list
                                 a(href="") Link3
-                            li
+                            li.menu-list
                                 a(href="") Link4   
                     li
-                        input(type="checkbox" id='list-item-3')
-                        label(for='list-item-3' class='last') Contacts
+                        input(type="checkbox" class='menu-checkbox' id='list-item-3')
+                        label(for='list-item-3' class='menu-label' class='last') Contacts
                         button.add-contact +
                         ul
-                            li
+                            li.menu-list
                                 a(href="") Link2
-                            li
+                            li.menu-list
                                 a(href="") Link3
-                            li
+                            li.menu-list
                                 a(href="") Link4   
     .app-body
         .app-inner-body
-            input(id='task-input' type="text")
+            .app-create-task
+                input(id='task-input' type="text")
+                select(name="priority" id='task-priority')
+                    each priority in priorities 
+                        option(value=priority.id)=priority.name
+                input(type="date" id='task-date')
             .task-submit 
                 button Submit
             .task-items
                 each task in tasks
                     div(id=`task-container-${task.id}`).single-task
-                        a(href='' class=`task-click` id=`${task.id}`)= task.detail 
+                        if task.completed
+                            input(type='checkbox' class='task-checkbox' id=`task-checkbox-${task.id}` checked='true')
+                            a(href='' class=`task-click` id=`${task.id}`)= task.detail
+                        else 
+                            input(type='checkbox' class='task-checkbox' id=`task-checkbox-${task.id}`)
+                            a(href='' class=`task-click` id=`${task.id}`)= task.detail 
         .app-inner-body-right.active
             p all tasks
         .task-details
-            a.close-detail(href='') close X 
-            input(type="text" value='') 
-            p due date 
+            a.close-detail(href='') close X
+            label(for="detail-date") Task detail
+            input(type="text" value='' class='detail-text' id='detail-text')
+            label(for="detail-date") Due date  
+            input(type='date' value='' class='detail-date' id='detail-date') 
             p list 
             
 

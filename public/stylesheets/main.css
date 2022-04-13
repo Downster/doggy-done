@@ -18,41 +18,41 @@ margin: 0;
 padding: 0;
 }
 
-label{
+.menu-label{
 display: block;
 cursor: pointer;
 padding: 10px;
 border-bottom: none;
 }
 
-label:hover{
+.menu-label:hover{
 background: #26C281;
 }
 
-ul ul li{
+li.menu-list{
 padding: 10px;
 background: #59ABE3;
 }
 
 
-input[type="checkbox"]{
+.menu-checkbox{
 position: absolute;
 left: -9999px;
 }
 
-input[type="checkbox"] ~ ul{
+.menu-checkbox ~ ul{
 height: 0;
 transform: scaleY(0);
 }
 
-input[type="checkbox"]:checked ~ ul{
+.menu-checkbox:checked ~ ul{
 height: 100%;
 transform-origin: top;
 transition: transform .2s ease-out;
 transform: scaleY(1); 
 }
 
-input[type="checkbox"]:checked + label{
+.menu-checkbox:checked + label{
 background: #26C281;
 border-bottom: 1px solid #fff;
 }
@@ -81,6 +81,12 @@ border-bottom: 1px solid #fff;
 
 .task-submit.active{
     visibility: visible;
+}
+.app-create-task{
+    padding-top: 20px;
+    padding-left: 10px;
+    display: flex;
+
 }
 
 .add-list{
@@ -208,6 +214,10 @@ z-index: 2;
     height: 94%;
 }
 
+#detail-date{
+    width: 40%;
+}
+
 #menu-title{
     /* add transition here */
     opacity: 0;
@@ -300,10 +310,6 @@ background: #003334;
 }
 
 #task-input{
-    display: flex;
-    position: relative;
-    top: 20px;
-    left: 5%;
-    width: 90%;
+    width: 75%;
     height: 30px;
 }

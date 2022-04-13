@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Priority.associate = function (models) {
     // associations can be defined here
-    Priority.belongsTo(models.Task, { foreignKey: "priority" });
+    Priority.hasMany(models.Task, { foreignKey: "priority" });
   };
   return Priority;
 };
