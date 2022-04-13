@@ -43,13 +43,12 @@ mixin auth-nav()
     h3(id='menu-title' class='active') All tasks
     input(type="text" id='search')
     .settings-wheel-dropdown-container
-      button(id="settings-btn")
-        img(id="wheel" class="settings" src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png")
-    .drop-down-content
-      a(id="user-name") Username
-      a(id="email") Email
-      a(id="settings") Settings
-      a(id="sign out") Sign Out
+      img(type="checkbox" id="wheel" class="settings" src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png")
+      .drop-down-content
+        a(id="user-name") Username
+        a(id="email") Email
+        a(id="settings") Settings
+        a(id="sign out") Sign Out
 
 
 mixin breedSelect
