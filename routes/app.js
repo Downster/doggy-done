@@ -3,7 +3,6 @@ const router = express.Router();
 const db = require("../db/models");
 const { csrfProtection, asyncHandler } = require("./utils");
 
-
 router.get(
   "/",
   asyncHandler(async (req, res, next) => {
@@ -14,8 +13,13 @@ router.get(
       },
     });
     const priorities = await db.Priority.findAll();
+    const lists = await db.List.findAll({
+      where: {
+        owner_id: userId,
+      },
+    });
     console.log(priorities);
-    res.render("app", { title: "Doggy Done 🐶", tasks, priorities });
+    res.render("app", { title: "Doggy Done 🐶", tasks, priorities, lists });
   })
 );
 

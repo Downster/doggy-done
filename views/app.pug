@@ -8,6 +8,7 @@ block append head
   script(src="/javascripts/displayTask.js" type="module" defer)
   script(src="/javascripts/completeTask.js" type="module" defer)
   script(src="/javascripts/addTask.js" type="module" defer)
+  script(src='/javascripts/createList.js' type='module' defer)
 block content
     +auth-nav()
     .nav-menu-container
@@ -29,14 +30,11 @@ block content
                     li
                         input(type="checkbox" class='menu-checkbox' id='list-item-2')
                         label(for='list-item-2' class='menu-label') Lists
-                        button.add-list +
+                        button.add-list +   
                         ul
-                            li.menu-list
-                                a(href="") Link2
-                            li.menu-list
-                                a(href="") Link3
-                            li.menu-list
-                                a(href="") Link4   
+                            each list in lists
+                                li.menu-list
+                                    a(href="")=list.name
                     li
                         input(type="checkbox" class='menu-checkbox' id='list-item-3')
                         label(for='list-item-3' class='menu-label' class='last') Contacts
@@ -47,7 +45,11 @@ block content
                             li.menu-list
                                 a(href="") Link3
                             li.menu-list
-                                a(href="") Link4   
+                                a(href="") Link4
+    .add-list-form 
+        form(action="/lists", method="POST")
+            input(type="text")
+            button Create list                           
     .app-body
         .app-inner-body
             .app-create-task
@@ -75,6 +77,6 @@ block content
             input(type="text" value='' class='detail-text' id='detail-text')
             label(for="detail-date") Due date  
             input(type='date' value='' class='detail-date' id='detail-date') 
-            p list 
+            p list
             
 
