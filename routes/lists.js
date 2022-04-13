@@ -3,7 +3,7 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const db = require('../db/models');
 const list = require('../db/models/list');
 const tasklist = require('../db/models/tasklist');
-const {taskValidators, handleValidationErrors} = require("./validators");
+const {taskValidators, handleValidationErrors, listValidators} = require("./validators");
 
 var router = express.Router();
 
@@ -31,7 +31,7 @@ router.get('/:listId(\\d+)', asyncHandler(async (req, res, next) => {
     }
 }));
 
-router.post('/', asyncHandler(async (req, res, next) => {
+router.post('/', csrfProtection, listValidators, asyncHandler(async (req, res, next) => {
     const { userId } = req.session.auth;
     const { listName } = req.body;
     const list = await db.List.create({
@@ -41,7 +41,7 @@ router.post('/', asyncHandler(async (req, res, next) => {
     res.json(list);
 }));
 
-router.post('/:listId/tasks', taskValidators, handleValidationErrors, asyncHandler(async (req, res, next) => {
+router.post('/:listId/tasks', csrfProtection, taskValidators, handleValidationErrors, asyncHandler(async (req, res, next) => {
     const { userId } = req.session.auth;
     const { listId } = req.params;
     const { taskDetail, taskPriority, taskCompleted, taskDueDate } = req.body;
@@ -64,5 +64,19 @@ router.post('/:listId/tasks', taskValidators, handleValidationErrors, asyncHandl
         res.json(task);
     }
 }));
+
+
+router.delete('/lists/:listId(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
+    const listId = req.params.id;
+    const list = await db.List.findByPk(listId);
+    if (!list) {
+        const err = new Error("List not found");
+        next(err);
+    } else {
+        await list.destroy();
+        res.status(204).end();
+    }
+}));
+
 
 module.exports = router;

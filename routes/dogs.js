@@ -12,7 +12,7 @@ router.get('/', asyncHandler(async (req, res, next) => {
     res.json(dogs);
 }));
 
-router.post('/', asyncHandler(async (req, res, next) => {
+router.post('/', csrfProtection, asyncHandler(async (req, res, next) => {
     const { userId } = req.session.auth;
     const { dogName, breedId } = req.body;
     const dog = await db.Dog.create({
@@ -23,7 +23,7 @@ router.post('/', asyncHandler(async (req, res, next) => {
     res.json(dog);
 }));
 
-router.put('/dogs/:dogId(\\d+)', asyncHandler(async (req, res, next) => {
+router.put('/dogs/:dogId(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
     const dogId = req.params.id;
     const dog = await db.Dog.findByPk(tweetId);
     if (!dog) {
@@ -41,9 +41,9 @@ router.put('/dogs/:dogId(\\d+)', asyncHandler(async (req, res, next) => {
     }
 }));
 
-router.delete('/dogs/:dogId(\\d+)', asyncHandler(async (req, res, next) => {
+router.delete('/dogs/:dogId(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
     const dogId = req.params.id;
-    const dog = await db.Dog.findByPk(tweetId);
+    const dog = await db.Dog.findByPk(dogId);
     if (!dog) {
         const err = new Error("Dog not found");
         next(err);

@@ -68,4 +68,17 @@ router.put(
   })
 );
 
+router.delete('/tasks/:taskId(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
+    const taskId = req.params.id;
+    const task = await db.Task.findByPk(listId);
+    if (!task) {
+        const err = new Error("Task not found");
+        next(err);
+    } else {
+        await task.destroy();
+        res.status(204).end();
+    }
+}));
+
+
 module.exports = router;
