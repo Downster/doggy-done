@@ -103,6 +103,28 @@ border-bottom: 1px solid #fff;
     display: flex;
 
 }
+
+.add-list-form{
+    position: absolute;
+    opacity: 0;
+}
+.blur {
+    filter: blur(8px); 
+    height: 100vh;
+    width: 100%;
+  }
+
+.add-list-form.active{
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    border-radius: 5px;
+    background-color: white;
+    opacity: 1;
+    z-index: 6;
+    top: 40%;
+}
+
 .app-body{
     border-radius: 10px;
     display: flex;
