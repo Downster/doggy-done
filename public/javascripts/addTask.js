@@ -6,8 +6,6 @@ const button = submitDiv.lastChild;
 
 button.addEventListener("click", async (e) => {
   const input = document.getElementById("task-input");
-  console.log(input);
-  console.log(input.value);
   const priority = document.getElementById("task-priority");
   const date = document.getElementById("task-date");
   const body =  JSON.stringify({
