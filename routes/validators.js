@@ -22,9 +22,6 @@ const taskValidators = [
     check('detail')
         .exists({checkFalsy: true})
         .withMessage('Task details are required'),
-    check('priority')
-        .exists({checkFalsy: true})
-        .withMessage('Must set task to complete or incomplete'),
 ];
 
 const listValidators = [
@@ -32,5 +29,9 @@ const listValidators = [
       .exists({checkFalsy: true})
       .withMessage("Lists must have a name"),
 ]
+
+const validateOwner = (req, ownedObj) => {
+    return req.session.auth.userId === ownedObj.owner_id;
+}
 
 module.exports = { taskValidators, listValidators, handleValidationErrors };

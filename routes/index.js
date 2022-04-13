@@ -23,9 +23,9 @@ router.get(
 
 
 //this is just a test route that I will use for stuff - kai
-router.get('/limsa-lominsa', asyncHandler(async (req, res, next) => {
+router.get('/limsa-lominsa', csrfProtection, asyncHandler(async (req, res, next) => {
   const breeds = await db.Breed.findAll();
-  res.render('limsa-lominsa', {title: 'Limsa Lominsa', breeds})
+  res.render('limsa-lominsa', {title: 'Limsa Lominsa', breeds, csrfToken: req.csrfToken})
 }));
 
 

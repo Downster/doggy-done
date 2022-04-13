@@ -8,6 +8,7 @@ router.get(
   csrfProtection,
   asyncHandler(async (req, res, next) => {
     const userId = req.session.auth.userId;
+    res.cookie('CSRF-Token', req.csrfToken());
     const tasks = await db.Task.findAll({
       where: {
         owner_id: userId,
