@@ -1,11 +1,16 @@
 extends layout.pug
 
-block content
+block head
+    title="Doggy Done! 🐶"
+    link(rel='stylesheet' href='/stylesheets/splash-page.css')
 
     .nav
-        a(href="/users/login") Log in
-        a(href="/users/register") Sign up for free
-    .header
-        h1 The smart to-do app for busy people.
-        button(onClick="window.location.href='/users/register';") Sign Up For Free
+        span.login
+            a(href="/users/login") Log in
+        span.signup
+            a(href="/users/register") Sign up for free
+        div.header
+            h1 The smart to-do app for busy people.
+        div.button
+            button(onClick="window.location.href='/users/register';") Sign Up For Free
     .container#might-be-slide-show
