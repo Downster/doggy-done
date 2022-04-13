@@ -30,6 +30,10 @@ router.put('/dogs/:dogId(\\d+)', csrfProtection, asyncHandler(async (req, res, n
         const err = new Error("Dog not found");
         next(err);
     } else {
+        const permCheck = validateOwner(req, dog);
+        if(!permCheck) {
+            return res.status(401).end();
+        }
         const { userId } = req.session.auth;
         const { dogName, breedId } = req.body;
         const dog = await db.Dog.update({
@@ -48,6 +52,10 @@ router.delete('/dogs/:dogId(\\d+)', csrfProtection, asyncHandler(async (req, res
         const err = new Error("Dog not found");
         next(err);
     } else {
+        const permCheck = validateOwner(req, dog);
+        if(!permCheck) {
+            return res.status(401).end();
+        }
         await dog.destroy();
         res.status(204).end();
     }
