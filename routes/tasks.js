@@ -36,8 +36,10 @@ const taskValidators = [
         .withMessage('Must set task to complete or incomplete')
 ];
 
+
 router.post("/add",csrfProtection,taskValidators,asyncHandler(async (req, res) => {
     const { detail, due_date, priority, completed } = req.body;
+
 
     const task = db.Task.build({
       detail,

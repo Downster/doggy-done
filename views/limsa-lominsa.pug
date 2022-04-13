@@ -16,3 +16,14 @@ block content
     +userFormField("Dog Name", "dogName", '', 'text')
     +breedSelect()
     button(type="submit") Submit
+  br
+  br
+  br
+  br
+  form.test-form(method="POST" action="/lists/4/tasks")
+   +csrfField()
+   +userFormField("Task Detail", "taskDetail", '', 'text')
+   +userFormField("Completed", "taskCompleted", '', 'text')
+   +userFormField("Priority", taskPriority, 0, 'number')
+   +userFormField('Date', taskDueDate, 'date')
+   button(type="submit") Submit
