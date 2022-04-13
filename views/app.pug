@@ -9,6 +9,8 @@ block append head
   script(src="/javascripts/completeTask.js" type="module" defer)
   script(src="/javascripts/addTask.js" type="module" defer)
   script(src="/javascripts/deleteTask.js" type="module" defer)
+  script(src="/javascripts/sign-out.js" type ="module" defer)
+  
 block content
     +auth-nav()
     .nav-menu-container
@@ -85,6 +87,6 @@ block content
             .edit-tasks
               button(id='delete-button') Delete
               button(id='edit-detail-btn') Edit
-            
+
 
             p list

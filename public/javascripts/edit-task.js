@@ -13,7 +13,6 @@ editBtn.addEventListener('click', async(e) => {
     console.log(taskId)
 
     //fetch request!
-        //
 
     const res = await fetch(`/tasks/${taskId}`, {
         method: 'PATCH',
@@ -24,6 +23,6 @@ editBtn.addEventListener('click', async(e) => {
             due_date: new Date(date.value),
           }),
     });
-    
 
+    //More to do for this page?
 })
