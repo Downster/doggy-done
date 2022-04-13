@@ -70,7 +70,7 @@ router.put(
 
 router.delete('/tasks/:taskId(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
     const taskId = req.params.id;
-    const task = await db.Task.findByPk(listId);
+    const task = await db.Task.findByPk(taskId);
     if (!task) {
         const err = new Error("Task not found");
         next(err);
