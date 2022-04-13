@@ -340,16 +340,32 @@ background: #003334;
 /* settings */
 
 .settings-wheel-dropdown-container {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-content: flex-end;
-    height: 100%;
-    width: 80%;
-    padding-left: 80%;
+    box-sizing: border-box;
+    height: 50px;
+    width: 10%;
+    /* padding-top: 14px;
+    padding-left: 70%;
+    padding-right: 5%;
+    margin-left: 10%; */
 }
 
 .settings {
-    flex-basis: auto;
+    position: absolute;
+    right: 10;
     height: 50%;
+}
+
+#arrow{
+    height: 15px;
+    width: 10px;
+}
+
+.drop-down-content{
+    background-color: white;
+    min-width: 160px;
+}
+
+.drop-down-content a {
+    color: black;
+    text-align: left;
 }
