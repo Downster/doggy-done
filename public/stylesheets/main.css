@@ -49,7 +49,7 @@ transform: scaleY(0);
 height: 100%;
 transform-origin: top;
 transition: transform .2s ease-out;
-transform: scaleY(1); 
+transform: scaleY(1);
 }
 
 .menu-checkbox:checked + label{
@@ -93,7 +93,7 @@ border-bottom: 1px solid #fff;
     position: absolute;
     transform: translate(170px, -28px);
 }
-  
+
 .nav-div{
     display: flex;
     width: 100%;
@@ -225,7 +225,7 @@ z-index: 2;
 
 #menu-logo{
    width: 150px;
-   height: 80px; 
+   height: 80px;
 }
 
 #menu-title.active{
@@ -312,4 +312,22 @@ background: #003334;
 #task-input{
     width: 75%;
     height: 30px;
+}
+
+
+/* settings */
+
+.settings-wheel-dropdown-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: flex-end;
+    height: 100%;
+    width: 80%;
+    padding-left: 80%;
+}
+
+.settings {
+    flex-basis: auto;
+    height: 50%;
 }
