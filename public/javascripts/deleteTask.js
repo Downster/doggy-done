@@ -1,20 +1,16 @@
-const deleteTask = document.querySelectorAll('.delete-task');
-if(deleteTask){
-    deleteTask.forEach(button => {
-        button.addEventListener('click', async(event) => {
-            const id = event.target.id.split('-')[2];
-            const res = await fetch(`/tasks/${id}`, {
-                method: 'DELETE'
-            });
-            const data = await res.json()
-            console.log(data);
-            if(data.message === 'Success'){
-               const taskToBeDeleted = document.getElementById(`task-container-${task.id}`);
-               taskToBeDeleted.remove();
-            }
+import { fetchWithToken } from "./utils.js";
+// const fetchWithToken = require('./utils');
+const deleteTask = document.getElementById('delete-button');
 
-        })
+deleteTask.addEventListener('click', async() => {
+        const id = document.getElementById(`task-id`).innerText;
+        console.log(id)
+        const res = await fetchWithToken(`/tasks/${id}`, 'DELETE');
+        const data = await res.json();
+        console.log(data);
+        if(data.message === 'Success'){
+            const taskToBeDeleted = document.getElementById(`task-container-${task.id}`);
+            taskToBeDeleted.remove();
+        }
+
     })
-}
-
-deleteTask
