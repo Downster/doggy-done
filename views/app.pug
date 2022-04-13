@@ -9,7 +9,6 @@ block append head
   script(src="/javascripts/completeTask.js" type="module" defer)
   script(src="/javascripts/addTask.js" type="module" defer)
   script(src="/javascripts/deleteTask.js" type="module" defer)
-
 block content
     +auth-nav()
     .nav-menu-container
@@ -78,10 +77,12 @@ block content
             p all tasks
         .task-details
             a.close-detail(href='') close X
+            p(id="task-id")
             label(for="detail-date") Task detail
             input(type="text" value='' class='detail-text' id='detail-text')
             label(for="detail-date") Due date
             input(type='date' value='' class='detail-date' id='detail-date')
         .delete-task
             button(type='submit') Delete
+
             p list
