@@ -7,8 +7,10 @@ const router = express.Router();
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const tasks = await db.Task.findAll();
-    res.render("all-tasks", { title: "Tasks 🐶", tasks });
+    const {userId} = req.session.auth;
+    const tasks = await db.Task.findAll({where:{owner_id: userId}});
+    // res.render("all-tasks", { title: "Tasks 🐶", tasks });
+    res.json({tasks});
   })
 );
 
@@ -34,13 +36,10 @@ const taskValidators = [
         .withMessage('Must set task to complete or incomplete')
 ];
 
-router.post('/add',csrfProtection, taskValidators, asyncHandler(async(req,res) => {
-    const {
-        detail,
-        due_date,
-        priority,
-        completed
-    } = req.body;
+
+router.post("/add",csrfProtection,taskValidators,asyncHandler(async (req, res) => {
+    const { detail, due_date, priority, completed } = req.body;
+
 
     const task = db.Task.build({
       detail,
