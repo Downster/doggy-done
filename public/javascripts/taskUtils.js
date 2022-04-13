@@ -9,16 +9,6 @@ const anchorClass = "task-click"
 const anchorPrefix = "task-click";
 const taskContainer = "all-tasks";
 
-
-//                each task in tasks
-// div(id=`task-container-${task.id}`).single-task
-// if task.completed
-//     input(type='checkbox' class='task-checkbox' id=`task-checkbox-${task.id}` checked='true')
-//     a(href='' class=`task-click` id=`${task.id}`)= task.detail
-// else
-//     input(type='checkbox' class='task-checkbox' id=`task-checkbox-${task.id}`)
-//     a(href='' class=`task-click` id=`${task.id}`)= task.detail
-
 export const genTasks = async () => {
     const res =  await fetchWithToken("/tasks");
     const { tasks } = await res.json();
