@@ -34,4 +34,4 @@ const validateOwner = (req, ownedObj) => {
     return req.session.auth.userId === ownedObj.owner_id;
 }
 
-module.exports = { taskValidators, listValidators, handleValidationErrors, validateOwner };
+module.exports = { taskValidators, listValidators, handleValidationErrors , validateOwner };
