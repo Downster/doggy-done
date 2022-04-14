@@ -21,6 +21,7 @@ export const handleTaskToggler = async (e) => {
 };
 
 export const handleCloseButton = (e) => {
+  console.log("here");
   e.preventDefault();
   const appRight = document.querySelector(".app-inner-body-right");
   const taskDetails = document.querySelector(".task-details");

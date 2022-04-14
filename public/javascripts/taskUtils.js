@@ -1,6 +1,7 @@
 import { fetchWithToken } from "./utils.js";
 import { taskToggleListeners } from "./taskToggle.js";
 import { checkboxListeners } from "./completeTask.js";
+import { closeButtonListeners } from "./taskToggle.js";
 const singleTaskClass = "single-task";
 const taskContainerPrefix = "task-container";
 const checkboxPrefix = "task-checkbox";
@@ -82,5 +83,6 @@ export const populateTasks = async (type, listId) => {
 export const populateTasksAndAddListeners = async (type, listId) => {
   await populateTasks(type, listId);
   taskToggleListeners();
+  closeButtonListeners();
   checkboxListeners();
 };

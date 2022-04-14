@@ -1,5 +1,5 @@
 import { fetchWithToken } from "./utils.js";
-import { genTasksHTML, populateTasks } from "./taskUtils.js";
+import { populateTasksAndAddListeners } from "./taskUtils.js";
 
 const viewList = (e) => {
   const listButtons = document.querySelectorAll(".list-button");
@@ -8,7 +8,7 @@ const viewList = (e) => {
       e.preventDefault();
       const listId = button.id.split("-")[1];
       const taskItems = document.querySelector(".task-items");
-      await populateTasks("list", listId);
+      await populateTasksAndAddListeners("list", listId);
       editListName();
     });
   });
