@@ -12,6 +12,10 @@ editBtn.addEventListener('click', async(e) => {
     console.log(taskId)
 
     //fetch request!
+<<<<<<< HEAD
+=======
+
+>>>>>>> 119802d (testing signout button as part of pug mixin)
     const res = await fetch(`/tasks/${taskId}`, {
         method: 'PATCH',
         credentials: "same-origin",
@@ -21,6 +25,10 @@ editBtn.addEventListener('click', async(e) => {
             due_date: new Date(date.value),
           }),
     });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 119802d (testing signout button as part of pug mixin)
 
+    //More to do for this page?
 })
