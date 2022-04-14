@@ -14,10 +14,17 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   const columnMap = {
+<<<<<<< HEAD
     through: "TaskList",
     otherKey: "list_id",
     foreignKey: "task_id",
   };
+=======
+    through:'TaskList',
+    otherKey: 'list_id',
+    foreignKey: 'task_id',
+  }
+>>>>>>> 7a7de1e (task and list migrations updated for cascading delete on tasklists)
 
   Task.associate = function (models) {
     // associations can be defined here

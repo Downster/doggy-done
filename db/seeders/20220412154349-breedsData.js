@@ -20,7 +20,7 @@ module.exports = {
             return obj;
           })
         }).then(breedsObjs => {
-          console.log(breedsObjs);
+          breedsObjs.unshift({name: "Just A Doggo", createdAt: new Date(), updatedAt: new Date()});
           return queryInterface.bulkInsert('Breeds', breedsObjs)
         });
       },
