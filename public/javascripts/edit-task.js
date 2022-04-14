@@ -13,9 +13,12 @@ editBtn.addEventListener('click', async(e) => {
 
     //fetch request!
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 119802d (testing signout button as part of pug mixin)
+=======
+>>>>>>> 4c94306 (Revert "Sign out complete")
     const res = await fetch(`/tasks/${taskId}`, {
         method: 'PATCH',
         credentials: "same-origin",
@@ -27,8 +30,12 @@ editBtn.addEventListener('click', async(e) => {
     });
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 =======
 >>>>>>> 119802d (testing signout button as part of pug mixin)
 
     //More to do for this page?
+=======
+
+>>>>>>> 4c94306 (Revert "Sign out complete")
 })
