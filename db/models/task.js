@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   const columnMap = {
     through:'TaskList',
     otherKey: 'list_id',
-    foreignKey: 'task_id'
+    foreignKey: 'task_id',
   }
 
   Task.associate = function (models) {

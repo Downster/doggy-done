@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   const columnMap = {
     through:'TaskList',
     otherKey: 'task_id',
-    foreignKey: 'list_id'
+    foreignKey: 'list_id',
   }
   List.associate = function(models) {
     // associations can be defined here
