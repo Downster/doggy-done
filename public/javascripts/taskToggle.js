@@ -12,6 +12,7 @@ export const handleTaskToggler = async (e) => {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const res = await fetchWithToken(`/tasks/${id}`, "GET");
   const { task } = await res.json();
   const detailInput = taskDetails.getElementsByTagName("input");
@@ -26,6 +27,8 @@ export const handleTaskToggler = async (e) => {
 =======
 =======
 >>>>>>> f581fca (Mostly solved)
+=======
+>>>>>>> 0edf544 (Dogs part 1)
         const res = await fetchWithToken(`/tasks/${id}`, "GET");
         const {task} = await res.json();
         const detailInput = taskDetails.getElementsByTagName("input");
@@ -42,6 +45,8 @@ export const handleTaskToggler = async (e) => {
 >>>>>>> 121b76f (Dogs part 1)
 =======
 =======
+=======
+>>>>>>> fcf44d5 (Dogs part 1)
   const res = await fetchWithToken(`/tasks/${id}`, "GET");
   const data = await res.json();
   const detailInput = taskDetails.getElementsByTagName("input");
@@ -51,8 +56,28 @@ export const handleTaskToggler = async (e) => {
   detailInput[0].value = data.task.detail;
   dueDate[0].value = data.task.due_date.split("T")[0];
 };
+<<<<<<< HEAD
 >>>>>>> 90f3c39 (Mostly solved)
+<<<<<<< HEAD
 >>>>>>> f581fca (Mostly solved)
+=======
+=======
+=======
+        const res = await fetchWithToken(`/tasks/${id}`, "GET");
+        const {task} = await res.json();
+        const detailInput = taskDetails.getElementsByTagName("input");
+        const dueDate = taskDetails.getElementsByClassName("detail-date");
+        const taskId = document.getElementById('task-id');
+        taskId.innerText = id;
+        detailInput[0].value = data.task.detail;
+        if (data.task.task.dueDate) {
+          dueDate[0].value = data.task.due_date.split("T")[0];
+        }
+
+}
+>>>>>>> 121b76f (Dogs part 1)
+>>>>>>> fcf44d5 (Dogs part 1)
+>>>>>>> 0edf544 (Dogs part 1)
 
 export const handleCloseButton = (e) => {
   console.log("here");

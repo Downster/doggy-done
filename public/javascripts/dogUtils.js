@@ -201,6 +201,7 @@ export const genNewDogForm = async () => {
     container.append(submit);
     return container;
 }
+<<<<<<< HEAD
 
 const pickBg = (dog) => {
     const bgImg = [
@@ -267,4 +268,9 @@ export const genDogsArea = async () => {
     addDogBtn.addEventListener("click", handleNewDog);
 
 }
+<<<<<<< HEAD
 >>>>>>> dff1e37 (Basic functionality for adding dogs)
+=======
+=======
+>>>>>>> fcf44d5 (Dogs part 1)
+>>>>>>> 0edf544 (Dogs part 1)
