@@ -42,7 +42,7 @@ mixin auth-nav()
         span
     h3(id='menu-title' class='active') All tasks
     input(type="text" id='search')
-    .sign-out-container
+    form(method="post" action="/users/logout")
       button(id="sign-out-btn") Sign Out
     .settings-wheel-dropdown-container
       img(type="checkbox" id="wheel" class="settings" src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png")
