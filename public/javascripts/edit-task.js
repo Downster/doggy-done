@@ -11,7 +11,7 @@ editBtn.addEventListener('click', async(e) => {
 
     console.log(taskId)
 
-    //fetch request!
+  
     const res = await fetch(`/tasks/${taskId}`, {
         method: 'PATCH',
         credentials: "same-origin",
@@ -22,5 +22,3 @@ editBtn.addEventListener('click', async(e) => {
           }),
     });
 
-
-})
