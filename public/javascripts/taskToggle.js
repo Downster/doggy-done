@@ -14,6 +14,7 @@ export const handleTaskToggler = async (e) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const res = await fetchWithToken(`/tasks/${id}`, "GET");
   const { task } = await res.json();
   const detailInput = taskDetails.getElementsByTagName("input");
@@ -32,6 +33,8 @@ export const handleTaskToggler = async (e) => {
 >>>>>>> 0edf544 (Dogs part 1)
 =======
 >>>>>>> 5a3ed4a (Mostly solved)
+=======
+>>>>>>> 0f37de1 (Fixed some bugs testing to see if works before pushing)
         const res = await fetchWithToken(`/tasks/${id}`, "GET");
         const {task} = await res.json();
         const detailInput = taskDetails.getElementsByTagName("input");
@@ -52,15 +55,20 @@ export const handleTaskToggler = async (e) => {
 >>>>>>> fcf44d5 (Dogs part 1)
 =======
 >>>>>>> 521ec6d (Mostly solved)
+=======
+>>>>>>> c16f886 (Fixed some bugs testing to see if works before pushing)
   const res = await fetchWithToken(`/tasks/${id}`, "GET");
-  const data = await res.json();
+  const { task } = await res.json();
   const detailInput = taskDetails.getElementsByTagName("input");
   const dueDate = taskDetails.getElementsByClassName("detail-date");
   const taskId = document.getElementById("task-id");
   taskId.innerText = id;
   detailInput[0].value = data.task.detail;
-  dueDate[0].value = data.task.due_date.split("T")[0];
+  if (data.task.task.dueDate) {
+    dueDate[0].value = data.task.due_date.split("T")[0];
+  }
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 90f3c39 (Mostly solved)
 <<<<<<< HEAD
@@ -104,7 +112,12 @@ export const handleTaskToggler = async (e) => {
 >>>>>>> 90f3c39 (Mostly solved)
 >>>>>>> c41de1e (Mostly solved)
 >>>>>>> 521ec6d (Mostly solved)
+<<<<<<< HEAD
 >>>>>>> 5a3ed4a (Mostly solved)
+=======
+=======
+>>>>>>> c16f886 (Fixed some bugs testing to see if works before pushing)
+>>>>>>> 0f37de1 (Fixed some bugs testing to see if works before pushing)
 
 export const handleCloseButton = (e) => {
   console.log("here");
