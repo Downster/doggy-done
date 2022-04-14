@@ -17,7 +17,7 @@ export const handleTaskToggler = async (e) => {
   const taskId = document.getElementById("task-id");
   taskId.innerText = id;
   detailInput[0].value = data.task.detail;
-  //dueDate[0].value = data.task.due_date.split("T")[0];
+  dueDate[0].value = data.task.due_date.split("T")[0];
 };
 
 export const handleCloseButton = (e) => {

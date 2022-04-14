@@ -14,14 +14,14 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   const columnMap = {
-    through:'TaskList',
-    otherKey: 'list_id',
-    foreignKey: 'task_id'
-  }
+    through: "TaskList",
+    otherKey: "list_id",
+    foreignKey: "task_id",
+  };
 
   Task.associate = function (models) {
     // associations can be defined here
-    Task.belongsTo(models.Priority, {foreignKey: 'priority'});
+    Task.belongsTo(models.Priority, { foreignKey: "priority" });
     Task.belongsToMany(models.List, columnMap);
   };
   return Task;

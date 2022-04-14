@@ -41,3 +41,35 @@ export const buildNewTasksAndFilter = (tasks, dayDifference) => {
 
   return sortedTasks;
 };
+
+export const buildOverdueTasksAndFilter = (tasks, dayDifference) => {
+  const taskArray = tasks.map((taskObj) => Object.entries(taskObj));
+  console.log(taskArray);
+  const filteredTasks = taskArray.filter(
+    ([
+      completed,
+      createdAt,
+      detail,
+      dog_id,
+      due_date,
+      id,
+      owner_id,
+      priority,
+      updatedAt,
+    ]) => {
+      console.log(checkDayDifference(due_date[1]));
+      return checkDayDifference(due_date[1]) < dayDifference;
+    }
+  );
+  console.log(filteredTasks);
+  const sortedTasks = [];
+  filteredTasks.forEach((array) => {
+    const newObj = {};
+    array.forEach((ele) => {
+      newObj[ele[0]] = ele[1];
+    });
+    sortedTasks.push(newObj);
+  });
+
+  return sortedTasks;
+};
