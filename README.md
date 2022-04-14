@@ -2,6 +2,8 @@
 
 Doggy Done is a "smart to-do app" for dog owners, that organizes user tasks, and allows for interactivity on tasks between users. It is inspired by [Remember the Milk](https://www.rememberthemilk.com/).
 
+View and test out Doggy Done on [Heroku](https://doggy-done.herokuapp.com/app)
+
 # Index
 
 |

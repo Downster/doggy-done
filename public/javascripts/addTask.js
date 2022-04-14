@@ -1,4 +1,5 @@
 import { fetchWithToken } from './utils.js';
+import { populateTasksAndAddListeners } from './taskUtils.js';
 const submitDiv = document.querySelector(".task-submit");
 const button = submitDiv.lastChild;
 
@@ -14,5 +15,6 @@ button.addEventListener("click", async (e) => {
       completed: false,
   });
   const res = await fetchWithToken('/tasks', 'POST', body);
+  await populateTasksAndAddListeners();
   //select div and re render
 });

@@ -3,6 +3,7 @@ extends layout.pug
 block head
     title="Doggy Done! 🐶"
     link(rel='stylesheet' href='/stylesheets/splash-page.css')
+    script(src="/javascripts/demoUser.js" type="module" defer)
 
     .nav
         span.login
@@ -13,4 +14,5 @@ block head
             h1 The smart to-do app for busy people.
         div.button
             button(onClick="window.location.href='/users/register';") Sign Up For Free
+            button(class ='demo') Demo User
     .container#might-be-slide-show
