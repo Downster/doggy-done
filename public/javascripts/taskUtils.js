@@ -2,6 +2,7 @@ import { fetchWithToken } from "./utils.js";
 import { taskToggleListeners } from "./taskToggle.js";
 import { checkboxListeners } from "./completeTask.js";
 import { closeButtonListeners } from "./taskToggle.js";
+import { buildNewTasksAndFilter, checkDayDifference } from "./dateLogic.js";
 const singleTaskClass = "single-task";
 const taskContainerPrefix = "task-container";
 const checkboxPrefix = "task-checkbox";
@@ -11,10 +12,21 @@ const anchorPrefix = "task-click";
 const taskContainer = "all-tasks";
 
 export const genTasks = async (type, listId) => {
-  if (type !== "list") {
+  if (type === undefined) {
     const res = await fetchWithToken("/tasks");
     const { tasks } = await res.json();
     return tasks;
+  } else if (type === "today") {
+    const res = await fetchWithToken("/tasks");
+    const { tasks } = await res.json();
+    console.log(tasks);
+    const sortedTask = buildNewTasksAndFilter(tasks, 1);
+    return sortedTask;
+  } else if (type === "tomorrow") {
+    const res = await fetchWithToken("/tasks");
+    const { tasks } = await res.json();
+    const sortedTask = buildNewTasksAndFilter(tasks, 2);
+    return sortedTask;
   } else {
     const res = await fetchWithToken(`/lists/${listId}`, "GET");
     const data = await res.json();
