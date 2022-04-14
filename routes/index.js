@@ -1,6 +1,8 @@
 var express = require("express");
 const { csrfProtection, asyncHandler } = require("./utils");
 const db = require("../db/models");
+const restoreUser = require('../auth');
+
 
 var router = express.Router();
 
@@ -8,7 +10,15 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
 
-  res.render('splash-page', { title: 'Doggy Done!' });
+  async(req,res,next) => {
+    if(res.locals.authenticated){
+      res.redirect('/app');
+    }else{
+      res.render('splash-page', { title: 'Doggy Done! 🐶' });
+    }
+
+  }
+
 });
 
 

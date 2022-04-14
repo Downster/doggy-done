@@ -6,7 +6,9 @@ body{
     display: flex;
     justify-content: center;
     padding-top: 250px;
-
+}
+.demo{
+    margin-left: 5px;
 }
 
 .button{
@@ -21,4 +23,18 @@ body{
 
 a:hover{
     color: red;
+}
+
+h1,button{
+    animation: fadeIn linear 2s;
+
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
