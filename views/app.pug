@@ -13,8 +13,9 @@ block append head
   script(src='/javascripts/deleteTask.js' type='module' defer)
   script(src='/javascripts/closeListOnClick.js' type='module' defer)
   script(src='/javascripts/taskLoad.js' type="module" defer)
+  script(src="/javascripts/deleteTask.js" type="module" defer)
+  script(src='/javascripts/viewEditDeleteList.js' type='module' defer)
   script(src="/javascripts/sign-out.js" type ="module" defer)
-
 block content
     +auth-nav()
     .nav-menu-container
@@ -40,7 +41,8 @@ block content
                         ul
                             each list in lists
                                 li.menu-list
-                                    a(href="")=list.name
+                                    a(href="" id =`list-${list.id}` class='list-button')=list.name
+                                    button(id=`delete-list-${list.id}` class='delete-list-button') -
                     li
                         input(type="checkbox" class='menu-checkbox' id='list-item-3')
                         label(for='list-item-3' class='menu-label' class='last') Contacts
@@ -77,11 +79,7 @@ block content
             input(type="text" value='' class='detail-text' id='detail-text')
             label(for="detail-date") Due date
             input(type='date' value='' class='detail-date' id='detail-date')
-            .edit-tasks
-              button(id='delete-button') Delete
-              button(id='edit-detail-btn') Edit
-
-            p list
             .edit-task
                 button(id='delete-button') Delete
                 button(id='edit-detail-btn') Edit
+                

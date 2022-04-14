@@ -79,6 +79,7 @@ border-bottom: 1px solid #fff;
     left: 5%;
 }
 
+
 .task-submit.active{
     visibility: visible;
 }
@@ -113,6 +114,19 @@ border-bottom: 1px solid #fff;
     height: 100vh;
     width: 100%;
   }
+
+.list-tasks{
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 2%;
+    left: 5%;
+}
+
+.list-tasks.active{
+    visibility: visible;
+}
 
 .add-list-form.active{
     position: absolute;
