@@ -6,6 +6,7 @@ const tomorrowsTasks = document.getElementById("tomorrows-tasks-link");
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const overdueTasks = document.getElementById("overdue-tasks-link");
 =======
 >>>>>>> 85b8179 (Dates mostly working)
@@ -17,6 +18,14 @@ const overdueTasks = document.getElementById("overdue-tasks-link");
 =======
 >>>>>>> a0962a4 (Dates mostly working)
 >>>>>>> 6dac566 (Dates mostly working)
+=======
+const overdueTasks = document.getElementById("overdue-tasks-link");
+=======
+>>>>>>> a0962a4 (Dates mostly working)
+=======
+const overdueTasks = document.getElementById("overdue-tasks-link");
+>>>>>>> c41de1e (Mostly solved)
+>>>>>>> 5a3ed4a (Mostly solved)
 
 allTasks.addEventListener("click", async (e) => {
   e.preventDefault();
@@ -37,15 +46,21 @@ tomorrowsTasks.addEventListener("click", async (e) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> f581fca (Mostly solved)
 =======
 >>>>>>> 6dac566 (Dates mostly working)
+=======
+=======
+>>>>>>> c41de1e (Mostly solved)
+>>>>>>> 5a3ed4a (Mostly solved)
 
 overdueTasks.addEventListener("click", async (e) => {
   e.preventDefault();
   await populateTasksAndAddListeners("overdue");
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -56,3 +71,9 @@ overdueTasks.addEventListener("click", async (e) => {
 =======
 >>>>>>> a0962a4 (Dates mostly working)
 >>>>>>> 6dac566 (Dates mostly working)
+=======
+=======
+>>>>>>> a0962a4 (Dates mostly working)
+=======
+>>>>>>> c41de1e (Mostly solved)
+>>>>>>> 5a3ed4a (Mostly solved)

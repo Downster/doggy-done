@@ -13,6 +13,7 @@ export const handleTaskToggler = async (e) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const res = await fetchWithToken(`/tasks/${id}`, "GET");
   const { task } = await res.json();
   const detailInput = taskDetails.getElementsByTagName("input");
@@ -29,6 +30,8 @@ export const handleTaskToggler = async (e) => {
 >>>>>>> f581fca (Mostly solved)
 =======
 >>>>>>> 0edf544 (Dogs part 1)
+=======
+>>>>>>> 5a3ed4a (Mostly solved)
         const res = await fetchWithToken(`/tasks/${id}`, "GET");
         const {task} = await res.json();
         const detailInput = taskDetails.getElementsByTagName("input");
@@ -47,6 +50,8 @@ export const handleTaskToggler = async (e) => {
 =======
 =======
 >>>>>>> fcf44d5 (Dogs part 1)
+=======
+>>>>>>> 521ec6d (Mostly solved)
   const res = await fetchWithToken(`/tasks/${id}`, "GET");
   const data = await res.json();
   const detailInput = taskDetails.getElementsByTagName("input");
@@ -63,6 +68,8 @@ export const handleTaskToggler = async (e) => {
 =======
 =======
 =======
+=======
+>>>>>>> c41de1e (Mostly solved)
         const res = await fetchWithToken(`/tasks/${id}`, "GET");
         const {task} = await res.json();
         const detailInput = taskDetails.getElementsByTagName("input");
@@ -75,9 +82,29 @@ export const handleTaskToggler = async (e) => {
         }
 
 }
+<<<<<<< HEAD
 >>>>>>> 121b76f (Dogs part 1)
+<<<<<<< HEAD
 >>>>>>> fcf44d5 (Dogs part 1)
+<<<<<<< HEAD
 >>>>>>> 0edf544 (Dogs part 1)
+=======
+=======
+=======
+=======
+  const res = await fetchWithToken(`/tasks/${id}`, "GET");
+  const data = await res.json();
+  const detailInput = taskDetails.getElementsByTagName("input");
+  const dueDate = taskDetails.getElementsByClassName("detail-date");
+  const taskId = document.getElementById("task-id");
+  taskId.innerText = id;
+  detailInput[0].value = data.task.detail;
+  dueDate[0].value = data.task.due_date.split("T")[0];
+};
+>>>>>>> 90f3c39 (Mostly solved)
+>>>>>>> c41de1e (Mostly solved)
+>>>>>>> 521ec6d (Mostly solved)
+>>>>>>> 5a3ed4a (Mostly solved)
 
 export const handleCloseButton = (e) => {
   console.log("here");
