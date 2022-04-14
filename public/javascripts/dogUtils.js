@@ -202,6 +202,9 @@ export const genNewDogForm = async () => {
     return container;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 431b702 (Basic functionality for adding dogs)
 
 const pickBg = (dog) => {
     const bgImg = [
@@ -269,8 +272,15 @@ export const genDogsArea = async () => {
 
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> dff1e37 (Basic functionality for adding dogs)
 =======
 =======
 >>>>>>> fcf44d5 (Dogs part 1)
 >>>>>>> 0edf544 (Dogs part 1)
+=======
+=======
+>>>>>>> fcf44d5 (Dogs part 1)
+=======
+>>>>>>> 431b702 (Basic functionality for adding dogs)
+>>>>>>> f03f572 (Basic functionality for adding dogs)
