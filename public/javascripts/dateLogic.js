@@ -42,6 +42,9 @@ export const buildNewTasksAndFilter = (tasks, dayDifference) => {
   return sortedTasks;
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c41de1e (Mostly solved)
 
 export const buildOverdueTasksAndFilter = (tasks, dayDifference) => {
   const taskArray = tasks.map((taskObj) => Object.entries(taskObj));
@@ -74,5 +77,8 @@ export const buildOverdueTasksAndFilter = (tasks, dayDifference) => {
 
   return sortedTasks;
 };
+<<<<<<< HEAD
 =======
 >>>>>>> a0962a4 (Dates mostly working)
+=======
+>>>>>>> c41de1e (Mostly solved)
