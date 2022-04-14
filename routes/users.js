@@ -216,6 +216,7 @@ router.post(
   "/logout",
   asyncHandler(async (req, res) => {
     logoutUser(req, res);
+    res.render('logout', { title: "see you next time!" })
     res.redirect("/");
   })
 );

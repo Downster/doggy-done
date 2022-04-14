@@ -36,4 +36,8 @@ router.get('/limsa-lominsa', csrfProtection, asyncHandler(async (req, res, next)
 }));
 
 
+router.get('/maicatest', csrfProtection, asyncHandler(async(req, res, next) => {
+  res.render("logout", { title: 'See you next time! 🐶' })
+}))
+
 module.exports = router;
