@@ -5,7 +5,7 @@ body{
 
     display: flex;
     justify-content: center;
-    padding-top: 250px;
+    padding-top: 10px;
 }
 .demo{
     margin-left: 5px;
@@ -15,6 +15,7 @@ body{
     display: flex;
     justify-content: center;
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .login{
@@ -23,6 +24,12 @@ body{
 
 a:hover{
     color: red;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
 }
 
 h1,button{
@@ -37,4 +44,15 @@ h1,button{
     100%{
         opacity: 1;
     }
+}
+
+.slide{
+    display: none;
+}
+
+.slide.active{
+    display: block;
+    width: 500px;
+    height: auto;
+
 }
