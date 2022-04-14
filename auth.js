@@ -47,6 +47,6 @@ const requireAuth = (req, res, next) => {
 module.exports = {
   loginUser,
   restoreUser,
-  requireAuth,
   logoutUser,
+  requireAuth,
 };
