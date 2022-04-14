@@ -79,8 +79,8 @@ export const populateTasks = async (type, listId) => {
   }
 };
 
-export const populateTasksAndAddListeners = async () => {
-  await populateTasks();
+export const populateTasksAndAddListeners = async (type, listId) => {
+  await populateTasks(type, listId);
   taskToggleListeners();
   checkboxListeners();
 };

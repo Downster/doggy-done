@@ -8,6 +8,10 @@ editBtn.addEventListener("click", async (e) => {
   const taskId = document.getElementById("task-id").innerText;
 
   const token = extractCSRFToken();
+
+  console.log(taskId);
+
+  //fetch request!
   const res = await fetch(`/tasks/${taskId}`, {
     method: "PATCH",
     credentials: "same-origin",

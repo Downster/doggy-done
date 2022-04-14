@@ -1,8 +1,6 @@
 var express = require("express");
 const { csrfProtection, asyncHandler } = require("./utils");
 const db = require("../db/models");
-const list = require("../db/models/list");
-const tasklist = require("../db/models/tasklist");
 const {
   taskValidators,
   handleValidationErrors,
@@ -86,7 +84,7 @@ router.post(
   asyncHandler(async (req, res, next) => {
     const { userId } = req.session.auth;
     const { listId } = req.params;
-    const { taskDetail, taskPriority, taskCompleted, taskDueDate } = req.body;
+    const { detail, priority, completed, due_date } = req.body;
     const list = await db.List.findByPk(listId);
     if (!list) {
       const err = new Error("List not found error");
@@ -98,10 +96,10 @@ router.post(
       }
       const task = await db.Task.create({
         owner_id: userId,
-        detail: taskDetail,
-        priority: taskPriority,
-        completed: taskCompleted,
-        due_date: taskDueDate,
+        detail,
+        priority,
+        completed,
+        due_date,
       });
       const TaskList = await db.TaskList.create({
         task_id: task.id,
