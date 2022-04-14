@@ -43,6 +43,26 @@ router.get(
   })
 );
 
+router.patch(
+  "/:listId(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const { listId } = req.params;
+    const { name } = req.body;
+    console.log(listId);
+    console.log(name);
+    const list = await db.List.findByPk(listId);
+    console.log(list);
+    if (!list) {
+      const err = new Error("List not found error");
+      next(err);
+    }
+    await list.update({
+      name: name,
+    });
+    res.json(list.name);
+  })
+);
+
 router.post(
   "/",
   csrfProtection,

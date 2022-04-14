@@ -17,8 +17,7 @@ export const genTasks = async (type, listId) => {
   } else {
     const res = await fetchWithToken(`/lists/${listId}`, "GET");
     const data = await res.json();
-    console.log(data.Tasks);
-    return data.Tasks;
+    return data;
   }
 };
 
@@ -49,17 +48,34 @@ export const genTasksHTML = async (type, listId) => {
     return tasks.map((task) => buildTaskHTML(task));
   } else {
     const lists = await genTasks(type, listId);
-    return lists.map((task) => buildTaskHTML(task));
+    return lists;
   }
 };
 
 export const populateTasks = async (type, listId) => {
   const tasksHTML = await genTasksHTML(type, listId);
   const allTasks = document.querySelector(".task-items");
-  const tasksDetails = allTasks.querySelectorAll(".single-task");
-  tasksDetails.forEach((task) => task.remove());
-  for (let taskDetail of tasksHTML) {
-    allTasks.append(taskDetail);
+  allTasks.innerHTML = "";
+  if (type !== "list") {
+    for (let taskDetail of tasksHTML) {
+      allTasks.append(taskDetail);
+    }
+  } else {
+    const mappedTasks = tasksHTML.Tasks.map((task) => buildTaskHTML(task));
+    const name = tasksHTML.name;
+    const listName = document.createElement("input");
+    const editListName = document.createElement("button");
+    editListName.innerText = "Edit Name";
+    editListName.classList.add(`edit-list-button`);
+    editListName.setAttribute("id", `edit-list-${listId}`);
+    listName.classList.add(`list-title`);
+    listName.setAttribute("id", `list-title-${listId}`);
+    listName.value = name;
+    allTasks.append(listName);
+    allTasks.append(editListName);
+    for (let taskDetail of mappedTasks) {
+      allTasks.append(taskDetail);
+    }
   }
 };
 
