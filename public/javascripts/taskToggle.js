@@ -10,6 +10,7 @@ export const handleTaskToggler = async (e) => {
   appRight.classList.toggle("active");
   taskDetails.classList.toggle("active");
 
+<<<<<<< HEAD
   const res = await fetchWithToken(`/tasks/${id}`, "GET");
   const data = await res.json();
   const detailInput = taskDetails.getElementsByTagName("input");
@@ -19,6 +20,20 @@ export const handleTaskToggler = async (e) => {
   detailInput[0].value = data.task.detail;
   dueDate[0].value = data.task.due_date.split("T")[0];
 };
+=======
+        const res = await fetchWithToken(`/tasks/${id}`, "GET");
+        const {task} = await res.json();
+        const detailInput = taskDetails.getElementsByTagName("input");
+        const dueDate = taskDetails.getElementsByClassName("detail-date");
+        const taskId = document.getElementById('task-id');
+        taskId.innerText = id;
+        detailInput[0].value = data.task.detail;
+        if (data.task.task.dueDate) {
+          dueDate[0].value = data.task.due_date.split("T")[0];
+        }
+
+}
+>>>>>>> 121b76f (Dogs part 1)
 
 export const handleCloseButton = (e) => {
   console.log("here");

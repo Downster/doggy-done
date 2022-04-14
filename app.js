@@ -13,6 +13,7 @@ const dogsRouter = require('./routes/dogs');
 const notesRouter = require('./routes/notes');
 const tasksRouter = require('./routes/tasks');
 const appRouter = require('./routes/app');
+const breedsRouter = require('./routes/breeds')
 const {requireAuth, restoreUser} = require('./auth');
 const app = express();
 
@@ -50,6 +51,7 @@ app.use("/dogs", dogsRouter);
 app.use("/notes", notesRouter);
 app.use('/tasks', tasksRouter);
 app.use('/app', appRouter);
+app.use('/breeds', breedsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,8 +1,6 @@
 var express = require('express');
 const { csrfProtection, asyncHandler } = require('./utils');
 const db = require('../db/models');
-const { locals } = require('../app');
-
 var router = express.Router();
 
 /* GET home page. */
