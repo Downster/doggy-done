@@ -18,6 +18,7 @@ block append head
   script(src="/javascripts/deleteTask.js" type="module" defer)
   script(src='/javascripts/viewEditDeleteList.js' type='module' defer)
   script(src="/javascripts/sign-out.js" type ="module" defer)
+  script(src='/javascripts/dogsLoad.js' type="module" defer)
 block content
     +auth-nav()
     .nav-menu-container
@@ -71,6 +72,7 @@ block content
                 input(type="date" id='task-date')
             .task-submit
                 button Submit
+            .app-dogs
             .task-items
         .app-inner-body-right.active
             p all tasks
@@ -84,4 +86,3 @@ block content
             .edit-task
                 button(id='delete-button') Delete
                 button(id='edit-detail-btn') Edit
-                

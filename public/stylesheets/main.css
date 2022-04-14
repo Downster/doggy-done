@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&family=Quicksand:wght@700&display=swap');
+
+* {
+    font-family: 'Quicksand';
+}
 body {
 line-height: 14px;
 display: flex;
@@ -7,6 +12,8 @@ padding: 0;
 background-color:  #f7bf50;
 margin-inline: auto;
 overflow-x: hidden;
+box-sizing: border-box;
+
 }
 header{
     display: flex;
@@ -255,6 +262,7 @@ z-index: 2;
 }
 
 #menu-title{
+    display: inline-block;
     /* add transition here */
     opacity: 0;
 }
@@ -348,4 +356,105 @@ background: #003334;
 #task-input{
     width: 75%;
     height: 30px;
+}
+
+
+/* settings */
+
+.settings-wheel-dropdown-container {
+    box-sizing: border-box;
+    height: 50px;
+    width: 10%;
+    position: relative;
+    display:inline-block;
+    margin-top: 15px;
+    margin-left: 75%;
+}
+
+#wheel {
+    height: 20px;
+    width: 20px;
+}
+
+
+.drop-down-content{
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 260px;
+    z-index: 1;
+}
+
+/* the links inside the dropdown */
+.drop-down-content a {
+    color: black;
+    text-align: left;
+    display: block;
+}
+
+.settings-wheel-dropdown-container:hover .drop-down-content {display: block;}
+
+.app-dogs {
+    display: none;
+}
+
+.app-dogs.active {
+    display: block;
+}
+
+.new-dog-container {
+    display: none;
+}
+
+.new-dog-container.active {
+    display: inline-flex;
+}
+
+.my-dogs {
+    display: flex;
+}
+
+.my-dogs > ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2em;
+    margin: 1em;
+}
+
+.my-dogs .single-dog {
+    font-weight: bold;
+}
+
+.single-dog {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 150px;
+    background-position: center;
+    border-radius: 50%;
+    border: 3px solid black;
+    box-shadow: 1px 3px 3px rgba(0,0,0,0.4);
+    margin-bottom: 30px;
+    font-family: 'Quicksand';
+    line-height: 1.5em;
+    font-size: 1.5rem;
+}
+
+.single-dog:hover {
+    box-shadow: 2px 5px 5px rgba(0,0,0,0.4);
+    font-size: 2rem;
+    transition: font-size 0.3s, box-shadow 0.3s;
+    margin-bottom: 30px;
+}
+
+.single-dog a {
+    color: #ebcc90;
+    overflow-x: visible;
+    text-shadow: 2px 4px 3px black;
+    text-decoration: none;
+    text-align: center;
 }
