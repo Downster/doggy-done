@@ -3,7 +3,6 @@ import { fetchWithToken } from './utils.js';
 // console.log(logoutUser);
 
 
-
 const signOutBtn = document.getElementById('sign-out-btn');
 
 
