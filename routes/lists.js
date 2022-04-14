@@ -7,6 +7,7 @@ const {
   taskValidators,
   handleValidationErrors,
   listValidators,
+  validateOwner,
 } = require("./validators");
 
 var router = express.Router();
@@ -71,42 +72,42 @@ router.post(
       const err = new Error("List not found error");
       next(err);
     } else {
-        const permCheck = validateOwner(req, list);
-        if(!permCheck) {
-            return res.status(401).end();
-        }
-        const task = await db.Task.create({
-            owner_id: userId,
-            detail: taskDetail,
-            priority: taskPriority,
-            completed: taskCompleted,
-            due_date: taskDueDate,
-        });
-        const TaskList = await db.TaskList.create({
-            task_id: task.id,
-            list_id: listId
-        });
-        res.json(task);
+      const permCheck = validateOwner(req, list);
+      if (!permCheck) {
+        return res.status(401).end();
+      }
+      const task = await db.Task.create({
+        owner_id: userId,
+        detail: taskDetail,
+        priority: taskPriority,
+        completed: taskCompleted,
+        due_date: taskDueDate,
+      });
+      const TaskList = await db.TaskList.create({
+        task_id: task.id,
+        list_id: listId,
+      });
+      res.json(task);
     }
   })
 );
 
 router.delete(
-  "/lists/:listId(\\d+)",
+  "/:listId(\\d+)",
   csrfProtection,
   asyncHandler(async (req, res, next) => {
-    const listId = req.params.id;
+    const listId = req.params.listId;
     const list = await db.List.findByPk(listId);
     if (!list) {
       const err = new Error("List not found");
       next(err);
     } else {
-        const permCheck = validateOwner(req, list);
-        if(!permCheck) {
-            return res.status(401).end();
-        }
-        await list.destroy();
-        res.status(204).end();
+      const permCheck = validateOwner(req, list);
+      if (!permCheck) {
+        return res.status(401).end();
+      }
+      await list.destroy();
+      res.status(204).end();
     }
   })
 );
