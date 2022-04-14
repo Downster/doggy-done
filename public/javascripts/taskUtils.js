@@ -4,18 +4,27 @@ import { checkboxListeners } from "./completeTask.js";
 import { closeButtonListeners } from "./taskToggle.js";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> f581fca (Mostly solved)
+=======
+>>>>>>> 6dac566 (Dates mostly working)
 import {
   buildNewTasksAndFilter,
   buildOverdueTasksAndFilter,
 } from "./dateLogic.js";
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 import { buildNewTasksAndFilter, checkDayDifference } from "./dateLogic.js";
 >>>>>>> 85b8179 (Dates mostly working)
 =======
 >>>>>>> f581fca (Mostly solved)
+=======
+=======
+import { buildNewTasksAndFilter, checkDayDifference } from "./dateLogic.js";
+>>>>>>> a0962a4 (Dates mostly working)
+>>>>>>> 6dac566 (Dates mostly working)
 const singleTaskClass = "single-task";
 const taskContainerPrefix = "task-container";
 const checkboxPrefix = "task-checkbox";
@@ -42,18 +51,26 @@ export const genTasks = async (type, listId) => {
     return sortedTask;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> f581fca (Mostly solved)
+=======
+>>>>>>> 6dac566 (Dates mostly working)
   } else if (type === "overdue") {
     const res = await fetchWithToken("/tasks");
     const { tasks } = await res.json();
     const sortedTask = buildOverdueTasksAndFilter(tasks, 0);
     return sortedTask;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 85b8179 (Dates mostly working)
 =======
 >>>>>>> f581fca (Mostly solved)
+=======
+=======
+>>>>>>> a0962a4 (Dates mostly working)
+>>>>>>> 6dac566 (Dates mostly working)
   } else {
     const res = await fetchWithToken(`/lists/${listId}`, "GET");
     const data = await res.json();
