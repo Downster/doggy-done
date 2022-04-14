@@ -216,7 +216,7 @@ router.post(
   "/logout",
   asyncHandler(async (req, res) => {
     logoutUser(req, res);
-    res.redirect("/logout");
+    res.redirect("/");
   })
 );
 
