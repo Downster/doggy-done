@@ -1,0 +1,21 @@
+#btn-form {
+    position: relative;
+    margin-top: 8px;
+    margin-left: 74%;
+    margin-right: 15%;
+}
+
+#nav-sign-out {
+    background-color: rgb(234, 218, 4);
+    color: #71706b;
+    border: solid white 2px;
+    border-radius: 15%;
+    font-size: 15px;
+    font-family: sans-serif;
+    width: 80px;
+    height: 35px;
+}
+
+button:hover {
+    cursor: pointer;
+}
