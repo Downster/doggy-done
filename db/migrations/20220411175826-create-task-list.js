@@ -11,12 +11,14 @@ module.exports = {
       task_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {model:'Tasks'}
+        references: {model:'Tasks'},
+        onDelete: 'CASCADE'
       },
       list_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {model:'Lists'}
+        references: {model:'Lists'},
+        onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,
