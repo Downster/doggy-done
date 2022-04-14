@@ -4,6 +4,7 @@ block append head
   link(rel="stylesheet" href="/stylesheets/main.css")
   link(rel="stylesheet" href="/stylesheets/sign-out-btn.css")
   linl(rel="stylesheet" href="/stylesheets/settings.css")
+  //- add page specific js
   script(src="/javascripts/navbar.js" type="module" defer)
   script(src="/javascripts/taskToggle.js" type="module" defer)
   script(src="/javascripts/displayTask.js" type="module" defer)
@@ -37,8 +38,6 @@ block content
                                 a(href="" id='todays-tasks-link') Today
                             li.menu-list
                                 a(href="" id='tomorrows-tasks-link') Tomorrow
-                            li.menu-list 
-                                a(href='' id='overdue-tasks-link') Overdue
                     li
                         input(type="checkbox" class='menu-checkbox' id='list-item-2')
                         label(for='list-item-2' class='menu-label') Lists

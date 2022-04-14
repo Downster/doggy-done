@@ -394,11 +394,27 @@ background: #003334;
 
 .settings-wheel-dropdown-container:hover .drop-down-content {display: block;}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 .app-dogs {
     display: none;
 }
 
 .app-dogs.active {
+=======
+.dogs-area {
+    display: none;
+}
+
+.dogs-area.active {
+>>>>>>> fcf44d5 (Dogs part 1)
+=======
+.app-dogs {
+    display: none;
+}
+
+.app-dogs.active {
+
     display: block;
 }
 
@@ -458,3 +474,5 @@ background: #003334;
     text-decoration: none;
     text-align: center;
 }
+
+
