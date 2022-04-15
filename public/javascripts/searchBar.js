@@ -23,15 +23,18 @@ const generateSearchArea = async () => {
   if (!document.getElementById("search-div")) {
     const searchDiv = document.createElement("div");
     searchDiv.id = "search-div";
-    searchDiv.classList.add("active");
+    searchDiv.classList.toggle("active");
     document.body.append(searchDiv);
-    const appBody = document.querySelector(".app-body");
-    const header = document.querySelector(".header-nav");
-    const navMenu = document.querySelector(".nav-menu-container");
-    appBody.classList.toggle("blur");
-    header.classList.toggle("blur");
-    navMenu.classList.toggle("blur");
+  } else {
+    const searchDiv = document.getElementById("search-div");
+    searchDiv.classList.toggle("active");
   }
+  const appBody = document.querySelector(".app-body");
+  const header = document.querySelector(".header-nav");
+  const navMenu = document.querySelector(".nav-menu-container");
+  appBody.classList.toggle("blur");
+  header.classList.toggle("blur");
+  navMenu.classList.toggle("blur");
 };
 document.addEventListener("DOMContentLoaded", function () {
   const searchBar = document.getElementById("search");
