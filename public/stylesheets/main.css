@@ -322,9 +322,8 @@ li.menu-list{
 #hamburger {
     position: absolute;
     top: -100px;
-}
-
-#search{
+  }
+#task-s{
     margin-top: 12px;
     margin-left: 10px;
     background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
@@ -338,6 +337,7 @@ li.menu-list{
     align-content: center;
     z-index: 5;
 }
+
 #sub-navigation {
 display: none;
 }
