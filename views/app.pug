@@ -3,7 +3,6 @@ include form-utils.pug
 block append head
   link(rel="stylesheet" href="/stylesheets/main.css")
   link(rel="stylesheet" href="/stylesheets/sign-out-btn.css")
-  linl(rel="stylesheet" href="/stylesheets/settings.css")
   link(rel="stylesheet" href="/stylesheets/settings.css")
   script(src="https://unpkg.com/dayjs@1.11.1/dayjs.min.js")
   script(src="https://unpkg.com/dayjs@1.11.1/plugin/relativeTime.js")
@@ -44,7 +43,7 @@ block content
             .menu-logo
                 img(id='menu-logo' src="/images/logo.png" alt="dogpic")
             nav.all-tasks
-                ul
+                ul.menu-items
                     li
                         input(type="checkbox" class='menu-checkbox' id='list-item-1')
                         label(for='list-item-1' class= 'menu-label') All tasks
