@@ -1,3 +1,26 @@
+
+div.settings-wheel-dropdown-container {
+    height: 50px;
+    width: 10%;
+    position: relative;
+    display:inline-block;
+    margin-top: 15px;
+    margin-left: 30%;
+    right: 10px;
+    background-color: green;
+    z-index: auto;
+}
+
+#wheel {
+    height: 100px;
+    width: 100px;
+}
+
+.drop-down-content{
+    display: none;
+    position: relative;
+    background-color: white;
+    min-width: 260px;
 .settings-wheel-dropdown-container {
     display: flex;
     justify-content: center;
@@ -30,6 +53,13 @@
 /* the links inside the dropdown */
 .drop-down-content a {
     color: black;
+
+    text-align: left;
+    display: block;
+}
+
+.settings-wheel-dropdown-container:hover .drop-down-content {display: block;}
+
     font-family: sans-serif;
     text-align: center;
     display: block;
@@ -47,3 +77,4 @@
 .drop-down-content a:hover {
     background-color: rgb(209, 216, 243);
 }
+

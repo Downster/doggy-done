@@ -443,6 +443,7 @@ background: #003334;
     font-family: 'Quicksand';
     line-height: 1.5em;
     font-size: 1.5rem;
+
     transition: font-size 0.3s, box-shadow 0.3s;
 }
 
@@ -461,6 +462,7 @@ background: #003334;
     text-align: center;
 }
 
+
 .single-dog.active {
     filter: invert(100%);
     box-shadow: 2px 5px 5px rgba(255,255,255,0.4);
@@ -475,3 +477,4 @@ background: #003334;
 .hidden {
     display: none;
 }
+
