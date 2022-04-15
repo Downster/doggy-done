@@ -28,8 +28,11 @@ mixin logoutButton()
 
 mixin unauth-nav()
   nav(class='unauth-nav')
+  div
     a(class='home' href='/') Doggy Done
+  div
     a(class='login' href="/users/login") Log in
+  div
     a(class='sign-up' href="/users/register") Sign up for free
 mixin loginRedirectButton()
   a.userflow-login-button(href="/users/login") Log In
