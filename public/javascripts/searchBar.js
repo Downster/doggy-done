@@ -35,7 +35,7 @@ const generateSearchArea = async () => {
   navMenu.classList.toggle("blur");
 };
 document.addEventListener("DOMContentLoaded", function () {
-  const searchBar = document.getElementById("search");
+  const searchBar = document.getElementById("task-s");
 
   searchBar.addEventListener("click", generateSearchArea);
 

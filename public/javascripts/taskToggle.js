@@ -8,7 +8,7 @@ export const handleTaskToggler = async (e) => {
   if (document.getElementById("search-div").classList.contains("active")) {
     console.log("here");
     const searchDiv = document.getElementById("search-div");
-    const searchBar = document.getElementById("search");
+    const searchBar = document.getElementById("task-s");
     searchBar.value = "";
     searchDiv.classList.toggle("active");
     const appBody = document.querySelector(".app-body");
