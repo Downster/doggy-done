@@ -77,22 +77,6 @@ const pickBg = (dog) => {
   return bgImg[dog.breed_id % bgImg.length];
 };
 
-<<<<<<< HEAD
-export const filterTasksWithDogId = () => {
-    const allTasks = getAllTasks();
-    const dogHeaders = document.querySelectorAll('.single-dog.active');
-    console.log(dogHeaders);
-    allTasks.forEach(task => {
-        const [ , taskId ] = task.id.split("task-container-").map(e => e.toString());
-        console.log(taskId);
-        if (!window.filterTaskByDog.has(taskId) && (window.filterTaskByDog.length > 0 || dogHeaders.length > 0)) {
-            task.classList.add("hidden");
-        } else {
-            task.classList.remove("hidden");
-        }
-    });
-}
-=======
 const filterTasksWithDogId = () => {
   const allTasks = getAllTasks();
   const dogHeaders = document.querySelectorAll(".single-dog.active");
@@ -111,7 +95,6 @@ const filterTasksWithDogId = () => {
     }
   });
 };
->>>>>>> 88d7ff5 (Date is working)
 
 const handleDogClick = async (e) => {
   e.preventDefault();
@@ -164,32 +147,6 @@ const makeDogsArea = (dogs) => {
 };
 
 export const genDogsArea = async () => {
-<<<<<<< HEAD
-    const res = await fetchWithToken(`/dogs`);
-    const data = await res.json();
-    console.log(data);
-    const dogsArea = document.querySelector(".app-dogs");
-    const collapse = document.createElement("button");
-    collapse.classList.add('dog-area-collapse');
-    collapse.innerText = "My Dogs"
-    const dogList = document.createElement("div");
-    dogList.classList.add("my-dogs");
-    dogsArea.append(dogList);
-    makeDogsArea(data);
-    dogsArea.parentNode.insertBefore(collapse, dogsArea);
-    const form = await genNewDogForm();
-    const formCollapse = document.createElement("button");
-    formCollapse.classList.add('dog-area-form-collapse');
-    formCollapse.innerText = "New Doggo"
-    dogsArea.append(formCollapse);
-    dogsArea.append(form);
-    collapse.addEventListener("click", handleDogCollapse);
-    formCollapse.addEventListener("click", handleFormCollapse);
-    const addDogBtn = document.querySelector('.new-dog-submit-button')
-    addDogBtn.addEventListener("click", handleNewDog);
-
-}
-=======
   const res = await fetchWithToken(`/dogs`);
   const data = await res.json();
   const dogsArea = document.querySelector(".app-dogs");
@@ -212,4 +169,3 @@ export const genDogsArea = async () => {
   const addDogBtn = document.querySelector(".new-dog-submit-button");
   addDogBtn.addEventListener("click", handleNewDog);
 };
->>>>>>> 88d7ff5 (Date is working)

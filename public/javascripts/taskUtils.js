@@ -2,16 +2,7 @@ import { fetchWithToken } from "./utils.js";
 import { taskToggleListeners } from "./taskToggle.js";
 import { checkboxListeners } from "./completeTask.js";
 import { closeButtonListeners } from "./taskToggle.js";
-<<<<<<< HEAD
-import {
-  buildNewTasksAndFilter,
-  buildOverdueTasksAndFilter,
-} from "./dateLogic.js";
-import { makeCheckbox } from "./checkbox.js"
-import { filterTasksWithDogId } from "./dogUtils.js";
-=======
 import { buildNewTasksAndFilter } from "./dateLogic.js";
->>>>>>> 88d7ff5 (Date is working)
 const singleTaskClass = "single-task";
 const taskContainerPrefix = "task-container";
 const checkboxPrefix = "task-checkbox";
@@ -59,12 +50,12 @@ const buildTaskHTML = (task) => {
   const fake = document.createElement("div");
   fake.innerText = "🐾";
   fake.classList.add("fake-checkbox");
-  fake.setAttribute("id",  `fake-checkbox-${task.id}`);
+  fake.setAttribute("id", `fake-checkbox-${task.id}`);
   const icon = document.createElement("i");
   icon.classList.add("fa-solid");
   icon.classList.add("fa-check");
   icon.classList.add("checkbox-fake-check");
-  icon.setAttribute("id",  `checkbox-fake-check-${task.id}`);
+  icon.setAttribute("id", `checkbox-fake-check-${task.id}`);
   taskContainer.append(fake);
   taskContainer.append(checkbox);
   taskContainer.append(icon);
@@ -72,7 +63,7 @@ const buildTaskHTML = (task) => {
     checkbox.setAttribute("checked", true);
     icon.classList.add("active");
     fake.classList.add("active");
- }
+  }
   const anchor = document.createElement("a");
   anchor.setAttribute("href", "");
   anchor.classList.add(anchorClass);

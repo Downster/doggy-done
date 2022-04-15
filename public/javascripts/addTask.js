@@ -20,7 +20,7 @@ button.addEventListener("click", async (e) => {
       .id.split("edit-list-")
       .pop();
     const res = await fetchWithToken(`/lists/${listId}/tasks`, "POST", body);
-    // await populateTasksAndAddListeners("list", listId);
+    await populateTasksAndAddListeners("list", listId);
   } else {
     const res = await fetchWithToken("/tasks", "POST", body);
     await populateTasksAndAddListeners();
