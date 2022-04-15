@@ -528,8 +528,15 @@ background: #003334;
     font-size: 2rem;
 }
 
+<<<<<<< HEAD
 /* keep this at the end */
 
 .hidden {
     display: none;
 }
+=======
+.hidden {
+    display: none;
+}
+
+>>>>>>> fix css in checkbox
