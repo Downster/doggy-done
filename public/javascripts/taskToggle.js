@@ -3,8 +3,23 @@ import { genDogs, filterTasksWithDogId } from "./dogUtils.js";
 import { populateTasks, populateTasksAndAddListeners } from "./taskUtils.js";
 
 export const handleTaskToggler = async (e) => {
-  e.stopImmediatePropagation();
+  if (document.getElementById("search-div")) {
+    console.log("here");
+    const searchDiv = document.getElementById("search-div");
+    searchDiv.classList.toggle("active");
+    const appBody = document.querySelector(".app-body");
+    const header = document.querySelector(".header-nav");
+    const navMenu = document.querySelector(".nav-menu-container");
+    appBody.classList.toggle("blur");
+    header.classList.toggle("blur");
+    navMenu.classList.toggle("blur");
+  }
   e.preventDefault();
+<<<<<<< HEAD
+=======
+  e.stopImmediatePropagation();
+  console.log(e.currentTarget);
+>>>>>>> 6d94e6c (Everything is working)
   const id = e.currentTarget.id.split("task-click-").pop();
   const appRight = document.querySelector(".app-inner-body-right");
   const taskDetails = document.querySelector(".task-details");

@@ -1,24 +1,57 @@
-import { fetchWithToken } from "./utils.js";
+import { handleTaskToggler } from "./taskToggle.js";
 
-const searchBar = document.getElementById("search");
-
-const generateSearchArea = async () => {
-  const searchDiv = document.createElement("div");
-  searchDiv.id = "search-div";
-  console.log("generated");
+const generateSearchItems = (text) => {
+  const searchArea = document.getElementById("search-div");
+  if (searchArea.childNodes.length) {
+    const items = document.querySelectorAll(".task-click-search");
+    items.forEach((el) => {
+      el.remove();
+    });
+  }
+  text.forEach((ele) => {
+    const searchItem = document.createElement("a");
+    searchItem.id = ele[1];
+    searchItem.innerText = ele[0];
+    searchItem.href = null;
+    searchItem.classList.add("task-click-search");
+    searchArea.append(searchItem);
+    searchItem.addEventListener("click", handleTaskToggler);
+  });
 };
 
-searchBar.addEventListener("click", generateSearchArea);
+const generateSearchArea = async () => {
+  if (!document.getElementById("search-div")) {
+    const searchDiv = document.createElement("div");
+    searchDiv.id = "search-div";
+    searchDiv.classList.add("active");
+    document.body.append(searchDiv);
+    const appBody = document.querySelector(".app-body");
+    const header = document.querySelector(".header-nav");
+    const navMenu = document.querySelector(".nav-menu-container");
+    appBody.classList.toggle("blur");
+    header.classList.toggle("blur");
+    navMenu.classList.toggle("blur");
+  }
+};
+document.addEventListener("DOMContentLoaded", function () {
+  const searchBar = document.getElementById("search");
 
-searchBar.addEventListener("keyup", (e) => {
-  const currTasks = [];
-  const allTasks = document.querySelectorAll(".task-click");
-  console.log(e.target.value);
-  allTasks.forEach((el) => {
-    currTasks.push(el.innerText.toLowerCase());
+  searchBar.addEventListener("click", generateSearchArea);
+
+  searchBar.addEventListener("keyup", (e) => {
+    const currTasks = new Set();
+    const allTasks = document.querySelectorAll(".task-click");
+    allTasks.forEach((el) => {
+      currTasks.add(`${el.innerText.toLowerCase()}%${el.id}`);
+    });
+    const taskArray = [...currTasks];
+    const splitTasks = [];
+    taskArray.forEach((el) => {
+      splitTasks.push(el.split("%"));
+    });
+    const filteredTasks = splitTasks.filter(([task, taskId]) => {
+      return task.includes(e.target.value);
+    });
+    generateSearchItems(filteredTasks);
   });
-  const filteredTasks = currTasks.filter((task) =>
-    task.includes(e.target.value)
-  );
-  console.log(filteredTasks);
 });
