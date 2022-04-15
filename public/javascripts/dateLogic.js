@@ -1,11 +1,26 @@
 export const checkDayDifference = (date) => {
   if (date !== null) {
-    const dateObj = new Date(date);
-    const today = new Date();
+    const dateObj = adjustDateTime(new Date(date));
+    const today = adjustDateTime(new Date());
     const difference = dateObj - today;
     const difference_in_days = difference / (1000 * 3600 * 24);
     console.log(difference_in_days);
     return difference_in_days;
+  }
+};
+export const adjustDateTime = (date) => {
+  let getLocal = new Date();
+  getLocal = getLocal.toString().slice(28, 31);
+  let plusOrMinus;
+  if (getLocal[0] === "-") plusOrMinus = "+";
+  else plusOrMinus = "-";
+  let change = Number(getLocal.slice(1, 3));
+  if (plusOrMinus === "-") {
+    let adjustedDateTime = new Date(date.getTime() - change * 60 * 60 * 1000);
+    return adjustedDateTime;
+  } else {
+    let adjustedDateTime = new Date(date.getTime() + change * 60 * 60 * 1000);
+    return adjustedDateTime;
   }
 };
 
