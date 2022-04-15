@@ -202,6 +202,7 @@ border-bottom: 1px solid #fff;
     transition-timing-function: ease-in-out;
 }
 .header-nav {
+display: flex;
 position: fixed;
 top: 0;
 width: 100%;
