@@ -57,6 +57,8 @@ router.post(
 
 router.patch(
   "/:id",
+  csrfProtection,
+  taskValidators,
   asyncHandler(async (req, res, next) => {
     const taskId = req.params.id;
     const { detail, due_date } = req.body;
@@ -76,6 +78,62 @@ router.patch(
     }
   })
 );
+
+router.patch(
+    "/:taskId(\\d+)/dog/:dogId(\\d+)",
+    csrfProtection,
+    taskValidators,
+    asyncHandler(async (req, res, next) => {
+        const { taskId, dogId } = req.params;
+        const [task, dog] = await Promise.all([db.Task.findByPk(taskId), db.Dog.findByPk(dogId)]);
+        if (!task) {
+            const err = new Error("Task not found");
+            next(err);
+        } else if (!dog) {
+            const err = new Error("Dog not found");
+            next(err);
+        } else {
+            const permCheck = validateOwner(req, task);
+            if(!permCheck) {
+                return res.status(401).end();
+            } else {
+                task.dog_id = dogId;
+                await task.save();
+                res.json({ message: "Task updated! Woof!" });
+            }
+        }
+    })
+);
+
+
+router.patch(
+    "/:taskId(\\d+)/list/:listId(\\d+)",
+    csrfProtection,
+    taskValidators,
+    asyncHandler(async (req, res, next) => {
+        const { taskId, listId} = req.params;
+        const [task, list] = await Promise.all([db.Task.findByPk(taskId), db.Dog.findByPk(listId)]);
+        if (!task) {
+            const err = new Error("Task not found");
+            next(err);
+        } else if (!list) {
+            const err = new Error("List not found");
+            next(err);
+        } else {
+            const permCheck = validateOwner(req, task);
+            if(!permCheck) {
+                return res.status(401).end();
+            } else {
+                const listEntry = db.TaskList.build();
+                taskList.task_id = task.id;
+                taskList.list_id = list.id;
+                await listEntry.save();
+            }
+        }
+    })
+);
+
+
 
 router.put(
   "/:id/completed",
