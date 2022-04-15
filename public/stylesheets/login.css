@@ -1,0 +1,77 @@
+
+.userflow-friends{
+    display: flex;
+    justify-content: center;
+}
+
+.userflow-tagline{
+    display: flex;
+    justify-content: center;
+}
+
+.home-link{
+    display: flex;
+    justify-content: left;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    animation: dropIn 1s;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.signup{
+    margin-right: 10px
+}
+
+.dog4{
+    width: 490px;
+    height: auto
+}
+
+.dog5{
+    width: 510px;
+    height: auto
+}
+
+.dog6{
+    width: 510px;
+    height: auto
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+}
+
+.user-form-field{
+    display: flex;
+    justify-content: center;
+}
+
+.credentials{
+    margin-top: 20px;
+}
+
+.signup-redirect{
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes dropIn {
+    from {
+        top: 0%;
+        transform: translateY(-200%)
+
+    }
+    to {
+        top: 100%;
+        transform: translateY(0%)
+    }
+}
