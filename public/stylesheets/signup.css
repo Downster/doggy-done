@@ -17,6 +17,7 @@
 .logo{
     display: flex;
     justify-content: center;
+    animation: dropIn 1s;
 }
 
 .buttons{
@@ -52,4 +53,16 @@ h2{
 .user-form-field{
     display: flex;
     justify-content: center;
+}
+
+@keyframes dropIn {
+    from {
+        top: 0%;
+        transform: translateY(-200%)
+
+    }
+    to {
+        top: 100%;
+        transform: translateY(0%)
+    }
 }
