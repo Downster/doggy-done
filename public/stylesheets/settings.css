@@ -1,43 +1,26 @@
-
-div.settings-wheel-dropdown-container {
-    height: 50px;
-    width: 10%;
-    position: relative;
-    display:inline-block;
-    margin-top: 15px;
-    margin-left: 30%;
-    right: 10px;
-    background-color: green;
-    z-index: auto;
-}
-
-#wheel {
-    height: 100px;
-    width: 100px;
-}
-
-.drop-down-content{
-    display: none;
-    position: relative;
-    background-color: white;
-    min-width: 260px;
 .settings-wheel-dropdown-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 30px;
     width: 30px;
-    margin-bottom: 18px;
+    margin-bottom: 30px;
 }
 
-/* the actual button */
+/* the actual button the gear is on top of*/
 #settings-wheel-click {
-    position: absolute;
+    position: relative;
     background: none;
     border: none;
     height: 100%;
     width: 100%;
     cursor: pointer;
+    margin-right: 10px;
+}
+
+/* fontawesome icon */
+#gear-drop-down {
+    width: 100%;
 }
 
 /* div that has all the stuff */
@@ -53,19 +36,14 @@ div.settings-wheel-dropdown-container {
 /* the links inside the dropdown */
 .drop-down-content a {
     color: black;
-
     text-align: left;
     display: block;
 }
 
-.settings-wheel-dropdown-container:hover .drop-down-content {display: block;}
-
-    font-family: sans-serif;
-    text-align: center;
-    display: block;
-}
 
 .settings-wheel-dropdown-container:hover .drop-down-content {
+    font-family: sans-serif;
+    text-align: center;
     display: block;
     right: 0;
 }
@@ -77,4 +55,3 @@ div.settings-wheel-dropdown-container {
 .drop-down-content a:hover {
     background-color: rgb(209, 216, 243);
 }
-

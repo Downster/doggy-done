@@ -2,9 +2,9 @@
     position: sticky;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 110px;
+    width: 70px;
     height: 50px;
     z-index: 2;
     left: 90%;
