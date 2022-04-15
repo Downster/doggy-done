@@ -1,6 +1,11 @@
 import { fetchWithToken } from "./utils.js";
 import { getAllTasks } from "./taskUtils.js";
 
+export const genDogs = async () => {
+  const response =  await fetchWithToken("/dogs");
+  return await response.json();
+}
+
 const handleDogCollapse = (e) => {
   e.preventDefault();
   e.stopImmediatePropagation();
@@ -84,7 +89,7 @@ const pickBg = (dog) => {
   return bgImg[dog.breed_id % bgImg.length];
 };
 
-const filterTasksWithDogId = () => {
+export const filterTasksWithDogId = () => {
   const allTasks = getAllTasks();
   const dogHeaders = document.querySelectorAll(".single-dog.active");
   console.log(dogHeaders);
