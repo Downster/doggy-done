@@ -29,9 +29,10 @@
     display: none;
     position: relative;
     background-color: white;
-    width: 100%;
+    min-width: 100px;
+    float: right;
     right: 0;
-    z-index: 1;
+    z-index: 3;
 }
 
 /* the links inside the dropdown */

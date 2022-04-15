@@ -3,65 +3,69 @@
 * {
     font-family: 'Quicksand';
 }
-body {
-line-height: 14px;
-display: flex;
-justify-content: center;
--webkit-font-smoothing: antialiased;
-padding: 0;
-background-color:  #f7bf50;
-margin-inline: auto;
-overflow-x: hidden;
-box-sizing: border-box;
 
+body {
+    line-height: 14px;
+    display: flex;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+    background-color:  #f7bf50;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
+
 header{
     display: flex;
 }
 
 ul{
-list-style: none;
-margin: 0;
-padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .menu-label{
-display: block;
-cursor: pointer;
-padding: 10px;
-border-bottom: none;
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: none;
 }
 
 .menu-label:hover{
-background: #26C281;
+    background: #fe9054;
+    color: white;
+
 }
 
 li.menu-list{
-padding: 10px;
-background: #59ABE3;
+    padding: 10px;
+    background: #fbf8f2;
+    width: 100%;
 }
 
 
 .menu-checkbox{
-position: absolute;
-left: -9999px;
+    position: absolute;
+    left: -9999px;
 }
 
 .menu-checkbox ~ ul{
-height: 0;
-transform: scaleY(0);
+    height: 0;
+    transform: scaleY(0);
 }
 
 .menu-checkbox:checked ~ ul{
-height: 100%;
-transform-origin: top;
-transition: transform .2s ease-out;
-transform: scaleY(1);
+    height: 100%;
+    transform-origin: top;
+    transition: transform .2s ease-out;
+    transform: scaleY(1);
 }
 
 .menu-checkbox:checked + label{
-background: #26C281;
-border-bottom: 1px solid #fff;
+    background: #fd880bd7;
+    border-bottom: 1px solid #fff;
 }
 
 .add-contact{
@@ -86,15 +90,14 @@ border-bottom: 1px solid #fff;
     left: 5%;
 }
 
-
 .task-submit.active{
     visibility: visible;
 }
+
 .app-create-task{
     padding-top: 20px;
     padding-left: 10px;
     display: flex;
-
 }
 
 .add-list{
@@ -109,18 +112,19 @@ border-bottom: 1px solid #fff;
 
 .menu-logo{
     display: flex;
-
 }
 
 .add-list-form{
     position: absolute;
     opacity: 0;
+    width: 0%;
 }
+
 .blur {
     filter: blur(8px);
     height: 100vh;
     width: 100%;
-  }
+}
 
 .list-tasks{
     visibility: hidden;
@@ -149,11 +153,14 @@ border-bottom: 1px solid #fff;
 .app-body{
     border-radius: 10px;
     display: flex;
-    width: min(100% - 3rem);
-    height: 94%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: min(95%);
+    height: 92%;
     left: 1%;
     transform: translateY(60px);
-    background-color: #003334;
+    background-color: #fd880bd7;
     position: absolute;
     transition-property: left, width;
     transition-duration: .7s;
@@ -166,7 +173,7 @@ border-bottom: 1px solid #fff;
     width: min(50%);
     height: min(100% );
     margin-inline: auto;
-    background-color: aqua;
+    background-color: rgb(249, 237, 213);
 }
 
 .app-inner-body-right{
@@ -175,7 +182,7 @@ border-bottom: 1px solid #fff;
     width: min(50%);
     height: min(100% );
     margin-inline: auto;
-    background-color: rgb(255, 0, 191);
+    background-color: rgb(251, 225, 181);
 }
 .app-inner-body-right.active{
     visibility: visible;
@@ -183,16 +190,19 @@ border-bottom: 1px solid #fff;
 
 .nav-menu-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
+    align-items: flex-start;
     width: 20%;
     height: 1000px;
-    transform: translateX(-218%);
+    transform: translateX(-230%);
 }
 
 .nav-menu{
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
     top: -100%;
     width: 12px;
     background-color: #f7bf50;
@@ -201,26 +211,36 @@ border-bottom: 1px solid #fff;
     transition-duration: .7s;
     transition-timing-function: ease-in-out;
 }
-.header-nav {
-display: flex;
-justify-content: flex-start;
-gap: 20px;
-position: fixed;
-top: 0;
-width: 100%;
-background: rgb(234, 218, 4);
-height: 50px;
-z-index: 2;
+
+.menu-items {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100px;
 }
+
+.header-nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgb(234, 218, 4);
+    height: 50px;
+    z-index: 3;
+}
+
 .nav-menu.active{
+    margin-left: 18px;
     display: flex;
     flex-direction: column;
     opacity: 1;
     position: relative;
     z-index: 2;
     top: 6%;
-    height: 100%;
+    height: 80%;
     width: 100%;
+    margin-right: 15%
 }
 
 .task-details{
@@ -236,18 +256,27 @@ z-index: 2;
     z-index: 3;
 }
 
+.task-details p {
+    display: hidden;
+    color: white;
+}
+
 .close-detail{
     transform: translateX(80%)
 }
 
 .task-details.active{
+    display: flex;
+    justify-content: center;
+    align-items: fle;
     visibility: visible;
     right: -3%;
-    background-color: #003334;
+    background-color: #ffffff;
     top: 1%;
     width: 50%;
     height: min(100% -4rem);
     transform: translate(-300px 300px);
+    border-radius: 10px 10px 10px 10px;
 }
 .app-body.active{
     display: flex;
@@ -296,6 +325,7 @@ z-index: 2;
   }
 #task-s{
     margin-top: 12px;
+    margin-left: 10px;
     background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
     background-repeat: no-repeat;
     background-position: left center;
@@ -307,6 +337,7 @@ z-index: 2;
     align-content: center;
     z-index: 5;
 }
+
 #sub-navigation {
 display: none;
 }
@@ -356,14 +387,14 @@ box-sizing: border-box;
 
 #sub-nav-toggle:hover,
 .nav-item:hover {
-background: #006667;
+background: #fe9054;
 }
 #sub-nav-toggle:active,
 .nav-item:active {
-background: #004d4d;
+background: #fe9054;
 }
 #hamburger:checked ~ #navigation-links label {
-background: #006667;
+background: #fe9054;
 }
 #hamburger:checked ~ #navigation-links label span:after {
 content: "\2715";
@@ -372,17 +403,19 @@ content: "\2715";
 clear: both;
 }
 #sub-navigation .nav-item {
-background: #006667;
-display: block;
-width: 200px;
-text-align: left;
+    background: #fe9054;
+    display: block;
+    width: 200px;
+    text-align: left;
 }
 
 #sub-navigation .nav-item:hover {
-background: #004d4d;
+    background: #fe9054;
+    border: solid white 2px;
+
 }
 #sub-navigation .nav-item:active {
-background: #003334;
+    background: #c6f3f4;
 }
 
 #task-input{
