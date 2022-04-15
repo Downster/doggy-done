@@ -2,48 +2,10 @@ import { fetchWithToken } from "./utils.js";
 import { taskToggleListeners } from "./taskToggle.js";
 import { checkboxListeners } from "./completeTask.js";
 import { closeButtonListeners } from "./taskToggle.js";
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f581fca (Mostly solved)
-=======
->>>>>>> 6dac566 (Dates mostly working)
-=======
-=======
->>>>>>> c41de1e (Mostly solved)
->>>>>>> 5a3ed4a (Mostly solved)
-=======
->>>>>>> 0f37de1 (Fixed some bugs testing to see if works before pushing)
 import {
   buildNewTasksAndFilter,
   buildOverdueTasksAndFilter,
 } from "./dateLogic.js";
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import { buildNewTasksAndFilter, checkDayDifference } from "./dateLogic.js";
->>>>>>> 85b8179 (Dates mostly working)
-=======
->>>>>>> f581fca (Mostly solved)
-=======
-=======
-import { buildNewTasksAndFilter, checkDayDifference } from "./dateLogic.js";
->>>>>>> a0962a4 (Dates mostly working)
->>>>>>> 6dac566 (Dates mostly working)
-=======
-=======
-import { buildNewTasksAndFilter, checkDayDifference } from "./dateLogic.js";
->>>>>>> a0962a4 (Dates mostly working)
-=======
->>>>>>> c41de1e (Mostly solved)
->>>>>>> 5a3ed4a (Mostly solved)
-=======
->>>>>>> 0f37de1 (Fixed some bugs testing to see if works before pushing)
 const singleTaskClass = "single-task";
 const taskContainerPrefix = "task-container";
 const checkboxPrefix = "task-checkbox";
@@ -68,46 +30,11 @@ export const genTasks = async (type, listId) => {
     const { tasks } = await res.json();
     const sortedTask = buildNewTasksAndFilter(tasks, 2);
     return sortedTask;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f581fca (Mostly solved)
-=======
->>>>>>> 6dac566 (Dates mostly working)
-=======
-=======
->>>>>>> c41de1e (Mostly solved)
->>>>>>> 5a3ed4a (Mostly solved)
-=======
->>>>>>> 0f37de1 (Fixed some bugs testing to see if works before pushing)
   } else if (type === "overdue") {
     const res = await fetchWithToken("/tasks");
     const { tasks } = await res.json();
     const sortedTask = buildOverdueTasksAndFilter(tasks, 0);
     return sortedTask;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 85b8179 (Dates mostly working)
-=======
->>>>>>> f581fca (Mostly solved)
-=======
-=======
->>>>>>> a0962a4 (Dates mostly working)
->>>>>>> 6dac566 (Dates mostly working)
-=======
-=======
->>>>>>> a0962a4 (Dates mostly working)
-=======
->>>>>>> c41de1e (Mostly solved)
->>>>>>> 5a3ed4a (Mostly solved)
-=======
->>>>>>> 0f37de1 (Fixed some bugs testing to see if works before pushing)
   } else {
     const res = await fetchWithToken(`/lists/${listId}`, "GET");
     const data = await res.json();

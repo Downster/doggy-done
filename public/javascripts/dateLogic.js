@@ -41,21 +41,6 @@ export const buildNewTasksAndFilter = (tasks, dayDifference) => {
 
   return sortedTasks;
 };
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f581fca (Mostly solved)
-=======
->>>>>>> 6dac566 (Dates mostly working)
-=======
-=======
->>>>>>> c41de1e (Mostly solved)
->>>>>>> 5a3ed4a (Mostly solved)
-=======
->>>>>>> 0f37de1 (Fixed some bugs testing to see if works before pushing)
 
 export const buildOverdueTasksAndFilter = (tasks, dayDifference) => {
   const taskArray = tasks.map((taskObj) => Object.entries(taskObj));
@@ -88,23 +73,3 @@ export const buildOverdueTasksAndFilter = (tasks, dayDifference) => {
 
   return sortedTasks;
 };
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 85b8179 (Dates mostly working)
-=======
->>>>>>> f581fca (Mostly solved)
-=======
-=======
->>>>>>> a0962a4 (Dates mostly working)
->>>>>>> 6dac566 (Dates mostly working)
-=======
-=======
->>>>>>> a0962a4 (Dates mostly working)
-=======
->>>>>>> c41de1e (Mostly solved)
->>>>>>> 5a3ed4a (Mostly solved)
-=======
->>>>>>> 0f37de1 (Fixed some bugs testing to see if works before pushing)
