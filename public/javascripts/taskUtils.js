@@ -86,3 +86,5 @@ export const populateTasksAndAddListeners = async (type, listId) => {
   closeButtonListeners();
   checkboxListeners();
 };
+
+export const getAllTasks = () => document.querySelectorAll('.single-task');
