@@ -2,6 +2,7 @@ import { fetchWithToken } from "./utils.js";
 import { populateTasksAndAddListeners } from "./taskUtils.js";
 const submitDiv = document.querySelector(".task-submit");
 const button = submitDiv.lastChild;
+console.log(button);
 
 button.addEventListener("click", async (e) => {
   const input = document.getElementById("task-input");
@@ -14,7 +15,6 @@ button.addEventListener("click", async (e) => {
     completed: false,
   });
   if (document.querySelector(".edit-list-button")) {
-    console.log("here");
     const listId = document
       .querySelector(".edit-list-button")
       .id.split("edit-list-")
