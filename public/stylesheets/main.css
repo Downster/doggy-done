@@ -385,8 +385,9 @@ background: #003334;
     flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
-    gap: 2em;
+    gap: 3em;
     margin: 1em;
+    padding: 1em;
 }
 
 .my-dogs .single-dog {
@@ -408,7 +409,6 @@ background: #003334;
     font-family: 'Quicksand';
     line-height: 1.5em;
     font-size: 1.5rem;
-
     transition: font-size 0.3s, box-shadow 0.3s;
 }
 
@@ -428,15 +428,40 @@ background: #003334;
 }
 
 
-.single-dog.active {
-    filter: invert(100%);
-    box-shadow: 2px 5px 5px rgba(255,255,255,0.4);
+.single-dog:not(.inactive) {
+    box-shadow: 2px 5px 5px rgba(0,0,0,0.4);
+    animation: duration 1s;
+    animation-name: lazybounce;
+    animation-iteration-count: 1;
 }
+
+.single-dog.active {
+    box-shadow: 2px 5px 5px rgba(0,0,0,0.4);
+    animation: duration 1s;
+    animation-name: lazybounce2;
+    animation-iteration-count: 1;
+}
+
+@keyframes lazybounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+ }
+
+ @keyframes lazybounce2 {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-20px);}
+    60% {transform: translateY(-10px);}
+ }
 
 .single-dog.active a {
     font-size: 2rem;
     font-weight: bold;
-    text-shadow: 2px 2px 0px rgba(255,255,255,0.4);
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.4);
+}
+
+.single-dog.inactive {
+    filter: grayscale(100%) blur(1px);
 }
 
 .single-task {
