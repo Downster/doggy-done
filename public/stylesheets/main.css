@@ -203,6 +203,8 @@ border-bottom: 1px solid #fff;
 }
 .header-nav {
 display: flex;
+justify-content: flex-start;
+gap: 20px;
 position: fixed;
 top: 0;
 width: 100%;
@@ -258,6 +260,17 @@ z-index: 2;
     height: 94%;
 }
 
+.search-container{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: -.2%;
+    z-index: 5;
+
+}
+
 #detail-date{
     width: 40%;
 }
@@ -286,16 +299,34 @@ z-index: 2;
     background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
     background-repeat: no-repeat;
     background-position: left center;
+    width: 300px;
     padding-left: 40px;
     display: flex;
+    justify-content: center;
     height: 25px;
     align-content: center;
+    z-index: 5;
 }
 #sub-navigation {
 display: none;
 }
 #hamburger:checked ~ #sub-navigation {
 display: block;
+}
+
+#search-div{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top:3.5%;
+    width: 300px;
+    height: 300px;
+    background-color: #f7bf50;
+    z-index: 5;
+    visibility: hidden;
+}
+#search-div.active{
+    visibility: visible;
 }
 #sub-nav-toggle span:after {
 width: 50px;
@@ -476,6 +507,7 @@ background: #003334;
 .single-task a {
     text-decoration: none;
 }
+
 
 .task-checkbox {
     z-index: 100;
