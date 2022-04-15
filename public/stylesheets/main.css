@@ -474,7 +474,62 @@ background: #003334;
     text-shadow: 2px 2px 0px rgba(255,255,255,0.4);
 }
 
+.single-task {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+    margin: 0.5em;
+}
+
+.single-task a {
+    text-decoration: none;
+}
+
+.task-checkbox {
+    z-index: 100;
+    opacity: 0%;
+    height: 30px;
+    width: 30px;
+}
+
+.fake-checkbox {
+    position: absolute;
+    left: 0px;
+    z-index: 1;
+    pointer-events: none;
+    font-size: 2rem;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #f7bf50;
+    box-shadow: 2px 1px 1px rgba(0,0,0,0.4);
+}
+
+.checkbox-fake-check {
+    position: absolute;
+    z-index: 1;
+    opacity: 0%;
+    height: 30px;
+    width: 30px;
+    pointer-events: none;
+}
+
+.fake-checkbox.active {
+    background-color: green;
+}
+
+.checkbox-fake-check.active {
+    opacity: 100%;
+    height: 30px;
+    width: 30px;
+    font-size: 2rem;
+}
+
+/* keep this at the end */
+
 .hidden {
     display: none;
 }
-

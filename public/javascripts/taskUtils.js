@@ -6,6 +6,7 @@ import {
   buildNewTasksAndFilter,
   buildOverdueTasksAndFilter,
 } from "./dateLogic.js";
+import { makeCheckbox } from "./checkbox.js"
 const singleTaskClass = "single-task";
 const taskContainerPrefix = "task-container";
 const checkboxPrefix = "task-checkbox";
@@ -50,10 +51,23 @@ const buildTaskHTML = (task) => {
   checkbox.setAttribute("type", "checkbox");
   checkbox.setAttribute("id", `${checkboxPrefix}-${task.id}`);
   checkbox.classList.add(checkboxClass);
+  const fake = document.createElement("div");
+  fake.innerText = "🐾";
+  fake.classList.add("fake-checkbox");
+  fake.setAttribute("id",  `fake-checkbox-${task.id}`);
+  const icon = document.createElement("i");
+  icon.classList.add("fa-solid");
+  icon.classList.add("fa-check");
+  icon.classList.add("checkbox-fake-check");
+  icon.setAttribute("id",  `checkbox-fake-check-${task.id}`);
+  taskContainer.append(fake);
+  taskContainer.append(checkbox);
+  taskContainer.append(icon);
   if (task.completed) {
     checkbox.setAttribute("checked", true);
-  }
-  taskContainer.append(checkbox);
+    icon.classList.add("active");
+    fake.classList.add("active");
+ }
   const anchor = document.createElement("a");
   anchor.setAttribute("href", "");
   anchor.classList.add(anchorClass);
