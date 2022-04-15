@@ -28,13 +28,15 @@ export const buildSelectWithIdValues = (data, selectedMatch, styleClass, styleId
     const select = document.createElement("select");
     select.classList.add(styleClass);
     select.setAttribute("id", styleId);
-    const defaultOpt = document.createElement("option").innerText = "-------";
+    const defaultOpt = document.createElement("option")
+    defaultOpt.innerText = "--- Select a dog ---";
+    defaultOpt.setAttribute("default", true);
     select.append(defaultOpt);
     for (let datum of data) {
       const option = document.createElement("option");
       option.setAttribute("value", datum.id);
       option.innerText = datum.name;
-      if(selectedMatch.toString() === datum.id.toString()) {
+      if(selectedMatch && selectedMatch.toString() === datum.id.toString()) {
         option.setAttribute("selected", true);
       }
       select.append(option);
@@ -46,10 +48,12 @@ const handleDogSelect = async (e) => {
   const [ , taskId ] = e.currentTarget.id.split('task-update-dropdown-dog-');
   const select = e.currentTarget;
   const dogId = select.value;
-  await fetchWithToken(`/tasks/${taskId}/dog/${dogId}`, "PATCH");
-  const newDogIsActive = document.querySelector(`#single-dog-${dogId}`);
-  newDogIsActive ? window.filterTaskByDog.add(taskId.toString()) : window.filterTaskByDog.delete(taskId.toString());
-  filterTasksWithDogId();
+  if (dogId) {
+    await fetchWithToken(`/tasks/${taskId}/dog/${dogId}`, "PATCH");
+    const newDogIsActive = document.querySelector(`#single-dog-${dogId}`);
+    newDogIsActive ? window.filterTaskByDog.add(taskId.toString()) : window.filterTaskByDog.delete(taskId.toString());
+    filterTasksWithDogId();
+  }
 }
 
 export const genDogsForm = async (task) => {
