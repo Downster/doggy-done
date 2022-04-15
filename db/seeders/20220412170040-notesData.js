@@ -1,4 +1,5 @@
-'use strict';
+"use strict";
+const dayjs = require("dayjs");
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -8,9 +9,19 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkInsert('Notes', [
-     {owner_id: 1, task_id: 1, text: 'Try a different trail', createdAt: new Date(), updatedAt: new Date() },
-  ], {});
+    return queryInterface.bulkInsert(
+      "Notes",
+      [
+        {
+          owner_id: 1,
+          task_id: 1,
+          text: "Try a different trail",
+          createdAt: dayjs().toDate(),
+          updatedAt: dayjs().toDate(),
+        },
+      ],
+      {}
+    );
   },
 
   down: (queryInterface, Sequelize) => {
@@ -20,6 +31,6 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkDelete('Notes', null, {});
-  }
+    return queryInterface.bulkDelete("Notes", null, {});
+  },
 };

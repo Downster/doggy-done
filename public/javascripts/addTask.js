@@ -23,7 +23,7 @@ button.addEventListener("click", async (e) => {
     // await populateTasksAndAddListeners("list", listId);
   } else {
     const res = await fetchWithToken("/tasks", "POST", body);
-    await populateTasksAndAddListeners("task");
+    await populateTasksAndAddListeners();
   }
   //select div and re render
 });

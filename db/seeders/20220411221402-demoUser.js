@@ -1,5 +1,6 @@
 "use strict";
 const bcrypt = require("bcryptjs");
+const dayjs = require("dayjs");
 const password = "Password123!";
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -18,8 +19,8 @@ module.exports = {
             password: password,
             photo:
               "https://www.looper.com/img/gallery/heres-where-you-can-watch-despicable-me/intro-1634355974.webp",
-            createdAt: new Date(),
-            updatedAt: new Date(),
+            createdAt: dayjs().toDate(),
+            updatedAt: dayjs().toDate(),
           },
         ],
         {}

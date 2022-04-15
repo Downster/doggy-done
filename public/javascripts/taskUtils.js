@@ -2,12 +2,16 @@ import { fetchWithToken } from "./utils.js";
 import { taskToggleListeners } from "./taskToggle.js";
 import { checkboxListeners } from "./completeTask.js";
 import { closeButtonListeners } from "./taskToggle.js";
+<<<<<<< HEAD
 import {
   buildNewTasksAndFilter,
   buildOverdueTasksAndFilter,
 } from "./dateLogic.js";
 import { makeCheckbox } from "./checkbox.js"
 import { filterTasksWithDogId } from "./dogUtils.js";
+=======
+import { buildNewTasksAndFilter } from "./dateLogic.js";
+>>>>>>> 88d7ff5 (Date is working)
 const singleTaskClass = "single-task";
 const taskContainerPrefix = "task-container";
 const checkboxPrefix = "task-checkbox";
@@ -25,19 +29,19 @@ export const genTasks = async (type, listId) => {
     const res = await fetchWithToken("/tasks");
     const { tasks } = await res.json();
     console.log(tasks);
-    const sortedTask = buildNewTasksAndFilter(tasks, 1, 0);
+    const sortedTask = buildNewTasksAndFilter(tasks, "today");
     return sortedTask;
   } else if (type === "tomorrow") {
     const res = await fetchWithToken("/tasks");
     const { tasks } = await res.json();
-    const sortedTask = buildNewTasksAndFilter(tasks, 2, 1);
+    const sortedTask = buildNewTasksAndFilter(tasks, "tomorrow");
     return sortedTask;
   } else if (type === "overdue") {
     const res = await fetchWithToken("/tasks");
     const { tasks } = await res.json();
-    const sortedTask = buildOverdueTasksAndFilter(tasks, 0);
+    const sortedTask = buildNewTasksAndFilter(tasks, "overdue");
     return sortedTask;
-  } else {
+  } else if (type === "list") {
     const res = await fetchWithToken(`/lists/${listId}`, "GET");
     const data = await res.json();
     return data;
@@ -122,4 +126,4 @@ export const populateTasksAndAddListeners = async (type, listId) => {
   checkboxListeners();
 };
 
-export const getAllTasks = () => document.querySelectorAll('.single-task');
+export const getAllTasks = () => document.querySelectorAll(".single-task");

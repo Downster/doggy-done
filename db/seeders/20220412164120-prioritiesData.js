@@ -1,4 +1,5 @@
 "use strict";
+const dayjs = require("dayjs");
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -11,9 +12,21 @@ module.exports = {
     return queryInterface.bulkInsert(
       "Priorities",
       [
-        { name: "High", createdAt: new Date(), updatedAt: new Date() },
-        { name: "Medium", createdAt: new Date(), updatedAt: new Date() },
-        { name: "Low", createdAt: new Date(), updatedAt: new Date() },
+        {
+          name: "High",
+          createdAt: dayjs().toDate(),
+          updatedAt: dayjs().toDate(),
+        },
+        {
+          name: "Medium",
+          createdAt: dayjs().toDate(),
+          updatedAt: dayjs().toDate(),
+        },
+        {
+          name: "Low",
+          createdAt: dayjs().toDate(),
+          updatedAt: dayjs().toDate(),
+        },
       ],
       {}
     );

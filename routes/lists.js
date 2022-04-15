@@ -28,7 +28,7 @@ router.get(
   "/:listId(\\d+)",
   asyncHandler(async (req, res, next) => {
     const { listId } = req.params;
-    console.log(listId);
+    console.log("this " + listId);
     const list = await db.List.findByPk(listId, {
       include: [{ model: db.Task }],
     });

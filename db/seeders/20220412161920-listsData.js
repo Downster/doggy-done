@@ -1,4 +1,5 @@
 "use strict";
+const dayjs = require("dayjs");
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -14,20 +15,20 @@ module.exports = {
         {
           name: "Today",
           owner_id: 1,
-          createdAt: new Date(),
-          updatedAt: new Date(),
+          createdAt: dayjs().toDate(),
+          updatedAt: dayjs().toDate(),
         },
         {
           name: "Work",
           owner_id: 1,
-          createdAt: new Date(),
-          updatedAt: new Date(),
+          createdAt: dayjs().toDate(),
+          updatedAt: dayjs().toDate(),
         },
         {
           name: "Home",
           owner_id: 1,
-          createdAt: new Date(),
-          updatedAt: new Date(),
+          createdAt: dayjs().toDate(),
+          updatedAt: dayjs().toDate(),
         },
       ],
       {}
