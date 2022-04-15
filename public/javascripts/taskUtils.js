@@ -7,7 +7,6 @@ import {
   buildOverdueTasksAndFilter,
 } from "./dateLogic.js";
 import { makeCheckbox } from "./checkbox.js"
-import { makeCheckbox } from "./checkbox.js";
 import { filterTasksWithDogId } from "./dogUtils.js";
 const singleTaskClass = "single-task";
 const taskContainerPrefix = "task-container";
