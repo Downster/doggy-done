@@ -10,7 +10,6 @@ export const handleTaskToggler = async (e) => {
   appRight.classList.toggle("active");
   taskDetails.classList.toggle("active");
 
-
   const res = await fetchWithToken(`/tasks/${id}`, "GET");
   const { task } = await res.json();
   const detailInput = taskDetails.getElementsByTagName("input");
@@ -23,9 +22,7 @@ export const handleTaskToggler = async (e) => {
   }
 };
 
-
 export const handleCloseButton = (e) => {
-  console.log("here");
   e.preventDefault();
   const appRight = document.querySelector(".app-inner-body-right");
   const taskDetails = document.querySelector(".task-details");

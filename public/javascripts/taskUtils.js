@@ -2,12 +2,7 @@ import { fetchWithToken } from "./utils.js";
 import { taskToggleListeners } from "./taskToggle.js";
 import { checkboxListeners } from "./completeTask.js";
 import { closeButtonListeners } from "./taskToggle.js";
-import {
-  buildNewTasksAndFilter,
-  buildOverdueTasksAndFilter,
-} from "./dateLogic.js";
-import { makeCheckbox } from "./checkbox.js"
-import { filterTasksWithDogId } from "./dogUtils.js";
+import { buildNewTasksAndFilter } from "./dateLogic.js";
 const singleTaskClass = "single-task";
 const taskContainerPrefix = "task-container";
 const checkboxPrefix = "task-checkbox";
@@ -25,19 +20,19 @@ export const genTasks = async (type, listId) => {
     const res = await fetchWithToken("/tasks");
     const { tasks } = await res.json();
     console.log(tasks);
-    const sortedTask = buildNewTasksAndFilter(tasks, 1, 0);
+    const sortedTask = buildNewTasksAndFilter(tasks, "today");
     return sortedTask;
   } else if (type === "tomorrow") {
     const res = await fetchWithToken("/tasks");
     const { tasks } = await res.json();
-    const sortedTask = buildNewTasksAndFilter(tasks, 2, 1);
+    const sortedTask = buildNewTasksAndFilter(tasks, "tomorrow");
     return sortedTask;
   } else if (type === "overdue") {
     const res = await fetchWithToken("/tasks");
     const { tasks } = await res.json();
-    const sortedTask = buildOverdueTasksAndFilter(tasks, 0);
+    const sortedTask = buildNewTasksAndFilter(tasks, "overdue");
     return sortedTask;
-  } else {
+  } else if (type === "list") {
     const res = await fetchWithToken(`/lists/${listId}`, "GET");
     const data = await res.json();
     return data;
@@ -55,12 +50,12 @@ const buildTaskHTML = (task) => {
   const fake = document.createElement("div");
   fake.innerText = "🐾";
   fake.classList.add("fake-checkbox");
-  fake.setAttribute("id",  `fake-checkbox-${task.id}`);
+  fake.setAttribute("id", `fake-checkbox-${task.id}`);
   const icon = document.createElement("i");
   icon.classList.add("fa-solid");
   icon.classList.add("fa-check");
   icon.classList.add("checkbox-fake-check");
-  icon.setAttribute("id",  `checkbox-fake-check-${task.id}`);
+  icon.setAttribute("id", `checkbox-fake-check-${task.id}`);
   taskContainer.append(fake);
   taskContainer.append(checkbox);
   taskContainer.append(icon);
@@ -68,7 +63,7 @@ const buildTaskHTML = (task) => {
     checkbox.setAttribute("checked", true);
     icon.classList.add("active");
     fake.classList.add("active");
- }
+  }
   const anchor = document.createElement("a");
   anchor.setAttribute("href", "");
   anchor.classList.add(anchorClass);
@@ -122,4 +117,4 @@ export const populateTasksAndAddListeners = async (type, listId) => {
   checkboxListeners();
 };
 
-export const getAllTasks = () => document.querySelectorAll('.single-task');
+export const getAllTasks = () => document.querySelectorAll(".single-task");

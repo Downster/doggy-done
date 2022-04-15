@@ -9,10 +9,12 @@ block append head
   script(src="https://unpkg.com/dayjs@1.11.1/plugin/relativeTime.js")
   script(src="https://unpkg.com/dayjs@1.11.1/plugin/isSameOrBefore.js")
   script(src="https://unpkg.com/dayjs@1.11.1/plugin/isSameOrAfter.js")
+  script(src="https://unpkg.com/dayjs@1.11.1/plugin/isBetween.js")
   script.
     dayjs.extend(dayjs_plugin_relativeTime);
     dayjs.extend(dayjs_plugin_isSameOrBefore);
     dayjs.extend(dayjs_plugin_isSameOrAfter);
+    dayjs.extend(dayjs_plugin_isBetween);
   link(rel="stylesheet" href="/stylesheets/signOut-settings-container.css")
   link(rel="stylesheet" href="/stylesheets/fontawesome/css/all.css")
   //- add page specific js
