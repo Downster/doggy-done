@@ -1,4 +1,5 @@
 import { fetchWithToken } from "./utils.js"
+import { getAllTasks } from "./taskUtils.js";
 
 const handleDogCollapse = (e) => {
     e.preventDefault();
@@ -72,23 +73,62 @@ const pickBg = (dog) => {
         '../images/dogbg0.png',
         '../images/dogbg1.png',
         '../images/dogbg2.png',
-        '../public/images/dogbg3.png',
+        '../images/dogbg3.png',
     ];
     console.log(dog);
     return bgImg[dog.breed_id % bgImg.length];
 }
 
+
+const filterTasksWithDogId = () => {
+    const allTasks = getAllTasks();
+    const dogHeaders = document.querySelectorAll('.single-dog.active');
+    console.log(dogHeaders);
+    allTasks.forEach(task => {
+        const [ , taskId ] = task.id.split("task-container-").map(e => e.toString());
+        console.log(taskId);
+        if (!window.filterTaskByDog.has(taskId) && (window.filterTaskByDog.length > 0 || dogHeaders.length > 0)) {
+            task.classList.add("hidden");
+        } else {
+            task.classList.remove("hidden");
+        }
+    });
+}
+
+const handleDogClick = async (e) => {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    const [ , dogId ] = e.target.id.split("single-dog-content-");
+    console.log(dogId);
+    const parent = e.target.parentNode;
+    parent.classList.toggle("active");
+    console.log("hello");
+    const dogRes = await fetchWithToken(`/dogs/${dogId}`);
+    const data = await dogRes.json();
+    const dogTasks = data.Tasks.map(task => task.id.toString());
+    // filtertaskbydog is set in dogsload.js
+    if (parent.classList.contains("active")) {
+        window.filterTaskByDog = new Set([...window.filterTaskByDog, ...dogTasks])
+    } else {
+        for (let dogTask of dogTasks) {
+            window.filterTaskByDog.delete(dogTask);
+            console.log(window.filterTaskByDog);
+        }
+    }
+    filterTasksWithDogId();
+}
+
 const makeSingleDogArea = (dog) => {
-    console.log("hello")
     const entry = document.createElement("li");
     entry.classList.add("single-dog");
     entry.setAttribute("id", `$single-dog-${dog.id}`);
     const dogView = document.createElement("a");
     dogView.classList.add('.single-dog-content')
+    dogView.setAttribute('id', `.single-dog-content-${dog.id}`);
     const bgSrc = pickBg(dog);
-    console.log(bgSrc);
     entry.style.backgroundImage = `url(${bgSrc})`;
     entry.append(dogView);
+    dogView.addEventListener("click", handleDogClick);
     dogView.innerText = dog.name;
     return entry;
 }

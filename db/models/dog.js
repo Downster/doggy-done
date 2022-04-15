@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Dog.belongsTo(models.Breed, { foreignKey: "breed_id" }),
     Dog.belongsTo(models.User, { foreignKey: "owner_id" });
+    Dog.hasMany(models.Task, {foreignKey: "dog_id"});
   };
   return Dog;
 };
