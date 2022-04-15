@@ -202,6 +202,7 @@ border-bottom: 1px solid #fff;
     transition-timing-function: ease-in-out;
 }
 .header-nav {
+display: flex;
 position: fixed;
 top: 0;
 width: 100%;
@@ -442,6 +443,8 @@ background: #003334;
     font-family: 'Quicksand';
     line-height: 1.5em;
     font-size: 1.5rem;
+
+    transition: font-size 0.3s, box-shadow 0.3s;
 }
 
 .single-dog:hover {
@@ -458,3 +461,20 @@ background: #003334;
     text-decoration: none;
     text-align: center;
 }
+
+
+.single-dog.active {
+    filter: invert(100%);
+    box-shadow: 2px 5px 5px rgba(255,255,255,0.4);
+}
+
+.single-dog.active a {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 0px rgba(255,255,255,0.4);
+}
+
+.hidden {
+    display: none;
+}
+

@@ -18,4 +18,23 @@
 
 button:hover {
     cursor: pointer;
+    display: hidden;
+}
+
+#nav-sign-out {
+    background-color: #F7BF50;
+    color: #413f32;
+    border: solid #F7BF50 1px;
+    border-radius: 8%;
+    font-size: 13px;
+    font-weight: bold;
+    width: 75px;
+    height: 35px;
+    margin-bottom: 18px;
+}
+
+#nav-sign-out:hover {
+    cursor: pointer;
+    background-color :#ef7a3b;
+    color: white;
 }

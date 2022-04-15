@@ -2,10 +2,9 @@ body{
     background-color: #f7bf50;
 }
 .header{
-
     display: flex;
     justify-content: center;
-    padding-top: 250px;
+    padding-top: 10px;
 }
 .demo{
     margin-left: 5px;
@@ -15,6 +14,7 @@ body{
     display: flex;
     justify-content: center;
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .login{
@@ -25,10 +25,17 @@ a:hover{
     color: red;
 }
 
+.logo{
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
 h1,button{
     animation: fadeIn linear 2s;
-
 }
+
+
 
 @keyframes fadeIn{
     0%{
@@ -37,4 +44,23 @@ h1,button{
     100%{
         opacity: 1;
     }
+}
+
+.slide{
+    display: none;
+}
+
+.slide.active{
+    display: block;
+    width: 500px;
+    height: auto;
+
+}
+#might-be-slide-show{
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes pictureFade{
+
 }

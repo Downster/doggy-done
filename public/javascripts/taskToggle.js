@@ -10,6 +10,7 @@ export const handleTaskToggler = async (e) => {
   appRight.classList.toggle("active");
   taskDetails.classList.toggle("active");
 
+
   const res = await fetchWithToken(`/tasks/${id}`, "GET");
   const { task } = await res.json();
   const detailInput = taskDetails.getElementsByTagName("input");
@@ -21,6 +22,7 @@ export const handleTaskToggler = async (e) => {
     dueDate[0].value = task.due_date.split("T")[0];
   }
 };
+
 
 export const handleCloseButton = (e) => {
   console.log("here");

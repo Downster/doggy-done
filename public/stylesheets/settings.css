@@ -1,3 +1,4 @@
+
 div.settings-wheel-dropdown-container {
     height: 50px;
     width: 10%;
@@ -20,14 +21,60 @@ div.settings-wheel-dropdown-container {
     position: relative;
     background-color: white;
     min-width: 260px;
+.settings-wheel-dropdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    margin-bottom: 18px;
+}
+
+/* the actual button */
+#settings-wheel-click {
+    position: absolute;
+    background: none;
+    border: none;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* div that has all the stuff */
+.drop-down-content {
+    display: none;
+    position: relative;
+    background-color: white;
+    width: 100%;
+    right: 0;
     z-index: 1;
 }
 
 /* the links inside the dropdown */
 .drop-down-content a {
     color: black;
+
     text-align: left;
     display: block;
 }
 
 .settings-wheel-dropdown-container:hover .drop-down-content {display: block;}
+
+    font-family: sans-serif;
+    text-align: center;
+    display: block;
+}
+
+.settings-wheel-dropdown-container:hover .drop-down-content {
+    display: block;
+    right: 0;
+}
+
+#settings-wheel-click:hover {
+    cursor: pointer;
+}
+
+.drop-down-content a:hover {
+    background-color: rgb(209, 216, 243);
+}
+

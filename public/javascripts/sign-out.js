@@ -1,5 +1,4 @@
 import { fetchWithToken } from "./utils.js";
-
 const signOutBtn = document.getElementById("nav-sign-out");
 
 signOutBtn.addEventListener("click", async (e) => {
@@ -9,3 +8,4 @@ signOutBtn.addEventListener("click", async (e) => {
     headers: { "Content-Type": "text/html" },
   });
 });
+

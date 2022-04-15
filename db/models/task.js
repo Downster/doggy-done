@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     Task.belongsTo(models.Priority, { foreignKey: "priority" });
     Task.belongsToMany(models.List, columnMap);
     Task.belongsTo(models.Dog, { foreignKey: "dog_id" });
+
   };
   return Task;
 };
