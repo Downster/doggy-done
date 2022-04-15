@@ -1,0 +1,55 @@
+
+.userflow-friends{
+    display: flex;
+    justify-content: center;
+}
+
+.userflow-tagline{
+    display: flex;
+    justify-content: center;
+}
+
+.home-link{
+    display: flex;
+    justify-content: left;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.signup{
+    margin-right: 10px
+}
+
+.dog1{
+    width: 500px;
+    height: auto
+}
+
+.dog2{
+    width: 500px;
+    height: auto
+}
+
+.dog3{
+    width: 500px;
+    height: auto
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+}
+
+.user-form-field{
+    display: flex;
+    justify-content: center;
+}
