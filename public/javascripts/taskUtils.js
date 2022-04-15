@@ -23,12 +23,12 @@ export const genTasks = async (type, listId) => {
     const res = await fetchWithToken("/tasks");
     const { tasks } = await res.json();
     console.log(tasks);
-    const sortedTask = buildNewTasksAndFilter(tasks, 1);
+    const sortedTask = buildNewTasksAndFilter(tasks, 1, 0);
     return sortedTask;
   } else if (type === "tomorrow") {
     const res = await fetchWithToken("/tasks");
     const { tasks } = await res.json();
-    const sortedTask = buildNewTasksAndFilter(tasks, 2);
+    const sortedTask = buildNewTasksAndFilter(tasks, 2, 1);
     return sortedTask;
   } else if (type === "overdue") {
     const res = await fetchWithToken("/tasks");

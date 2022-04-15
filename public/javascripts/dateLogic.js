@@ -2,13 +2,14 @@ export const checkDayDifference = (date) => {
   if (date !== null) {
     const dateObj = new Date(date);
     const today = new Date();
-    const difference = today - dateObj;
+    const difference = dateObj - today;
     const difference_in_days = difference / (1000 * 3600 * 24);
+    console.log(difference_in_days);
     return difference_in_days;
   }
 };
 
-export const buildNewTasksAndFilter = (tasks, dayDifference) => {
+export const buildNewTasksAndFilter = (tasks, dayDifference, dayBottom) => {
   const taskArray = tasks.map((taskObj) => Object.entries(taskObj));
   console.log(taskArray);
   const filteredTasks = taskArray.filter(
@@ -25,7 +26,7 @@ export const buildNewTasksAndFilter = (tasks, dayDifference) => {
     ]) => {
       return (
         checkDayDifference(due_date[1]) < dayDifference &&
-        checkDayDifference(due_date[1] > 0)
+        checkDayDifference(due_date[1]) > dayBottom
       );
     }
   );
