@@ -28,7 +28,7 @@ a:hover{
 .logo{
     display: flex;
     justify-content: center;
-    margin-top: 200px;
+    margin-top: 180px;
 }
 
 h1,button{
@@ -59,8 +59,4 @@ h1,button{
 #might-be-slide-show{
     display: flex;
     justify-content: center;
-}
-
-@keyframes pictureFade{
-
 }
