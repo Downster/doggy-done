@@ -80,7 +80,7 @@ const pickBg = (dog) => {
 }
 
 
-const filterTasksWithDogId = () => {
+export const filterTasksWithDogId = () => {
     const allTasks = getAllTasks();
     const dogHeaders = document.querySelectorAll('.single-dog.active');
     console.log(dogHeaders);
@@ -172,4 +172,3 @@ export const genDogsArea = async () => {
     addDogBtn.addEventListener("click", handleNewDog);
 
 }
-
