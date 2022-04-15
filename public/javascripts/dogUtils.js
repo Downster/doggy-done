@@ -19,14 +19,21 @@ const handleFormCollapse = (e) => {
   dogsForm.classList.toggle("active");
 };
 
+const reloadDogs = async () => {
+  const myDogs = document.querySelector('.app-dogs');
+  myDogs.innerHTML = '';
+  await genDogsArea();
+}
+
 const handleNewDog = async (e) => {
-  const dogNameInput = document.querySelector(".new-dog-name-input");
-  const dogBreedSelect = document.querySelector(".new-dog-breed-select");
-  const dogName = dogNameInput.value;
-  const breedId = dogBreedSelect.value;
-  const body = JSON.stringify({ dogName, breedId });
-  const newDog = await fetchWithToken("/dogs", "POST", body);
-};
+    const dogNameInput = document.querySelector('.new-dog-name-input');
+    const dogBreedSelect = document.querySelector('.new-dog-breed-select');
+    const dogName = dogNameInput.value;
+    const breedId = dogBreedSelect.value;
+    const body = JSON.stringify({dogName, breedId});
+    const newDog = await fetchWithToken('/dogs', 'POST', body);
+    await reloadDogs();
+}
 
 const genBreedSelector = async () => {
   const response = await fetchWithToken("/breeds");
@@ -96,26 +103,41 @@ const filterTasksWithDogId = () => {
   });
 };
 
+
+
+
 const handleDogClick = async (e) => {
-  e.preventDefault();
-  e.stopImmediatePropagation();
-  const [, dogId] = e.target.id.split("single-dog-content-");
-  const parent = e.target.parentNode;
-  parent.classList.toggle("active");
-  console.log("hello");
-  const dogRes = await fetchWithToken(`/dogs/${dogId}`);
-  const data = await dogRes.json();
-  const dogTasks = data.Tasks.map((task) => task.id.toString());
-  // filtertaskbydog is set in dogsload.js
-  if (parent.classList.contains("active")) {
-    window.filterTaskByDog = new Set([...window.filterTaskByDog, ...dogTasks]);
-  } else {
-    for (let dogTask of dogTasks) {
-      window.filterTaskByDog.delete(dogTask);
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    const [ , dogId ] = e.target.id.split("single-dog-content-");
+    console.log(dogId);
+    const parent = e.target.parentNode;
+    parent.classList.toggle("active");
+    parent.classList.toggle("inactive");
+    const dogRes = await fetchWithToken(`/dogs/${dogId}`);
+    const data = await dogRes.json();
+    const dogTasks = data.Tasks.map(task => task.id.toString());
+    const activeDogs = document.querySelectorAll('.single-dog.active');
+    const allDogs = document.querySelectorAll('.single-dog');
+    if (activeDogs.length === 0) {
+      allDogs.forEach(dog => dog.classList.remove("inactive"));
     }
-  }
-  filterTasksWithDogId();
-};
+    // filtertaskbydog is set in dogsload.js
+    if (parent.classList.contains("active")) {
+        parent.classList.remove("inactive");
+        window.filterTaskByDog = new Set([...window.filterTaskByDog, ...dogTasks])
+        const otherDogs = document.querySelectorAll('.single-dog:not(.active');
+        otherDogs.forEach(dog => dog.classList.add("inactive"));
+        console.log(otherDogs, 'bananas');
+    } else {
+        for (let dogTask of dogTasks) {
+            window.filterTaskByDog.delete(dogTask);
+            console.log(window.filterTaskByDog);
+        }
+    }
+    filterTasksWithDogId();
+
+}
 
 const makeSingleDogArea = (dog) => {
   const entry = document.createElement("li");
@@ -146,26 +168,27 @@ const makeDogsArea = (dogs) => {
   }
 };
 
-export const genDogsArea = async () => {
-  const res = await fetchWithToken(`/dogs`);
-  const data = await res.json();
-  const dogsArea = document.querySelector(".app-dogs");
-  const collapse = document.createElement("button");
-  collapse.classList.add("dog-area-collapse");
-  collapse.innerText = "My Dogs";
-  const dogList = document.createElement("div");
-  dogList.classList.add("my-dogs");
-  dogsArea.append(dogList);
-  makeDogsArea(data);
-  dogsArea.parentNode.insertBefore(collapse, dogsArea);
-  const form = await genNewDogForm();
-  const formCollapse = document.createElement("button");
-  formCollapse.classList.add("dog-area-form-collapse");
-  formCollapse.innerText = "New Doggo";
-  dogsArea.append(formCollapse);
-  dogsArea.append(form);
-  collapse.addEventListener("click", handleDogCollapse);
-  formCollapse.addEventListener("click", handleFormCollapse);
-  const addDogBtn = document.querySelector(".new-dog-submit-button");
-  addDogBtn.addEventListener("click", handleNewDog);
-};
+export async function genDogsArea() {
+    const res = await fetchWithToken(`/dogs`);
+    const data = await res.json();
+    console.log(data);
+    const dogsArea = document.querySelector(".app-dogs");
+    const collapse = document.createElement("button");
+    collapse.classList.add('dog-area-collapse');
+    collapse.innerText = "My Dogs"
+    const dogList = document.createElement("div");
+    dogList.classList.add("my-dogs");
+    dogsArea.append(dogList);
+    makeDogsArea(data);
+    dogsArea.parentNode.insertBefore(collapse, dogsArea);
+    const form = await genNewDogForm();
+    const formCollapse = document.createElement("button");
+    formCollapse.classList.add('dog-area-form-collapse');
+    formCollapse.innerText = "New Doggo"
+    dogsArea.append(formCollapse);
+    dogsArea.append(form);
+    collapse.addEventListener("click", handleDogCollapse);
+    formCollapse.addEventListener("click", handleFormCollapse);
+    const addDogBtn = document.querySelector('.new-dog-submit-button')
+    addDogBtn.addEventListener("click", handleNewDog);
+}
