@@ -2,16 +2,13 @@ import { fetchWithToken } from "./utils.js";
 import { taskToggleListeners } from "./taskToggle.js";
 import { checkboxListeners } from "./completeTask.js";
 import { closeButtonListeners } from "./taskToggle.js";
-<<<<<<< HEAD
 import {
   buildNewTasksAndFilter,
   buildOverdueTasksAndFilter,
 } from "./dateLogic.js";
 import { makeCheckbox } from "./checkbox.js"
-=======
 import { makeCheckbox } from "./checkbox.js";
 import { filterTasksWithDogId } from "./dogUtils.js";
->>>>>>> fix css in checkbox
 const singleTaskClass = "single-task";
 const taskContainerPrefix = "task-container";
 const checkboxPrefix = "task-checkbox";
