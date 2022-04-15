@@ -1,5 +1,9 @@
 import { handleTaskToggler } from "./taskToggle.js";
 
+const searchDiv = document.createElement("div");
+searchDiv.id = "search-div";
+document.body.append(searchDiv);
+
 const generateSearchItems = (text) => {
   const searchArea = document.getElementById("search-div");
   if (searchArea.childNodes.length) {
@@ -20,15 +24,9 @@ const generateSearchItems = (text) => {
 };
 
 const generateSearchArea = async () => {
-  if (!document.getElementById("search-div")) {
-    const searchDiv = document.createElement("div");
-    searchDiv.id = "search-div";
-    searchDiv.classList.toggle("active");
-    document.body.append(searchDiv);
-  } else {
-    const searchDiv = document.getElementById("search-div");
-    searchDiv.classList.toggle("active");
-  }
+  const searchDiv = document.getElementById("search-div");
+  searchDiv.classList.toggle("active");
+
   const appBody = document.querySelector(".app-body");
   const header = document.querySelector(".header-nav");
   const navMenu = document.querySelector(".nav-menu-container");

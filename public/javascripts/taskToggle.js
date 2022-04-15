@@ -3,6 +3,8 @@ import { genDogs, filterTasksWithDogId } from "./dogUtils.js";
 import { populateTasks, populateTasksAndAddListeners } from "./taskUtils.js";
 
 export const handleTaskToggler = async (e) => {
+  e.preventDefault();
+  e.stopImmediatePropagation();
   if (document.getElementById("search-div").classList.contains("active")) {
     console.log("here");
     const searchDiv = document.getElementById("search-div");
@@ -16,8 +18,6 @@ export const handleTaskToggler = async (e) => {
     header.classList.toggle("blur");
     navMenu.classList.toggle("blur");
   }
-  e.preventDefault();
-  e.stopImmediatePropagation();
   console.log(e.currentTarget);
   const id = e.currentTarget.id.split("task-click-").pop();
   const appRight = document.querySelector(".app-inner-body-right");
@@ -97,63 +97,6 @@ export const genDogsForm = async (task) => {
   formArea.append(container);
   select.addEventListener("change", handleDogSelect);
 };
-
-export const buildSelectWithIdValues = (data, selectedMatch, styleClass, styleId) => {
-    const select = document.createElement("select");
-    select.classList.add(styleClass);
-    select.setAttribute("id", styleId);
-    const defaultOpt = document.createElement("option")
-    defaultOpt.innerText = "--- Select a dog ---";
-    defaultOpt.setAttribute("default", true);
-    select.append(defaultOpt);
-    for (let datum of data) {
-      const option = document.createElement("option");
-      option.setAttribute("value", datum.id);
-      option.innerText = datum.name;
-      if(selectedMatch && selectedMatch.toString() === datum.id.toString()) {
-        option.setAttribute("selected", true);
-      }
-      select.append(option);
-    }
-    return select;
-}
-
-const handleDogSelect = async (e) => {
-  const [ , taskId ] = e.currentTarget.id.split('task-update-dropdown-dog-');
-  const select = e.currentTarget;
-  const dogId = select.value;
-  if (dogId) {
-    await fetchWithToken(`/tasks/${taskId}/dog/${dogId}`, "PATCH");
-    const newDogIsActive = document.querySelector(`#single-dog-${dogId}`);
-    newDogIsActive ? window.filterTaskByDog.add(taskId.toString()) : window.filterTaskByDog.delete(taskId.toString());
-    filterTasksWithDogId();
-  }
-}
-
-export const genDogsForm = async (task) => {
-  const dogId = task.dog_id;
-  const formArea = document.querySelector('.dynamic-update-area-dog');
-  formArea.innerHTML = "";
-  const container = document.createElement("div");
-  container.classList.add('task-update-dropdown-area');
-  container.setAttribute('id', `task-update-dog`);
-
-  const dogs = await genDogs();
-  const select = buildSelectWithIdValues(
-    dogs,
-    dogId,
-    'task-update-dropdown',
-    `task-update-dropdown-dog-${task.id}`,
-  );
-  select.setAttribute("name", "taskDog");
-  const label = document.createElement("label");
-  label.setAttribute("for", "taskDog");
-  label.innerText = "Associate Dog";
-  container.append(label);
-  container.append(select);
-  formArea.append(container);
-  select.addEventListener("change", handleDogSelect);
-}
 
 export const handleCloseButton = (e) => {
   e.preventDefault();
