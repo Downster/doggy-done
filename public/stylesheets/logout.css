@@ -1,6 +1,6 @@
-.logout-header{
-    border: 2px solid red;
-}
+/* .logout-header{
+     border: 2px solid red;
+} */
 
 body{ background-color: bisque;}
 
@@ -9,7 +9,8 @@ body{ background-color: bisque;}
     justify-content: center;
     width: 150px;
     height: 200px;
-    border-radius: 55px;
+    border-radius: 50%;
+    margin-top: 50px;
 }
 
 #logout-logo{
@@ -18,8 +19,10 @@ body{ background-color: bisque;}
 }
 
 a#login-again-button{
+    display: flex;
     text-decoration: none;
-    color: white;
+    color: blue;
+
 }
 #login-again-button{
     padding: 10px 10px 10px 10px;
@@ -32,4 +35,30 @@ a#login-again-button{
 
 #login-again-button:hover{
   transform: translate(3px, -3px);
+}
+
+.login-again-button{
+    display: flex;
+    justify-content: center;
+}
+.logout-body{
+    margin-right: 800px;
+    margin-top: 150px;
+}
+
+div{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.home:hover{
+    color:blue;
+}
+
+.login:hover{
+    color: blue;
+}
+
+.sign-up:hover{
+    color: blue;
 }
