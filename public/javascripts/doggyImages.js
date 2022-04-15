@@ -6,15 +6,13 @@ const getPics = async () => {
     };
     const apiRes = await fetch(dogImages);
     const data = await apiRes.json();
-    console.log(data);
     const pictures = data.map(datum => datum.image.url);
     return pictures;
 }
 
-document.addEventListener('DOMContentLoaded',async(e) => {
+document.addEventListener('DOMContentLoaded',async(_e) => {
 
     const slideshows =  await getPics();
-    console.log(slideshows);
 
     let index =0;
     let activeIndex = 0;

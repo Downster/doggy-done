@@ -2,7 +2,6 @@ body{
     background-color: #f7bf50;
 }
 .header{
-
     display: flex;
     justify-content: center;
     padding-top: 10px;
@@ -30,12 +29,14 @@ a:hover{
     display: flex;
     justify-content: center;
     margin-top: 200px;
+    animation: fadeIn linear 2s;
 }
 
 h1,button{
     animation: fadeIn linear 2s;
-
 }
+
+
 
 @keyframes fadeIn{
     0%{
@@ -54,5 +55,13 @@ h1,button{
     display: block;
     width: 500px;
     height: auto;
+
+}
+#might-be-slide-show{
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes pictureFade{
 
 }
