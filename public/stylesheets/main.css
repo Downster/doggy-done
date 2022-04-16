@@ -291,7 +291,7 @@ li.menu-list{
 
 .search-container{
     width: 300px;
-    height: 300px;
+    height: 50px;
     display: flex;
     flex-direction: row;
     position: absolute;
@@ -355,10 +355,14 @@ display: block;
     background-color: #f7bf50;
     z-index: 5;
     visibility: hidden;
+    pointer-events: none;
 }
 #search-div.active{
     visibility: visible;
+    pointer-events: all;
 }
+
+
 #sub-nav-toggle span:after {
 width: 50px;
 height: 50px;
@@ -426,6 +430,10 @@ clear: both;
 
 .app-dogs {
     display: none;
+}
+
+.dog-area-collapse {
+    width: 30%;
 }
 
 .app-dogs.active {
@@ -586,5 +594,9 @@ clear: both;
 /* keep this at the end */
 
 .hidden {
+    display: none;
+}
+
+.task-s {
     display: none;
 }

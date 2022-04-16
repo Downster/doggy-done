@@ -92,7 +92,6 @@ const pickBg = (dog) => {
 export const filterTasksWithDogId = () => {
   const allTasks = getAllTasks();
   const dogHeaders = document.querySelectorAll(".single-dog.active");
-  console.log(dogHeaders);
   allTasks.forEach((task) => {
     const [, taskId] = task.id
       .split("task-container-")
@@ -115,7 +114,6 @@ const handleDogClick = async (e) => {
     e.preventDefault();
     e.stopImmediatePropagation();
     const [ , dogId ] = e.target.id.split("single-dog-content-");
-    console.log(dogId);
     const parent = e.target.parentNode;
     parent.classList.toggle("active");
     parent.classList.toggle("inactive");
@@ -133,11 +131,9 @@ const handleDogClick = async (e) => {
         window.filterTaskByDog = new Set([...window.filterTaskByDog, ...dogTasks])
         const otherDogs = document.querySelectorAll('.single-dog:not(.active');
         otherDogs.forEach(dog => dog.classList.add("inactive"));
-        console.log(otherDogs, 'bananas');
     } else {
         for (let dogTask of dogTasks) {
             window.filterTaskByDog.delete(dogTask);
-            console.log(window.filterTaskByDog);
         }
     }
     filterTasksWithDogId();
@@ -176,7 +172,6 @@ const makeDogsArea = (dogs) => {
 export async function genDogsArea() {
     const res = await fetchWithToken(`/dogs`);
     const data = await res.json();
-    console.log(data);
     const dogsArea = document.querySelector(".app-dogs");
     const collapse = document.createElement("button");
     collapse.classList.add('dog-area-collapse');

@@ -1,6 +1,7 @@
 import { fetchWithToken } from "./utils.js";
 import { genDogs, filterTasksWithDogId } from "./dogUtils.js";
 import { populateTasks, populateTasksAndAddListeners } from "./taskUtils.js";
+import { genLists } from "./listUtils.js";
 
 export const handleTaskToggler = async (e) => {
   e.preventDefault();
@@ -36,6 +37,7 @@ export const handleTaskToggler = async (e) => {
     dueDate[0].value = task.due_date.split("T")[0];
   }
   await genDogsForm(task);
+  await genListsForm(task);
 };
 
 export const buildSelectWithIdValues = (
@@ -53,7 +55,7 @@ export const buildSelectWithIdValues = (
     const option = document.createElement("option");
     option.setAttribute("value", datum.id);
     option.innerText = datum.name;
-    if (selectedMatch.toString() === datum.id.toString()) {
+    if (selectedMatch && selectedMatch.toString() === datum.id.toString()) {
       option.setAttribute("selected", true);
     }
     select.append(option);
@@ -96,6 +98,44 @@ export const genDogsForm = async (task) => {
   container.append(select);
   formArea.append(container);
   select.addEventListener("change", handleDogSelect);
+};
+
+const handleListSelect = async (e) => {
+  const [, taskId] = e.currentTarget.id.split("task-update-dropdown-lists-");
+  const select = e.currentTarget;
+  const listId = select.value;
+  await fetchWithToken(`/tasks/${taskId}/list/${listId}`, "PATCH");
+  populateTasksAndAddListeners("list", listId);
+};
+
+export const genListsForm = async (task) => {
+  const taskLists = task.Lists;
+  const formArea = document.querySelector(".dynamic-update-area-list");
+  formArea.innerHTML = "";
+  const container = document.createElement("div");
+  container.classList.add("task-update-dropdown-area");
+  container.setAttribute("id", `task-update-list`);
+  const lists = await genLists();
+  const select = buildSelectWithIdValues(
+    lists,
+    null,
+    'task-update-dropdown',
+    `task-update-dropdown-lists-${task.id}`
+  );
+  select.setAttribute("multiple", true);
+  for (let option of select.children) {
+    if (taskLists.includes(option.value)) {
+      option.setAttribute("selected", true);
+    }
+  }
+  select.setAttribute("name", "tasList");
+  const label = document.createElement("label");
+  label.setAttribute("for", "taskDog");
+  label.innerText = "Lists";
+  container.append(label);
+  container.append(select);
+  formArea.append(container);
+  select.addEventListener("change", handleListSelect);
 };
 
 export const handleCloseButton = (e) => {
