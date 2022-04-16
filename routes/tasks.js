@@ -20,7 +20,7 @@ router.get(
   asyncHandler(async (req, res, next) => {
     const taskId = req.params.id;
     console.log(taskId);
-    const task = await db.Task.findByPk(taskId);
+    const task = await db.Task.findByPk(taskId, {include: [{model: db.List}]});
     if (!task) {
         const err = new Error("Task not found");
         next(err);
@@ -112,7 +112,8 @@ router.patch(
     taskValidators,
     asyncHandler(async (req, res, next) => {
         const { taskId, listId} = req.params;
-        const [task, list] = await Promise.all([db.Task.findByPk(taskId), db.Dog.findByPk(listId)]);
+        const [task, list] = await Promise.all([db.Task.findByPk(taskId), db.List.findByPk(listId)]);
+        console.log(task, list);
         if (!task) {
             const err = new Error("Task not found");
             next(err);
@@ -125,9 +126,10 @@ router.patch(
                 return res.status(401).end();
             } else {
                 const listEntry = db.TaskList.build();
-                taskList.task_id = task.id;
-                taskList.list_id = list.id;
+                listEntry.task_id = task.id;
+                listEntry.list_id = list.id;
                 await listEntry.save();
+                res.json({ message: "Task updated! Woof!" });
             }
         }
     })
