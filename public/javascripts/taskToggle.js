@@ -7,7 +7,6 @@ export const handleTaskToggler = async (e) => {
   e.preventDefault();
   e.stopImmediatePropagation();
   if (document.getElementById("search-div").classList.contains("active")) {
-    console.log("here");
     const searchDiv = document.getElementById("search-div");
     const searchBar = document.getElementById("task-s");
     searchBar.value = "";
@@ -19,7 +18,6 @@ export const handleTaskToggler = async (e) => {
     header.classList.toggle("blur");
     navMenu.classList.toggle("blur");
   }
-  console.log(e.currentTarget);
   const id = e.currentTarget.id.split("task-click-").pop();
   const appRight = document.querySelector(".app-inner-body-right");
   const taskDetails = document.querySelector(".task-details");
@@ -69,7 +67,6 @@ const handleDogSelect = async (e) => {
   const dogId = select.value;
   await fetchWithToken(`/tasks/${taskId}/dog/${dogId}`, "PATCH");
   const newDogIsActive = document.querySelector(`.active#single-dog-${dogId}`);
-  console.log(newDogIsActive);
   newDogIsActive
     ? window.filterTaskByDog.add(taskId.toString())
     : window.filterTaskByDog.delete(taskId.toString());
