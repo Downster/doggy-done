@@ -78,7 +78,6 @@ const makeELements = (datum) => {
     container.classList.add("dog-passport");
     container.append(figure);
     container.append(table);
-    console.log(container);
     return container;
 }
 
