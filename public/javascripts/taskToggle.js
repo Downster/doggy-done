@@ -103,13 +103,24 @@ export const genDogsForm = async (task) => {
 const handleListSelect = async (e) => {
   const [, taskId] = e.currentTarget.id.split("task-update-dropdown-lists-");
   const select = e.currentTarget;
-  const listId = select.value;
-  await fetchWithToken(`/tasks/${taskId}/list/${listId}`, "PATCH");
-  populateTasksAndAddListeners("list", listId);
+  const majorListId = select.value;
+  for (let option of select.options) {
+    const listId = option.value;
+    if (!listId) {
+      return;
+    }
+    if(option.selected) {
+      await fetchWithToken(`/tasks/${taskId}/list/${listId}`, "PATCH");
+    } else {
+      await fetchWithToken(`/tasks/${taskId}/list/${listId}`, "DELETE");
+    }
+  }
+  populateTasksAndAddListeners("list", majorListId);
 };
 
 export const genListsForm = async (task) => {
-  const taskLists = task.Lists;
+  const taskLists = task.Lists.map(taskList => taskList.TaskList);
+  const listIds = taskLists.map(tl => tl.list_id);
   const formArea = document.querySelector(".dynamic-update-area-list");
   formArea.innerHTML = "";
   const container = document.createElement("div");
@@ -124,7 +135,7 @@ export const genListsForm = async (task) => {
   );
   select.setAttribute("multiple", true);
   for (let option of select.children) {
-    if (taskLists.includes(option.value)) {
+    if (listIds.includes(Number(option.value))) {
       option.setAttribute("selected", true);
     }
   }
