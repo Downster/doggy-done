@@ -185,11 +185,21 @@ router.delete(
     taskValidators,
     asyncHandler(async (req, res, next) => {
         const { taskId, listId} = req.params;
-        const listEntries = await db.TaskList.findAll({where : {task_id: taskId, list_id: listId}});
-        for (let entry of listEntries) {
-            await entry.destroy();
+        const task = await db.Task.findByPk(taskId);
+        if (!task) {
+            const err = new Error("Task not found");
+            next(err);
+        } else {
+            const permCheck = validateOwner(req, task);
+            if(!permCheck) {
+                return res.status(401).end();
+            }
+            const listEntries = await db.TaskList.findAll({where : {task_id: taskId, list_id: listId}});
+            for (let entry of listEntries) {
+                await entry.destroy();
+            }
+            res.status(204).end();
         }
-        res.status(204).end();
     })
 );
 
