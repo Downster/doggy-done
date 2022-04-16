@@ -14,14 +14,19 @@ const handleListAdd = async (e) => {
   const input = document.getElementById("list-name-input");
   const listName = input.value;
   const body = JSON.stringify({listName});
-  const response = await fetchWithToken("/lists", "POST", body);
-  const { list } = await response.json();
-  const newListId = list.id;
-  addListForm.classList.toggle("active");
-  appBody.classList.toggle("blur");
-  header.classList.toggle("blur");
-  navMenu.classList.toggle("blur");
-  await populateTasksAndAddListeners("list", newListId);
+  try {
+    const response = await fetchWithToken("/lists", "POST", body);
+    const { list } = await response.json();
+    const newListId = list.id;
+    addListForm.classList.toggle("active");
+    appBody.classList.toggle("blur");
+    header.classList.toggle("blur");
+    navMenu.classList.toggle("blur");
+    await populateTasksAndAddListeners("list", newListId);
+  } catch(e) {
+    alert("Couldn't add list! Do you already have a list with that name?")
+  }
+
 }
 
 listFormButton.addEventListener("click", handleListAdd);
