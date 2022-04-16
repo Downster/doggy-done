@@ -8,8 +8,8 @@ var router = express.Router();
 
 /* GET home page. */
 
-router.get('/', restoreUser, (req, res, next) => {
-
+router.get('/', csrfProtection,restoreUser, (req, res, next) => {
+    res.cookie('CSRF-Token', req.csrfToken());
     if(res.locals.authenticated){
       res.redirect('/app');
     }else{
@@ -21,6 +21,7 @@ router.get('/', restoreUser, (req, res, next) => {
 
 router.get(
   "/shapoopi",
+  csrfProtection,
   asyncHandler(async (req, res) => {
     res.render("app", {
       title: "Doggy-Done",
