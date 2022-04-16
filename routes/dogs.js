@@ -18,7 +18,6 @@ router.get('/:dogId(\\d+)', asyncHandler(async (req, res, next) => {
         if(!permCheck) {
             return res.status(401).end();
         }
-        console.log(dog);
         res.json(dog);
     }
 }));
@@ -48,7 +47,6 @@ router.put('/:dogId(\\d+)', csrfProtection, asyncHandler(async (req, res, next) 
 router.delete('/:dogId(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
     const dogId = req.params.dogId;
     const dog = await db.Dog.findByPk(dogId, {include: [{model: db.Task}]});
-    console.log(dog);
     const tasks = dog.Tasks;
     if (tasks.length > 0) {
         for (let task of tasks) {
