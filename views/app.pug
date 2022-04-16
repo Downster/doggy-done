@@ -68,8 +68,8 @@ block content
     .add-list-form
         form(action="/lists", method="POST")
             input(type="hidden" name="_csrf" value=csrfToken)
-            input(type="text" name='listName')
-            button Create list
+            input.list-name-input#list-name-input(type="text" name='listName')
+            button.create-list#create-list Create list
     .app-body
         .app-inner-body
             .app-create-task
@@ -94,10 +94,9 @@ block content
             .edit-task
                 button(id='delete-button') Delete
                     i(class="fa-solid fa-trash-can")
-                button(id='edit-detail-btn') Edit 
+                button(id='edit-detail-btn') Edit
                     i(class="fa-solid fa-pen-to-square")
             .dynamic-update-area-list
             .dynamic-update-area-dog
     .search-container
         input(type="text" id='task-s' placeholder="Search for a task... Woof!" autocomplete="new-password")
-

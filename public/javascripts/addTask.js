@@ -2,9 +2,12 @@ import { fetchWithToken } from "./utils.js";
 import { populateTasksAndAddListeners } from "./taskUtils.js";
 const submitDiv = document.querySelector(".task-submit");
 const button = submitDiv.lastChild;
-console.log(button);
+const dateInput = document.getElementById("task-date");
+const taskInput = document.getElementById("task-input");
+dateInput.valueAsDate = new Date();
 
-button.addEventListener("click", async (e) => {
+
+const handleAddTask = async (e) => {
   const input = document.getElementById("task-input");
   const priority = document.getElementById("task-priority");
   const date = document.getElementById("task-date");
@@ -25,5 +28,16 @@ button.addEventListener("click", async (e) => {
     const res = await fetchWithToken("/tasks", "POST", body);
     await populateTasksAndAddListeners();
   }
-  //select div and re render
-});
+  input.value = null;
+  priority.value = 1;
+  date.valueAsDate = new Date();
+}
+
+const handleAddTaskWithKeydownWrapper = async (e) => {
+  if (e.key === "Enter") {
+    return handleAddTask(e);
+  }
+}
+
+button.addEventListener("click", handleAddTask);
+taskInput.addEventListener("keydown", handleAddTaskWithKeydownWrapper);
