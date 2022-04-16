@@ -318,6 +318,10 @@ li.menu-list{
     top: 10%;
 }
 
+.overdue{
+    color: red;
+}
+
 .task-details.active{
     display: flex;
     justify-content: center;
