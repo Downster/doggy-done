@@ -48,11 +48,9 @@ app.use("/users", usersRouter);
 app.use(restoreUser);
 
 // seriously don't ask
-app.get('/randomDogNames/:type', (req, res, next) => {
-  const { type } = req.params.type;
-  console.log(type);
+app.get('/randomDogNames/:type(m|f)', (req, res, next) => {
+  const { type } = req.params;
   const data = type === "f" ? dogNames.female : dogNames.male;
-  console.log(data);
   return res.json(data);
 });
 
