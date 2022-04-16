@@ -74,7 +74,6 @@ const handleDogSelect = async (e) => {
     ? window.filterTaskByDog.add(taskId.toString())
     : window.filterTaskByDog.delete(taskId.toString());
   await populateTasksAndAddListeners();
-  console.log(window.filterTaskByDog);
   filterTasksWithDogId();
 };
 
