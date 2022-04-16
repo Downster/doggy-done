@@ -145,7 +145,7 @@ const handleDogClick = async (e) => {
 const makeSingleDogArea = (dog) => {
   const entry = document.createElement("li");
   entry.classList.add("single-dog");
-  entry.setAttribute("id", `$single-dog-${dog.id}`);
+  entry.setAttribute("id", `single-dog-${dog.id}`);
   const dogView = document.createElement("a");
   dogView.classList.add(".single-dog-content");
   dogView.setAttribute("id", `.single-dog-content-${dog.id}`);
