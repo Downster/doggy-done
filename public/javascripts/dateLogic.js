@@ -2,17 +2,17 @@ export const checkDayDifference = (date, type) => {
     const dateObj = dayjs(date);
     const today = dayjs()
     const tomorrow = dayjs().add(1, "day")
-    const yesterday = dayjs().subtract(1, 'day')
-    console.log(yesterday)
   if (date !== null) {
     if (type === "today") {
       const difference = dateObj.isSame(today ,'day');
       return difference;
     } else if (type === "tomorrow") {
-      const difference = dateObj.isBetween(today.endOf('day'), tomorrow.endOf('day'), "day");
+        const endOfToday = today.endOf('day')
+        const endOfTomorrow = tomorrow.endOf('day')
+        const difference = dateObj.isBetween(endOfToday, endOfTomorrow, "hour");
       return difference;
     } else if (type === "overdue") {
-      const difference = dateObj.isBefore(today.startOf('day'), "day");
+      const difference = dateObj.isBefore(today.startOf('day'), "hour");
       return difference;
     }
   }

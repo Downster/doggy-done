@@ -13,7 +13,7 @@ const handleAddTask = async (e) => {
   const date = document.getElementById("task-date");
   const body = JSON.stringify({
     detail: input.value,
-    due_date: new Date(date.value),
+    due_date: dayjs(date.value),
     priority: priority.value,
     completed: false,
   });
@@ -30,7 +30,6 @@ const handleAddTask = async (e) => {
   }
   input.value = null;
   priority.value = 1;
-  date.valueAsDate = new Date();
 }
 
 const handleAddTaskWithKeydownWrapper = async (e) => {
