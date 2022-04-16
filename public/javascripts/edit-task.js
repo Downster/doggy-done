@@ -1,4 +1,6 @@
 import { extractCSRFToken } from "./utils.js";
+import { populateTasksAndAddListeners } from "./taskUtils.js"
+import { filterTasksWithDogId } from "./dogUtils.js";
 
 const editBtn = document.getElementById("edit-detail-btn");
 
@@ -21,4 +23,7 @@ editBtn.addEventListener("click", async (e) => {
       due_date: new Date(date.value),
     }),
   });
+  await populateTasksAndAddListeners();
+  filterTasksWithDogId();
+
 });

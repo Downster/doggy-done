@@ -68,10 +68,13 @@ const handleDogSelect = async (e) => {
   const select = e.currentTarget;
   const dogId = select.value;
   await fetchWithToken(`/tasks/${taskId}/dog/${dogId}`, "PATCH");
-  const newDogIsActive = document.querySelector(`#single-dog-${dogId}`);
+  const newDogIsActive = document.querySelector(`.active#single-dog-${dogId}`);
+  console.log(newDogIsActive);
   newDogIsActive
     ? window.filterTaskByDog.add(taskId.toString())
     : window.filterTaskByDog.delete(taskId.toString());
+  await populateTasksAndAddListeners();
+  console.log(window.filterTaskByDog);
   filterTasksWithDogId();
 };
 
