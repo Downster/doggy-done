@@ -83,12 +83,10 @@ li.menu-list{
     display: flex;
     justify-content: center;
     position: relative;
-    top: 2.8%;
-    left: 3%;
-    width: 50px;
+    margin-left: 15px;
+    width: 100px;
     height: 30px;
     visibility: hidden;
-    transform: translateX(400%);
 }
 
 .task-items{
