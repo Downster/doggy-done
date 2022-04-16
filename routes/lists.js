@@ -72,7 +72,7 @@ router.post(
       owner_id: userId,
       name: listName,
     });
-    res.redirect("/app");
+    res.json({list});
   })
 );
 

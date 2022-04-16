@@ -32,8 +32,13 @@ const deleteList = (e) => {
   const deleteButtons = document.querySelectorAll(".delete-list-button");
   deleteButtons.forEach((button) => {
     button.addEventListener("click", async (e) => {
+      const cont = confirm("Delete this list?");
+      if (!confirm) {
+        return;
+      }
       const listId = button.id.split("-")[2];
       const res = await fetchWithToken(`/lists/${listId}`, "DELETE");
+      await populateTasksAndAddListeners();
     });
   });
 };
