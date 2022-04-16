@@ -19,7 +19,6 @@ router.get(
   "/:id",
   asyncHandler(async (req, res, next) => {
     const taskId = req.params.id;
-    console.log(taskId);
     const task = await db.Task.findByPk(taskId, {include: [{model: db.List}]});
     if (!task) {
         const err = new Error("Task not found");
@@ -113,7 +112,10 @@ router.patch(
     asyncHandler(async (req, res, next) => {
         const { taskId, listId} = req.params;
         const [task, list] = await Promise.all([db.Task.findByPk(taskId), db.List.findByPk(listId)]);
-        console.log(task, list);
+        const listEntry= await db.TaskList.findOne({where : {task_id: taskId, list_id: listId}});
+        if (listEntry) {
+            return res.json(listEntry);
+        }
         if (!task) {
             const err = new Error("Task not found");
             next(err);
@@ -162,7 +164,6 @@ router.put(
 
 router.delete('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
     const taskId = req.params.id;
-    console.log(taskId);
     const task = await db.Task.findByPk(taskId);
     if (!task) {
         const err = new Error("Task not found");
@@ -176,6 +177,31 @@ router.delete('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res, next) 
         res.status(204).end();
     }
 }));
+
+
+router.delete(
+    "/:taskId(\\d+)/list/:listId(\\d+)",
+    csrfProtection,
+    taskValidators,
+    asyncHandler(async (req, res, next) => {
+        const { taskId, listId} = req.params;
+        const task = await db.Task.findByPk(taskId);
+        if (!task) {
+            const err = new Error("Task not found");
+            next(err);
+        } else {
+            const permCheck = validateOwner(req, task);
+            if(!permCheck) {
+                return res.status(401).end();
+            }
+            const listEntries = await db.TaskList.findAll({where : {task_id: taskId, list_id: listId}});
+            for (let entry of listEntries) {
+                await entry.destroy();
+            }
+            res.status(204).end();
+        }
+    })
+);
 
 
 module.exports = router;
