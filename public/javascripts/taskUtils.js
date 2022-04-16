@@ -12,30 +12,31 @@ const anchorPrefix = "task-click";
 const taskContainer = "all-tasks";
 
 export const genTasks = async (type, listId) => {
-  if (type === undefined) {
     const res = await fetchWithToken("/tasks");
-    const { tasks } = await res.json();
+      const { tasks } = await res.json();
+      const dueToday = buildNewTasksAndFilter(tasks, "today");
+    const overdueTask = buildNewTasksAndFilter(tasks, "overdue");
+    const todayNumber = document.querySelector('.due-today');
+    const overDueNumber = document.querySelector('.overdue-tasks')
+    overDueNumber.innerText = 'Overdue tasks: ' + overdueTask.length
+    todayNumber.innerText = 'Due today: ' + dueToday.length
+  if (type === undefined) {
     return tasks;
   } else if (type === "today") {
-    const res = await fetchWithToken("/tasks");
-    const { tasks } = await res.json();
-    console.log(tasks);
-    const sortedTask = buildNewTasksAndFilter(tasks, "today");
-    return sortedTask;
+    return dueToday;
   } else if (type === "tomorrow") {
-    const res = await fetchWithToken("/tasks");
-    const { tasks } = await res.json();
     const sortedTask = buildNewTasksAndFilter(tasks, "tomorrow");
     return sortedTask;
   } else if (type === "overdue") {
-    const res = await fetchWithToken("/tasks");
-    const { tasks } = await res.json();
-    const sortedTask = buildNewTasksAndFilter(tasks, "overdue");
-    return sortedTask;
+    return overdueTask;
   } else if (type === "list") {
     const res = await fetchWithToken(`/lists/${listId}`, "GET");
     const data = await res.json();
     return data;
+  } else if (type === 'completed') {
+      const res = await fetchWithToken('/tasks/completed')
+      const {tasks} = await res.json()
+      return tasks;
   }
 };
 
@@ -59,6 +60,7 @@ const buildTaskHTML = (task) => {
   taskContainer.append(fake);
   taskContainer.append(checkbox);
   taskContainer.append(icon);
+
   if (task.completed) {
     checkbox.setAttribute("checked", true);
     icon.classList.add("active");
@@ -69,13 +71,27 @@ const buildTaskHTML = (task) => {
   anchor.classList.add(anchorClass);
   anchor.setAttribute("id", `${anchorPrefix}-${task.id}`);
   anchor.innerText = task.detail;
-  taskContainer.appendChild(anchor);
+    taskContainer.appendChild(anchor);
+    const priority = document.createElement('h4');
+
+    if (task.priority === 1) {
+        priority.innerText = 'High Priority'
+        priority.classList.add('high-priority')
+    } else if (task.priority === 2) {
+        priority.innerText = 'Medium Priority'
+        priority.classList.add('meduim-priority')
+    } else if (task.priority === 3) {
+        priority.innerText = 'Low Priority'
+        priority.classList.add('low-priority')
+    }
+    taskContainer.append(priority)
   return taskContainer;
 };
 
 export const genTasksHTML = async (type, listId) => {
   if (type !== "list") {
     const tasks = await genTasks(type);
+    console.log(tasks)
     return tasks.map((task) => buildTaskHTML(task));
   } else {
     const lists = await genTasks(type, listId);
@@ -92,7 +108,8 @@ export const populateTasks = async (type, listId) => {
       allTasks.append(taskDetail);
     }
   } else {
-    const mappedTasks = tasksHTML.Tasks.map((task) => buildTaskHTML(task));
+      const mappedTasks = tasksHTML.Tasks.map((task) => buildTaskHTML(task));
+
     const name = tasksHTML.name;
     const listName = document.createElement("input");
     const editListName = document.createElement("button");

@@ -2,7 +2,6 @@ import { fetchWithToken } from './utils.js';
 
 export const checkboxListeners = () => {
   const checkboxList = document.querySelectorAll(".task-checkbox");
-  console.log(checkboxList);
   checkboxList.forEach((task) => {
     task.addEventListener("click", async (e) => {
         e.stopImmediatePropagation();

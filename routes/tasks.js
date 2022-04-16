@@ -14,6 +14,15 @@ router.get(
     res.json({tasks});
   })
 );
+router.get(
+  "/completed",
+  asyncHandler(async (req, res, next) => {
+    const {userId} = req.session.auth;
+    const tasks = await db.Task.findAll({where:{owner_id: userId, completed: true}});
+    // res.render("all-tasks", { title: "Tasks 🐶", tasks });
+    res.json({tasks});
+  })
+);
 
 router.get(
   "/:id",

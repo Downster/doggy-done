@@ -81,10 +81,11 @@ li.menu-list{
 
 .task-submit{
     display: flex;
+    justify-content: center;
     position: relative;
-    justify-content: flex-end;
-    top: 2%;
-    right: 5%;
+    margin-left: 15px;
+    width: 100px;
+    height: 30px;
     visibility: hidden;
 }
 
@@ -168,7 +169,7 @@ li.menu-list{
     height: 92%;
     left: 1%;
     transform: translateY(55px);
-    background-color: #fd880bd7;
+    background-color: rgb(249, 237, 213);
     position: absolute;
     transition-property: left, width;
     transition-duration: .7s;
@@ -182,12 +183,50 @@ li.menu-list{
     height: min(100% );
     margin-inline: auto;
     background-color: rgb(249, 237, 213);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.meduim-priority{
+    display: flex;
+    margin-left: 20px;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid #F7BF50;
+    background-color: #F7BF50;
+    border-radius: 5px;
+}
+
+.due-today{
+    padding-top: 50px;
+
+}
+
+.overdue-tasks{
+
+}
+
+.high-priority{
+    display: flex;
+    margin-left: 20px;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid #fe9054;
+    background-color: #fe9054;
+    border-radius: 5px;
+}
+
+.low-priority{
+    display: flex;
+    margin-left: 20px;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid rgb(234, 218, 4);
+    background-color: rgb(234, 218, 4);
+    border-radius: 5px;
 }
 
 .app-inner-body-right{
     visibility: hidden;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     font-size: larger;
     align-items: center;
     width: min(50%);
@@ -316,6 +355,8 @@ li.menu-list{
 .all-tasks {
     width: 100%;
 }
+
+
 
 .task-click-search {
     text-decoration: none;
@@ -482,7 +523,8 @@ li.menu-list{
 }
 
 .dog-area-collapse {
-    width: 100%;
+    margin-left: 10px;
+    width: 100px;
     height: 30px;
 }
 
