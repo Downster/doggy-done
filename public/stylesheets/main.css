@@ -482,7 +482,8 @@ li.menu-list{
 }
 
 .dog-area-collapse {
-    width: 30%;
+    width: 100%;
+    height: 30px;
 }
 
 .app-dogs.active {

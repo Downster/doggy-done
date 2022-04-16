@@ -1,5 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&family=Quicksand:wght@700&display=swap');
+
+* {
+    font-family: Quicksand;
+}
+
 body{
     background-color: #f7bf50;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 .header{
     display: flex;
@@ -15,10 +23,59 @@ body{
     justify-content: center;
     padding-top: 10px;
     padding-bottom: 10px;
+    gap: 2rem;
 }
 
-.login{
-    padding: 10px;
+.button > button {
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    background-color: #fe9054;
+    border: none;
+    border-radius: 16px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+}
+
+.button > button:hover {
+    filter: invert(100%);
+    box-shadow: 2px 5px 5px rgba(255,255,255,0.4);
+}
+
+
+.nav-head  {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2em;
+}
+
+.login, .signup {
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    background-color: #fe9054;
+    border: none;
+    border-radius: 16px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+}
+
+.login:hover, .signup:hover {
+    filter: invert(100%);
+    box-shadow: 2px 5px 5px rgba(255,255,255,0.4);
+}
+
+.login a, .signup a {
+    color: black;
+    text-decoration: none;
 }
 
 a:hover{
@@ -46,17 +103,94 @@ h1,button{
     }
 }
 
-.slide{
-    display: none;
+.dog-passport, .dog-passport .slide, .dog-passport table {
+    opacity: 0%;
 }
 
-.slide.active{
+.dog-passport {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+
+.dog-passport.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: -10px;
+    opacity: 100%;
+    transition: opacity 0.5s linear;
+}
+
+.dog-passport.active .slide, .dog-passport.active table {
     display: block;
-    width: 500px;
-    height: auto;
-
+    opacity: 100%;
+    position: relative;
+    height:300px;
+    border-radius: 30px;
+    background-size: cover;
+    overflow: hidden;
+    box-shadow: 2px 4px 4px rgba(0,0,0,0.4);
+    transition: opacity 1s linear;
 }
-#might-be-slide-show{
+
+.dog-passport.active .slide {
+    width: 500px;
+}
+
+.dog-passport.active table {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+    background-color: #fefefe;
+}
+
+.dog-passport.active table tr {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.dog-passport.active table tr td:first-child {
+    color: black;
+    background-color: lightblue;
+    text-align: center;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    width: 300px;
+}
+
+.dog-passport.active table tr td:last-child:not(:first-child) {
+    font-size: x-large;
+    padding-bottom: 4px;
+}
+
+.dog-passport.active table .temperament {
+    font-family: cursive;
+    text-align: center;
+}
+
+.dog-passport.active .slide > figcaption {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    position: absolute;
+    bottom: 0px;
+    width: 500px;
+    height: 3rem;
+    color: white;
+    background-color: black;
+    opacity: 50%;
+}
+
+#might-be-slideshow {
     display: flex;
     justify-content: center;
 }

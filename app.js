@@ -15,6 +15,7 @@ const tasksRouter = require('./routes/tasks');
 const appRouter = require('./routes/app');
 const breedsRouter = require('./routes/breeds')
 const {requireAuth, restoreUser} = require('./auth');
+const dogNames = require("dog-names");
 const app = express();
 
 // view engine setup
@@ -45,6 +46,16 @@ store.sync();
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use(restoreUser);
+
+// seriously don't ask
+app.get('/randomDogNames/:type', (req, res, next) => {
+  const { type } = req.params.type;
+  console.log(type);
+  const data = type === "f" ? dogNames.female : dogNames.male;
+  console.log(data);
+  return res.json(data);
+});
+
 app.use(requireAuth);
 app.use("/lists", listsRouter);
 app.use("/dogs", dogsRouter);
