@@ -63,7 +63,7 @@ block content
                         ul
                             each list in lists
                                 li.menu-list
-                                    a(href="" id =`list-${list.id}` class="menu-items")=list.name
+                                    a(href="" id =`list-${list.id}` class="list-button")=list.name
                                     button(id=`delete-list-${list.id}` class='delete-list-button') -
     .add-list-form
         form(action="/lists", method="POST")
