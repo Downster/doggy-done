@@ -1,7 +1,8 @@
 import { fetchWithToken } from "./utils.js";
 import { populateTasksAndAddListeners } from "./taskUtils.js";
+import { populateListsAndAddListeners } from "./listUtils.js";
 
-const viewList = (e) => {
+export const viewList = (e) => {
   const listButtons = document.querySelectorAll(".list-button");
   listButtons.forEach((button) => {
     button.addEventListener("click", async (e) => {
@@ -14,7 +15,7 @@ const viewList = (e) => {
   });
 };
 
-const editListName = (e) => {
+export const editListName = (e) => {
   const editButton = document.querySelector(".edit-list-button");
   editButton.addEventListener("click", async (e) => {
     const listName = document.querySelector(".list-title");
@@ -28,7 +29,7 @@ const editListName = (e) => {
   });
 };
 
-const deleteList = (e) => {
+export const deleteList = (e) => {
   const deleteButtons = document.querySelectorAll(".delete-list-button");
   deleteButtons.forEach((button) => {
     button.addEventListener("click", async (e) => {
@@ -39,9 +40,8 @@ const deleteList = (e) => {
       const listId = button.id.split("-")[2];
       const res = await fetchWithToken(`/lists/${listId}`, "DELETE");
       await populateTasksAndAddListeners();
+      await populateListsAndAddListeners();
     });
   });
 };
 
-deleteList();
-viewList();
