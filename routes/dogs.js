@@ -3,6 +3,7 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const db = require('../db/models');
 var router = express.Router();
 const {validateOwner} = require("./validators");
+const dogNames = require('dog-names');
 
 
 router.get('/:dogId(\\d+)', asyncHandler(async (req, res, next) => {
@@ -77,8 +78,5 @@ router.post('/', csrfProtection, asyncHandler(async (req, res, next) => {
     });
     res.json(dog);
 }));
-
-
-
 
 module.exports = router;
