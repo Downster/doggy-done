@@ -26,6 +26,8 @@ const handleFormCollapse = (e) => {
 
 const reloadDogs = async () => {
   const myDogs = document.querySelector('.app-dogs');
+  const collapse = document.querySelector('.dog-area-collapse');
+  collapse.remove();
   myDogs.innerHTML = '';
   await genDogsArea();
 }
