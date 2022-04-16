@@ -1,12 +1,13 @@
 export const checkDayDifference = (date, type) => {
   const dateObj = dayjs(date);
   const today = dayjs();
+    const tomorrow = dayjs().add(1, "day");
+    const yesterday = dayjs().subtract(1, 'day')
   if (date !== null) {
     if (type === "today") {
-      const difference = dateObj.isSameOrBefore(today, "hour");
+      const difference = dateObj.isBetween(yesterday, tomorrow, 'hour');
       return difference;
     } else if (type === "tomorrow") {
-      const tomorrow = dayjs().add(1, "day");
       const difference = dateObj.isBetween(today, tomorrow, "hour");
       return difference;
     } else if (type === "overdue") {
@@ -42,3 +43,4 @@ export const buildNewTasksAndFilter = (tasks, type) => {
 
   return sortedTasks;
 };
+
