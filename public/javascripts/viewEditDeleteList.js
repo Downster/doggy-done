@@ -24,7 +24,7 @@ const editListName = (e) => {
     });
     const res = await fetchWithToken(`/lists/${listId}`, "PATCH", body);
     const data = await res.json();
-    console.log(data);
+    await populateTasksAndAddListeners("list", listId);
   });
 };
 

@@ -21,7 +21,7 @@ const handleListAdd = async (e) => {
   appBody.classList.toggle("blur");
   header.classList.toggle("blur");
   navMenu.classList.toggle("blur");
-  populateTasksAndAddListeners("list", newListId);
+  await populateTasksAndAddListeners("list", newListId);
 }
 
 listFormButton.addEventListener("click", handleListAdd);
