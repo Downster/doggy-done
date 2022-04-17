@@ -75,6 +75,7 @@ export const genNewDogForm = async () => {
   const dogNameInput = document.createElement("input");
   dogNameInput.setAttribute("name", "dogName");
   dogNameInput.setAttribute("type", "text");
+  dogNameInput.setAttribute("placeholder", "Doggo's Name ...");
   dogNameInput.classList.add("new-dog-name-input");
   const submit = document.createElement("button");
   submit.classList.add("new-dog-submit-button");
