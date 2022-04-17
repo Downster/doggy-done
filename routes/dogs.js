@@ -18,12 +18,11 @@ router.get('/:dogId(\\d+)', asyncHandler(async (req, res, next) => {
         if(!permCheck) {
             return res.status(401).end();
         }
-        console.log(dog);
         res.json(dog);
     }
 }));
 
-router.put('/dogs/:dogId(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
+router.put('/:dogId(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
     const dogId = req.params.dogId;
     const dog = await db.Dog.findByPk(dogId);
     if (!dog) {
@@ -45,9 +44,19 @@ router.put('/dogs/:dogId(\\d+)', csrfProtection, asyncHandler(async (req, res, n
     }
 }));
 
-router.delete('/dogs/:dogId(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
+router.delete('/:dogId(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
     const dogId = req.params.dogId;
-    const dog = await db.Dog.findByPk(dogId);
+    const dog = await db.Dog.findByPk(dogId, {include: [{model: db.Task}]});
+    const tasks = dog.Tasks;
+    if (tasks.length > 0) {
+        for (let task of tasks) {
+            const badTask = await db.Task.findByPk(task.id);
+            if (badTask) {
+                badTask.dog_id = null;
+                await badTask.save();
+            }
+        }
+    }
     if (!dog) {
         const err = new Error("Dog not found");
         next(err);

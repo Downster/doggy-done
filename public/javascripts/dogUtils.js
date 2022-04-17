@@ -1,5 +1,5 @@
 import { fetchWithToken } from "./utils.js";
-import { getAllTasks } from "./taskUtils.js";
+import { getAllTasks, populateTasksAndAddListeners } from "./taskUtils.js";
 
 export const genDogs = async () => {
   const response =  await fetchWithToken("/dogs");
@@ -142,6 +142,26 @@ const handleDogClick = async (e) => {
 
 }
 
+const handleDeleteDog = async (e) => {
+  e.stopImmediatePropagation();
+  const [ , dogId ] = e.target.id.split("dog-delete-");
+  const dogRes = await fetchWithToken(`/dogs/${dogId}`);
+  const data = await dogRes.json();
+  const dogName = data.name;
+  const confirmation = confirm(`Do you really want to delete ${dogName}? 😱`);
+  if (!confirmation) {
+    return;
+  }
+  const dogTasks = data.Tasks.map(task => task.id.toString());
+  for (let dogTask of dogTasks) {
+    window.filterTaskByDog.delete(dogTask);
+  }
+  await fetchWithToken(`/dogs/${dogId}`, "DELETE");
+  await reloadDogs();
+  await populateTasksAndAddListeners();
+  filterTasksWithDogId();
+}
+
 const makeSingleDogArea = (dog) => {
   const entry = document.createElement("li");
   entry.classList.add("single-dog");
@@ -154,6 +174,13 @@ const makeSingleDogArea = (dog) => {
   entry.append(dogView);
   dogView.addEventListener("click", handleDogClick);
   dogView.innerText = dog.name;
+  const deleter = document.createElement("i");
+  deleter.classList.add("fa-solid")
+  deleter.classList.add("fa-xmark");
+  deleter.classList.add("dog-delete");
+  deleter.setAttribute("id", `dog-delete-${dog.id}`);
+  entry.append(deleter);
+  deleter.addEventListener("click", handleDeleteDog);
   return entry;
 };
 

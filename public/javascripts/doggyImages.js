@@ -17,11 +17,11 @@ const genData = async () => {
         dogNamesMRes.json(),
         dogNamesFRes.json(),
     ]);
+    console.log(dogNamesM);
+    console.log(dogNamesF);
     const ages = [1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 5, 5, 6, 7, 8, 9, 10];
     data.sort((a,b) => 0.5 - Math.random());
-    const pictures = data.map(datum => datum.image.url);
-    const temperaments = data.map(datum => datum.temperament);
-    const breedNames = data.map(datum => datum.name);
+
     const dataMap = data.reduce((accum, datum) => {
         const obj = {};
         const mOrF = Math.random() >= 0.5;
@@ -37,6 +37,9 @@ const genData = async () => {
             .sort((a,b) => 0.5 - Math.random())
             .slice(0,5)
         : [];
+        if (obj.temperament.join(". ").length > 60) {
+            obj.temperament.pop();
+        }
         accum.push(obj);
         return accum;
     }, []);

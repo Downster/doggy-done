@@ -578,6 +578,7 @@ li.menu-list{
     line-height: 1.5em;
     font-size: 1.5rem;
     transition: font-size 0.3s, box-shadow 0.3s;
+    position: relative;
 }
 
 .single-dog:hover {
@@ -695,4 +696,19 @@ li.menu-list{
 
 .task-s {
     display: none;
+}
+
+.dog-delete {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    opacity: 0%;
+}
+
+.single-dog:hover .dog-delete {
+    opacity: 10%;
+}
+
+.single-dog:hover .dog-delete:hover {
+    opacity: 100%;
 }
