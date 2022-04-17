@@ -526,14 +526,18 @@ li.menu-list{
     display: none;
 }
 
-.dog-area-collapse {
-    margin-left: 10px;
-    width: 100px;
-    height: 30px;
+.dog-area-collapse, .dog-area-form-collapse {
+    width: 100%;
+    background-color: #fe9054;
+    border: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: white;
 }
 
 .app-dogs.active {
     display: block;
+    background-color: rgb(251, 225, 181);
 }
 
 .new-dog-container {
@@ -541,8 +545,28 @@ li.menu-list{
 }
 
 .new-dog-container.active {
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
 }
+
+.new-dog-container button {
+    background-color: #fe9054;
+    border-radius: 16px;
+    color: white;
+    border: none;
+    padding: 16px;
+    box-shadow: 1px 3px 3px rgba(0,0,0,0.4);
+}
+
+.new-dog-name-input, .new-dog-breed-select {
+    border-radius: 16px;
+    border: none;
+    box-shadow: 1px 3px 3px rgba(0,0,0,0.4);
+    padding: 0.5em;
+}
+
 
 .my-dogs {
     display: flex;
@@ -590,6 +614,9 @@ li.menu-list{
 
 .single-dog a {
     color: #ebcc90;
+    background-color: rgba(0,0,0,0.7);
+    padding: 0.25em 0.5em;
+    border-radius: 36px;
     overflow-x: visible;
     text-shadow: 2px 4px 3px black;
     text-decoration: none;
@@ -630,7 +657,7 @@ li.menu-list{
 }
 
 .single-dog.inactive {
-    filter: grayscale(100%) blur(1px);
+    filter: grayscale(100%);
 }
 
 .single-task {
@@ -688,12 +715,6 @@ li.menu-list{
     font-size: 2rem;
 }
 
-/* keep this at the end */
-
-.hidden {
-    display: none;
-}
-
 .task-s {
     display: none;
 }
@@ -711,4 +732,10 @@ li.menu-list{
 
 .single-dog:hover .dog-delete:hover {
     opacity: 100%;
+}
+
+/* keep this at the end */
+
+.hidden {
+    display: none;
 }
