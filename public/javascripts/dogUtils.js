@@ -37,6 +37,10 @@ const handleNewDog = async (e) => {
     const dogBreedSelect = document.querySelector('.new-dog-breed-select');
     const dogName = dogNameInput.value;
     const breedId = dogBreedSelect.value;
+    if (!dogName || !breedId ) {
+      alert("You must select a name and breed!");
+      return;
+    }
     const body = JSON.stringify({dogName, breedId});
     const newDog = await fetchWithToken('/dogs', 'POST', body);
     await reloadDogs();
@@ -71,6 +75,7 @@ export const genNewDogForm = async () => {
   const dogNameInput = document.createElement("input");
   dogNameInput.setAttribute("name", "dogName");
   dogNameInput.setAttribute("type", "text");
+  dogNameInput.setAttribute("placeholder", "Doggo's Name ...");
   dogNameInput.classList.add("new-dog-name-input");
   const submit = document.createElement("button");
   submit.classList.add("new-dog-submit-button");
@@ -204,7 +209,7 @@ export async function genDogsArea() {
     const dogsArea = document.querySelector(".app-dogs");
     const collapse = document.createElement("button");
     collapse.classList.add('dog-area-collapse');
-    collapse.innerText = "My Dogs"
+    collapse.innerHTML = `My Dogs <i class="fa-solid fa-caret-down"></i>`
     const dogList = document.createElement("div");
     dogList.classList.add("my-dogs");
     dogsArea.append(dogList);
@@ -213,7 +218,7 @@ export async function genDogsArea() {
     const form = await genNewDogForm();
     const formCollapse = document.createElement("button");
     formCollapse.classList.add('dog-area-form-collapse');
-    formCollapse.innerText = "New Doggo"
+    formCollapse.innerHTML = `New Doggo <i class="fa-solid fa-caret-down"></i>`;
     dogsArea.append(formCollapse);
     dogsArea.append(form);
     collapse.addEventListener("click", handleDogCollapse);
