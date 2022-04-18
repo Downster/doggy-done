@@ -62,7 +62,7 @@ Logged in users can:
 ### Page Views
 
 Splash page
-(https://user-images.githubusercontent.com/24400646/163755657-f3e03869-d59e-43b5-93fc-35029f877eaf.png)
+![alt text](https://imgur.com/j9XZqVy)
 
 
 
