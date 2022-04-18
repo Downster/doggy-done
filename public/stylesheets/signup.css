@@ -2,6 +2,11 @@
 .userflow-friends{
     display: flex;
     justify-content: center;
+    gap: 50px;
+}
+
+body {
+    margin-top: 1em;
 }
 
 .userflow-tagline{
@@ -14,6 +19,8 @@
     justify-content: left;
 }
 
+
+
 .logo{
     display: flex;
     justify-content: center;
@@ -24,25 +31,44 @@
     display: flex;
     justify-content: center;
     padding: 20px;
+    gap: 16px;
+}
+
+button, .userflow-login-button, .home-link a {
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    background-color: #fe9054;
+    border: none;
+    border-radius: 16px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+}
+
+button:hover, .userflow-login-button:hover, .home-link a:hover {
+    filter: invert(100%);
+    box-shadow: 2px 5px 5px rgba(255,255,255,0.4);
+}
+
+a, a:hover, a:visited {
+    text-decoration: none;
+    color: black;
 }
 
 .signup{
     margin-right: 10px
 }
 
-.dog1{
-    width: 500px;
-    height: auto
-}
-
-.dog2{
-    width: 500px;
-    height: auto
-}
-
-.dog3{
-    width: 500px;
-    height: auto
+.dogs {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 20%;
+    box-shadow: 2px 4px 4px rgba(0,0,0,0.4);
 }
 
 h2{
@@ -50,9 +76,21 @@ h2{
     justify-content: center;
 }
 
+
 .user-form-field{
     display: flex;
     justify-content: center;
+    gap: 16px;
+    margin: 0.5em;
+}
+
+input {
+    border-radius: 8px;
+    background-color: blanchedalmond;
+    border: none;
+    box-shadow: 2px 4px 4px rgba(0,0,0,0.4);
+    height: 1.5em;
+
 }
 
 @keyframes dropIn {

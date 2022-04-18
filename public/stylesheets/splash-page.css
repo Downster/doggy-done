@@ -139,6 +139,7 @@ h1,button{
 
 .dog-passport.active .slide {
     width: 500px;
+    background-size: 500px, cover;
 }
 
 .dog-passport.active table {
@@ -173,7 +174,6 @@ h1,button{
 }
 
 .dog-passport.active table .temperament {
-    font-family: cursive;
     text-align: center;
 }
 

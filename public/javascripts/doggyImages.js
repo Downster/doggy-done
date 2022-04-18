@@ -1,9 +1,9 @@
 
-const dogImages = "https://api.thedogapi.com/v1/breeds";
 
 
 
-const genData = async () => {
+export const genData = async () => {
+    const dogImages = "https://api.thedogapi.com/v1/breeds";
     const reqestObj = {
         headers: {"x-api-key":"869466b6-009d-421f-a2d5-4bf91cc88fa4"}
     };
@@ -17,8 +17,6 @@ const genData = async () => {
         dogNamesMRes.json(),
         dogNamesFRes.json(),
     ]);
-    console.log(dogNamesM);
-    console.log(dogNamesF);
     const ages = [1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 5, 5, 6, 7, 8, 9, 10];
     data.sort((a,b) => 0.5 - Math.random());
 
@@ -35,10 +33,15 @@ const genData = async () => {
           datum.temperament
             .split(", ")
             .sort((a,b) => 0.5 - Math.random())
-            .slice(0,5)
+            .slice(0,4)
+            .filter(adj => adj.length > 3)
         : [];
         if (obj.temperament.join(". ").length > 60) {
             obj.temperament.pop();
+        }
+        const backupTemperament = ["Quirky", "Aloof", "Mischievous", "Tsundere" ];
+        if (obj.temperament.length === 0) {
+            obj.temperament = backupTemperament;
         }
         accum.push(obj);
         return accum;
@@ -60,7 +63,7 @@ const makeTable = (obj) => {
           <td>Age</td>
           <td>${age}</td>
         <tr>
-          <td>Personality</td>
+          <td>Doggo-nality</td>
         <tr>
         <p class="temperament">${temperament.join(". ") + `. ${tag}`}</p>
        </tbody>
@@ -75,6 +78,9 @@ const makeELements = (datum) => {
     figure.style.backgroundImage = `url(${url})`;
     const caption= document.createElement("figcaption");
     caption.innerText = datum.breed;
+    if (datum.breed.length > 30) {
+        caption.style.fontSize = "1.5rem";
+    }
     figure.append(caption);
     const table = makeTable(datum);
     const container = document.createElement("div");

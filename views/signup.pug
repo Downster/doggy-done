@@ -4,19 +4,18 @@ include form-utils.pug
 block right-form
   link(rel='stylesheet' href='/stylesheets/signup.css')
   div.home-link
-    a(href='/') Back To Home Page
+    a(href='/') Home
   div.logo
     img(src='/images/flufferton-resized.jpg')
   div.userflow-friends#userflow-friends
-    img(src='/images/lab-dutchy.jpg').dog1
-    img(src='/images/newfie.jpg').dog2
-    img(src='/images/pekingese-4.jpg').dog3
+    img(src='/images/lab-dutchy.jpg').dogs
+    img(src='/images/newfie.jpg').dogs
+    img(src='/images/pekingese-4.jpg').dogs
   div.userflow-tagline#userflow-tagline
     p Join bajillions of dog owners in getting productive!
   +errorSummary(errors)
   h2 Sign up for free!
   form.sign-up-form(method="POST" action="/users/register")
-
     +csrfField()
     +userFormField("First Name", "firstName", user.firstName, "text")
     +userFormField("Last Name", "lastName", user.lastName, "text")
