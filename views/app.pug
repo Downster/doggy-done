@@ -67,7 +67,7 @@ block content
                         ul.list-items
 
     .add-list-form
-        form(action="/lists", method="POST")
+        form(action="/lists", method="POST" class='list-form')
             input(type="hidden" name="_csrf" value=csrfToken)
             input.list-name-input#list-name-input(type="text" name='listName')
             button.create-list#create-list Create list

@@ -28,13 +28,18 @@ export const editListName = (e) => {
   const editButton = document.querySelector(".edit-list-button");
   editButton.addEventListener("click", async (e) => {
     const listName = document.querySelector(".list-title");
-    const listId = listName.id.split(`list-title-`).pop();
-    const body = JSON.stringify({
-      name: listName.value,
-    });
-    const res = await fetchWithToken(`/lists/${listId}`, "PATCH", body);
-    const data = await res.json();
-    await populateTasksAndAddListeners("list", listId);
+    if (listName.value === '') {
+      window.alert('Please input a non empty value')
+    } else {
+      const listId = listName.id.split(`list-title-`).pop();
+      const body = JSON.stringify({
+        name: listName.value,
+      });
+      const res = await fetchWithToken(`/lists/${listId}`, "PATCH", body);
+      const data = await res.json();
+      await populateTasksAndAddListeners("list", listId);
+      await populateListsAndAddListeners()
+    }
   });
 };
 
@@ -43,13 +48,14 @@ export const deleteList = (e) => {
   deleteButtons.forEach((button) => {
     button.addEventListener("click", async (e) => {
       const cont = confirm("Delete this list?");
-      if (!confirm) {
+      if (!cont) {
         return;
+      } else {
+        const listId = button.id.split("-")[2];
+        const res = await fetchWithToken(`/lists/${listId}`, "DELETE");
+        await populateTasksAndAddListeners();
+        await populateListsAndAddListeners()
       }
-      const listId = button.id.split("-")[2];
-      const res = await fetchWithToken(`/lists/${listId}`, "DELETE");
-      await populateTasksAndAddListeners();
-      await populateListsAndAddListeners();
     });
   });
 };

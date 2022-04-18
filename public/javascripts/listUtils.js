@@ -34,11 +34,9 @@ export const genListHTML = async () => {
   
 export const populateLists = async () => {
     const listsHTML = await genListHTML();
-    console.log(listsHTML)
     const allLists = document.querySelector(".list-items");
     allLists.innerHTML = "";
     for (let listName of listsHTML) {
-          console.log(listName)
         allLists.append(listName);
       }
   };
@@ -47,8 +45,7 @@ export const populateLists = async () => {
   export const populateListsAndAddListeners = async () => {
       await populateLists();
       viewList()
-      createListListener()
-    deleteList();
+      deleteList();
   };
 
 populateListsAndAddListeners();

@@ -99,7 +99,6 @@ const buildTaskHTML = (task) => {
 export const genTasksHTML = async (type, listId) => {
   if (type !== "list") {
     const tasks = await genTasks(type);
-    console.log(tasks)
     return tasks.map((task) => buildTaskHTML(task));
   } else {
     const lists = await genTasks(type, listId);
