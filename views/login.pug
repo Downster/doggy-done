@@ -4,7 +4,7 @@ include form-utils.pug
 block right-form
   link(rel='stylesheet' href='/stylesheets/login.css')
   div.home-link
-    a(href='/') Back To Home Page
+    a(href='/' class='home-page-link') Back To Home Page
   div.logo
     img(src='/images/flufferton-resized.jpg')
   div.userflow-friends#userflow-friends
@@ -19,5 +19,4 @@ block right-form
       +userFormField("Password", "password", '', "password")
   div.button
     +loginButton()
-  div.signup-redirect
-    a(href="/users/register") Need to create an account? Sign up today!
+    a(href="/users/register" class='sign-up-link') Sign up today!
