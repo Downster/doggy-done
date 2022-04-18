@@ -63,7 +63,7 @@ const makeTable = (obj) => {
           <td>Age</td>
           <td>${age}</td>
         <tr>
-          <td>Personality</td>
+          <td>Doggo-nality</td>
         <tr>
         <p class="temperament">${temperament.join(". ") + `. ${tag}`}</p>
        </tbody>
