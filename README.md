@@ -59,10 +59,16 @@ Logged in users can:
 - Search for Tasks
 - View task details
 
-### Page Views
+# Page Views
 
-Splash page
+###Splash page
 <img src='https://i.imgur.com/j9XZqVy.png'/>
+
+### Login 
+<img src='https://imgur.com/nUFcF4R.png'/>
+
+
+
 
 
 
