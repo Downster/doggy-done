@@ -17,6 +17,6 @@ block right-form
     div.credentials
       +userFormField("E-mail", "email", '', "email")
       +userFormField("Password", "password", '', "password")
-  div.button
-    +loginButton()
-    a(href="/users/register" class='sign-up-link') Sign up today!
+    div.button
+      +loginButton()
+      a(href="/users/register" class='sign-up-link') Sign up today!
