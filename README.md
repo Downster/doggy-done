@@ -53,8 +53,16 @@ Logged in users can:
 
 - Add/Edit/Delete Lists
 - Add/Edit/Delete Tasks
-- Add/Edit/Delete Comments on Tasks
+- Add/Edit/Delete Dogs
 - Add/Delete Contacts
-- Give Tasks to Contacts
-- View Tasks by Category: All, Due Today, Due Tomorrow, Given to User by Contact, Given to Contact by User, Incomplete, Completed, and User-Created List Categories
+- View Tasks by Category: All, Due Today, Due Tomorrow, Completed, Overdue and User-Created List Categories
 - Search for Tasks
+- View task details
+
+### Page Views
+
+Splash page
+(https://user-images.githubusercontent.com/24400646/163755657-f3e03869-d59e-43b5-93fc-35029f877eaf.png)
+
+
+
