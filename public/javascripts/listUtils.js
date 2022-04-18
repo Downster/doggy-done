@@ -8,6 +8,8 @@ export const genLists = async () => {
 }
 
 export const buildListHTML = (list) => {
+    const listDiv = document.createElement('div')
+    listDiv.classList.add('list-div')
     const listEle = document.createElement("li");
     listEle.classList.add('menu-list');
     const listAnchor = document.createElement("a");
@@ -21,7 +23,8 @@ export const buildListHTML = (list) => {
     listButton.innerText = '-'
     listEle.appendChild(listAnchor);
     listEle.appendChild(listButton)
-    return listEle;
+    listDiv.appendChild(listEle)
+    return listDiv;
 };
   
 export const genListHTML = async () => {

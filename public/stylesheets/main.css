@@ -383,6 +383,7 @@ li.menu-list{
     margin-left: 20px;
 }
 
+
 #detail-date{
     width: 40%;
     border-radius: 10px;
@@ -557,6 +558,7 @@ li.menu-list{
 }
 
 .list-button{
+    display: flex;
     text-decoration: none;
     margin: 0 auto;
 }
