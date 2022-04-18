@@ -70,6 +70,12 @@ Logged in users can:
 ### Sign-up
 <img src='https://imgur.com/nUFcF4R.png' />
 
+### Main page view
+<img src='https://imgur.com/paEhovp.png' />
+
+### Main page detail view
+<img src='https://imgur.com/inFqfV1.png' />
+
 
 
 
