@@ -7,11 +7,11 @@ View and test out Doggy Done on [Heroku](https://doggy-done.herokuapp.com/app)
 # Index
 
 |
-[MVP Feature List](##linkshere) |
-[Database Schema](##linkshere) |
-[API Documentation](##linkshere) |
-[Frontend Routes](##linkshere) |
-[User Stories](##linkshere) |
+[MVP Feature List](https://github.com/Downster/doggy-done/wiki/Feature-List) |
+[Database Schema](https://github.com/Downster/doggy-done/wiki/Database-Schema) |
+[API Documentation](https://github.com/Downster/doggy-done/wiki/API-Documentation) |
+[Frontend Routes](https://github.com/Downster/doggy-done/wiki/Frontend-Routes) |
+[User Stories](https://github.com/Downster/doggy-done/wiki/User-Stories) |
 
 # Technologies Used
 
@@ -54,10 +54,10 @@ Logged in users can:
 - Add/Edit/Delete Lists
 - Add/Edit/Delete Tasks
 - Add/Edit/Delete Dogs
-- Add/Delete Contacts
 - View Tasks by Category: All, Due Today, Due Tomorrow, Completed, Overdue and User-Created List Categories
+- View Tasks assigned to a certain dog
 - Search for Tasks
-- View task details
+- View Task details
 
 # Page Views
 
