@@ -61,11 +61,14 @@ Logged in users can:
 
 # Page Views
 
-###Splash page
+### Splash page
 <img src='https://i.imgur.com/j9XZqVy.png'/>
 
 ### Login 
 <img src='https://imgur.com/nUFcF4R.png'/>
+
+### Sign-up
+<img src='https://imgur.com/nUFcF4R.png' />
 
 
 
