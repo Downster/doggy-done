@@ -2,7 +2,39 @@
      border: 2px solid red;
 } */
 
-body{ background-color: #f7bf50}
+a{
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    margin-top: 10px;
+    padding: 16px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    background-color: #fe9054;
+    border: none;
+    border-radius: 16px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+}
+
+a:hover{
+    filter: invert(100%);
+    box-shadow: 2px 5px 5px rgba(255,255,255,0.4);
+}
+
+body{ 
+    background-color: #f7bf50;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-div{
+    display: flex;
+    justify-content: space-around;
+}
 
 #logout-image{
     display: flex;
@@ -18,32 +50,35 @@ body{ background-color: #f7bf50}
     height:50px;
 }
 
-a#login-again-button{
-    display: flex;
-    text-decoration: none;
-    color: blue;
 
-}
 #login-again-button{
-    padding: 10px 10px 10px 10px;
-    font-size: 22px;
-    border: 2px solid red;
-    border-radius: 5px;
-    background-color: red;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    margin-top: 10px;
+    padding: 16px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    background-color: #fe9054;
+    border: none;
+    border-radius: 16px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
 }
 
-#login-again-button:hover{
-  transform: translate(3px, -3px);
-}
 
 .login-again-button{
     display: flex;
     justify-content: center;
 }
 .logout-body{
-    margin-right: 800px;
-    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 div{
@@ -51,14 +86,3 @@ div{
     margin-right: 10px;
 }
 
-.home:hover{
-    color:blue;
-}
-
-.login:hover{
-    color: blue;
-}
-
-.sign-up:hover{
-    color: blue;
-}

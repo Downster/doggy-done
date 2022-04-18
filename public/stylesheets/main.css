@@ -323,6 +323,9 @@ li.menu-list{
     transform: translateX(250%);
     top: 10%;
 }
+.task-click{
+    color:black
+}
 
 .overdue{
     color: red;
@@ -369,6 +372,7 @@ li.menu-list{
 .all-tasks {
     width: 100%;
 }
+
 
 
 
