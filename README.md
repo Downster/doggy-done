@@ -62,7 +62,7 @@ Logged in users can:
 ### Page Views
 
 Splash page
-<img src='https://imgur.com/j9XZqVy'/>
+<img src='https://i.imgur.com/j9XZqVy.png'/>
 
 
 
