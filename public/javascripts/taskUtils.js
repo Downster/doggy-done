@@ -120,13 +120,16 @@ export const populateTasks = async (type, listId) => {
 
     const name = tasksHTML.name;
     const listName = document.createElement("input");
-    const editListName = document.createElement("button");
+      const editListName = document.createElement("button");
+      const nameHeader = document.createElement('h3');
+      nameHeader.innerText = 'List name:'
     editListName.innerText = "Edit Name";
     editListName.classList.add(`edit-list-button`);
     editListName.setAttribute("id", `edit-list-${listId}`);
     listName.classList.add(`list-title`);
     listName.setAttribute("id", `list-title-${listId}`);
-    listName.value = name;
+      listName.value = name;
+      allTasks.append(nameHeader);
     allTasks.append(listName);
     allTasks.append(editListName);
     for (let taskDetail of mappedTasks) {

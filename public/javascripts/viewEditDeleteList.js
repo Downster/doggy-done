@@ -10,10 +10,19 @@ export const viewList = (e) => {
       const listId = button.id.split("-")[1];
       const taskItems = document.querySelector(".task-items");
       await populateTasksAndAddListeners("list", listId);
+      showButton()
       editListName();
     });
   });
 };
+
+export const showButton = (e) => {
+  const listInput = document.querySelector('.list-title');
+  listInput.addEventListener('click', (e) => {
+    const editButton = document.querySelector(".edit-list-button");
+    editButton.classList.toggle('active')
+  })
+}
 
 export const editListName = (e) => {
   const editButton = document.querySelector(".edit-list-button");
