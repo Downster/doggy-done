@@ -5,7 +5,6 @@ export const checkboxListeners = () => {
   checkboxList.forEach((task) => {
     task.addEventListener("click", async (e) => {
         e.stopImmediatePropagation();
-        console.log("hello");
         const id = e.currentTarget.id.split("-")[2];
         const checked = e.currentTarget.checked;
         const body = JSON.stringify({
@@ -17,6 +16,6 @@ export const checkboxListeners = () => {
         fakeDiv.classList.toggle("active");
         const res = await fetchWithToken(`/tasks/${id}/completed`, 'PUT', body);
         const data = await res.json();
-        console.log(data);
+
     });
 })};

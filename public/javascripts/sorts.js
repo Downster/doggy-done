@@ -12,13 +12,11 @@ allTasks.addEventListener("click", async (e) => {
 
 todaysTasks.addEventListener("click", async (e) => {
   e.preventDefault();
-  console.log("here");
   await populateTasksAndAddListeners("today");
 });
 
 tomorrowsTasks.addEventListener("click", async (e) => {
   e.preventDefault();
-  console.log("here");
   await populateTasksAndAddListeners("tomorrow");
 });
 
