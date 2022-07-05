@@ -36,8 +36,23 @@ const generateSearchArea = async () => {
 };
 document.addEventListener("DOMContentLoaded", function () {
   const searchBar = document.getElementById("task-s");
+  const searchDiv = document.getElementById("search-div");
+  const appBody = document.querySelector(".app-body");
+  const header = document.querySelector(".header-nav");
+  const navMenu = document.querySelector(".nav-menu-container");
 
   searchBar.addEventListener("click", generateSearchArea);
+  document.addEventListener("click", function (event) {
+    const isClickInside = searchDiv.contains(event.target) || searchBar.contains(event.target);
+
+    if (!isClickInside) {
+      //the click was outside the specifiedElement, do something
+      searchDiv.classList.remove("active");
+      appBody.classList.remove("blur");
+      header.classList.remove("blur");
+      navMenu.classList.remove("blur");
+    }
+  })
 
   searchBar.addEventListener("keyup", (e) => {
     const currTasks = new Set();
