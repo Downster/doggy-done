@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
       appBody.classList.remove("blur");
       header.classList.remove("blur");
       navMenu.classList.remove("blur");
+      searchBar.value = ''
     }
   })
 

@@ -496,8 +496,8 @@ li.menu-list{
     display: flex;
     position: absolute;
     flex-direction: column;
-    top:3.5%;
-    width: 300px;
+    top:5%;
+    width: 200px;
     height: 300px;
     background-color: #f7bf50;
     z-index: 5;
